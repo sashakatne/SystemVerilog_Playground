@@ -1,4 +1,4 @@
-module cascaded_ece593_alu (A1, B1, op_sel, clk, rst, start_op, end_op, result);
+module cascaded_alu (A1, B1, op_sel, clk, rst, start_op, end_op, result);
 
     parameter DATA_WIDTH = 16;
     parameter RESULT_WIDTH = 32;
@@ -15,8 +15,8 @@ module cascaded_ece593_alu (A1, B1, op_sel, clk, rst, start_op, end_op, result);
     wire end_op_alu1; // End operation signal from ALU1 must be connected to start operation signal of ALU2
     wire [RESULT_WIDTH-1:0] result_alu1; // Upper half of the result from ALU1 must be connected to the lower half of the result from ALU2
 
-    // Instantiate ece593_alu1 module
-    ece593_alu1 #(.DATA_WIDTH(DATA_WIDTH), .RESULT_WIDTH(RESULT_WIDTH)) alu1
+    // Instantiate alu1 module
+    alu1 #(.DATA_WIDTH(DATA_WIDTH), .RESULT_WIDTH(RESULT_WIDTH)) alu1
     (
         .A(A1),
         .B(B1),
@@ -28,8 +28,8 @@ module cascaded_ece593_alu (A1, B1, op_sel, clk, rst, start_op, end_op, result);
         .result(result_alu1)
     );
 
-    // Instantiate ece593_alu2 module
-    ece593_alu2 #(.DATA_WIDTH(DATA_WIDTH), .RESULT_WIDTH(RESULT_WIDTH)) alu2
+    // Instantiate alu2 module
+    alu2 #(.DATA_WIDTH(DATA_WIDTH), .RESULT_WIDTH(RESULT_WIDTH)) alu2
     (
         .A(result_alu1[RESULT_WIDTH-1:DATA_WIDTH]),
         .B(result_alu1[DATA_WIDTH-1:0]),
@@ -43,7 +43,7 @@ module cascaded_ece593_alu (A1, B1, op_sel, clk, rst, start_op, end_op, result);
 
 endmodule
 
-module ece593_alu1 (A, B, op_sel, clk, rst, start_op, end_op, result);
+module alu1 (A, B, op_sel, clk, rst, start_op, end_op, result);
 
     parameter DATA_WIDTH = 16;
     parameter RESULT_WIDTH = 32;
@@ -109,7 +109,7 @@ module ece593_alu1 (A, B, op_sel, clk, rst, start_op, end_op, result);
 
 endmodule
 
-module ece593_alu2 (A, B, op_sel, clk, rst, start_op, end_op, result);
+module alu2 (A, B, op_sel, clk, rst, start_op, end_op, result);
 
     parameter DATA_WIDTH = 16;
     parameter RESULT_WIDTH = 32;

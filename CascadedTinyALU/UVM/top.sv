@@ -4,7 +4,7 @@ module top;
     cascaded_alu_bfm     bfm();
    
     // Instantiate the ALU
-    cascaded_ece593_alu #(
+    cascaded_alu #(
         .DATA_WIDTH(DATA_WIDTH),
         .RESULT_WIDTH(RESULT_WIDTH)
     ) DUT (

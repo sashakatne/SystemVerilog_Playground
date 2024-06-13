@@ -44,7 +44,7 @@ module top;
     test t1 (in);
 
     // Instantiate the ALU
-    cascaded_ece593_alu #(
+    cascaded_alu #(
         .DATA_WIDTH(DATA_WIDTH),
         .RESULT_WIDTH(RESULT_WIDTH)
     ) DUT (

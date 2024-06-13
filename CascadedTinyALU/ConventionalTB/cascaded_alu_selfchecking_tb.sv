@@ -15,7 +15,7 @@ module top;
     bit error_flag = '0;
 
     // Instantiate the ALU
-    cascaded_ece593_alu #(
+    cascaded_alu #(
         .DATA_WIDTH(DATA_WIDTH),
         .RESULT_WIDTH(RESULT_WIDTH)
     ) DUT (
