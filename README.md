@@ -9,14 +9,14 @@ The Arbiter module manages access to a shared resource among multiple requesters
 
 - **Files**: `Arbiter.sv`, `Arbiter4Behavioral.sv`, `Arbiter4TB.sv`
 - **Testbenches**: `Arbiter4TB.sv`
-- **Verification**: Assertions in `assertions.sv`
+- **Verification**: Assertions in `assertions.sv` in the folder `ArbiterAssertions`. This file is then bound to the Arbiter module in the `top.sv` testbench in this folder.
 
 ### 2. FindFirstOne (FFO)
 The FFO module identifies the position of the first '1' in a 32-bit input vector, useful in priority encoders and similar applications.
 
 - **Files**: `FFO32s.sv`, `FFO32ptb.sv`, `FFO32sMealytb.sv`
 - **Testbenches**: `FFO32sMealytb.sv`, `FFO32ptb.sv`
-- **Verification**: Coverage reports in `run_moore.do`
+- **Verification**: Run `run_moore.do` which will also generate coverage reports.
 
 ### 3. Sequential Multiplier
 A parameterized sequential multiplier module for multiplying two binary numbers using sequential logic.
@@ -33,6 +33,13 @@ A module that decodes Braille input into readable text.
 ### 5. Arithmetic Logic Unit (ALU)
 A versatile ALU module capable of performing various arithmetic and logical operations. My design contains a cascaded version of an ALU. The folder contains different methodologies to test the design and verify its correctness. I have created a conventional testbench, class-based testbench and UVM testbench.
 
+- **Folder**: CascadedTinyALU
+
+### 6. Non-Overlapping Clock Generator
+A module that generates non-overlapping clock signals for a given set of inputs.
+
+- **Folder**: NonOverlappingClockGenerator
+- **Files**: `novckgen_structural.sv`, `novckgen_tb.sv`
 
 ## Verification
 
