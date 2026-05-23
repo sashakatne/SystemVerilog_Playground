@@ -1,0 +1,68 @@
+Run:        Line-following robot controller (LineFollowingRobot module) — cold rerun
+Start UTC:  2026-05-23T22-14-31Z
+End   UTC:  2026-05-23T22-15-38Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the repo-wide `vdel -all` -> `catch {vdel -all}` fix lets a fresh checkout
+  run the simulation end-to-end without any manual priming. Run dir was created empty
+  (no `work/` library) and the two .do scripts were invoked back-to-back.
+
+Commands executed (in order, from this directory):
+  1. vsim -c -do 'do run_dataflow.do; quit -f'    > transcript_dataflow.txt
+  2. vsim -c -do 'do run_structural.do; quit -f'  > transcript_structural.txt
+
+Note: NO manual 'vlib work' before either invocation. The 'catch {vdel -all}' in
+each script now swallows the first-run vdel-19 error so 'vlib work' creates the
+library cleanly.
+
+Results:
+  Dataflow run (cold start, no work/ library at script entry):
+    vdel-19 raised by 'vdel -all' on the missing 'work' library and swallowed by catch
+    vlib work ...................... created the library
+    vlog robotdataflow.sv .......... Errors: 0, Warnings: 0
+    vlog testbench.sv .............. Errors: 0, Warnings: 0
+    vopt top ....................... Errors: 0, Warnings: 0
+    32 PASS lines emitted by the testbench (one per sensor pattern 00000..11111)
+    Final verdict: 'No errors -- passed testbench'
+    Coverage: 100.00% expressions (12/12), 100.00% statements (3/3) on /top/DUT
+    UCDB: RobotController_dataflow.ucdb
+
+  Structural run:
+    vdel -all wiped the library populated by the dataflow run (no catch needed,
+      but the catch is harmless when the lib exists)
+    vlib work ...................... recreated
+    vlog robotstructural.sv ........ Errors: 0, Warnings: 0
+    vlog testbench.sv .............. Errors: 0, Warnings: 0
+    vopt top ....................... Errors: 0, Warnings: 0
+    32 PASS lines emitted by the testbench (per-vector outputs identical to dataflow)
+    Final verdict: 'No errors -- passed testbench'
+    Coverage: vcover-17388 'No matching coverage data found' — expected, because
+      robotstructural.sv is pure gate primitives (not, and, or) and +cover=sbfec+
+      instruments only RTL assigns / always blocks. Functional correctness is fully
+      verified by the 32-vector exhaustive sweep against the behavioural KGD reference.
+    UCDB: RobotController_structural.ucdb (empty — see above)
+
+Caveats:
+  - None for this rerun. The earlier session
+    (~/claude-runs/2026-05-23T22-02-06Z_linefollowingrobot-sim/) needed a manual
+    'vlib work' workaround before the first invocation; this rerun confirms that
+    workaround is no longer required after the catch fix landed in every .do file
+    in the repo.
+
+Files in this run directory:
+  MANIFEST.txt
+  RobotController_dataflow.ucdb
+  RobotController_structural.ucdb
+  robotdataflow.sv
+  robotstructural.sv
+  run_dataflow.do
+  run_structural.do
+  testbench.sv
+  transcript
+  transcript_dataflow.txt
+  transcript_structural.txt
+  vsim.wlf
+  work

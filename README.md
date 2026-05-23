@@ -41,6 +41,14 @@ A module that generates non-overlapping clock signals for a given set of inputs.
 - **Folder**: NonOverlappingClockGenerator
 - **Files**: `novckgen_structural.sv`, `novckgen_tb.sv`
 
+### 7. Line-Following Robot
+A combinational controller that drives the two motors of a line-following robot from five photo-sensors, with `InMotion` and `Error` status outputs. Shipped as both a minimal-SOP dataflow model and a gate-primitive structural model that share one self-checking testbench.
+
+- **Folder**: LineFollowingRobot
+- **Files**: `robotdataflow.sv`, `robotstructural.sv`, `testbench.sv`, `design.md`
+- **Testbenches**: `testbench.sv` (sweeps all 32 sensor patterns against a behavioural reference; prints `No errors -- passed testbench` on success)
+- **Verification**: Run `do run_dataflow.do` to verify the dataflow model, `do run_structural.do` for the structural model. Both compile with `-source -lint` and produce a UCDB.
+
 ## Verification
 
 ### Assertions
