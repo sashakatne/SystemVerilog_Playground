@@ -1,0 +1,161 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:07:47 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint mipspkg.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling package mipspkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:07:47 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:07:47 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint mipstest.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling module top
+# -- Importing package mipspkg
+# 
+# Top level modules:
+# 	top
+# End time: 16:07:47 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:07:47 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vopt top -o top_optimized "+acc" "+cover=sbfec+top(rtl)." 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Importing package mipspkg
+# Optimizing 2 design-units (inlining 0/1 module instances):
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Optimizing package mipspkg(fast)
+# -- Optimizing module top(fast)
+# Optimized design name is top_optimized
+# End time: 16:07:48 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 16:07:48 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.mipspkg(fast)
+# Loading work.top(fast)
+# 1
+# PASS [1]: add opcode = 0x00000000
+# PASS [2]: add rs = 0x00000009
+# PASS [3]: add rt = 0x0000000a
+# PASS [4]: add rd = 0x00000008
+# PASS [5]: add shamt = 0x00000000
+# PASS [6]: add funct = 0x00000020
+# Instruction 0x012a4020
+#   Format: R
+#   opcode=0x00 rs=9 rt=10 rd=8 shamt=0 funct=0x20
+# 
+# PASS [7]: sll opcode = 0x00000000
+# PASS [8]: sll rs = 0x00000000
+# PASS [9]: sll rt = 0x0000000b
+# PASS [10]: sll rd = 0x0000000c
+# PASS [11]: sll shamt = 0x00000004
+# PASS [12]: sll funct = 0x00000000
+# Instruction 0x000b6100
+#   Format: R
+#   opcode=0x00 rs=0 rt=11 rd=12 shamt=4 funct=0x00
+# 
+# PASS [13]: addi opcode = 0x00000008
+# PASS [14]: addi rs = 0x00000009
+# PASS [15]: addi rt = 0x00000008
+# PASS [16]: addi immediate = 0x00000010
+# Instruction 0x21280010
+#   Format: I
+#   opcode=0x08 rs=9 rt=8 immediate=0x0010
+# 
+# PASS [17]: lw opcode = 0x00000023
+# PASS [18]: lw rs = 0x0000001d
+# PASS [19]: lw rt = 0x00000010
+# PASS [20]: lw immediate = 0x0000fffc
+# Instruction 0x8fb0fffc
+#   Format: I
+#   opcode=0x23 rs=29 rt=16 immediate=0xfffc
+# 
+# PASS [21]: j opcode = 0x00000002
+# PASS [22]: j address = 0x00001234
+# Instruction 0x08001234
+#   Format: J
+#   opcode=0x02 address=0x0001234
+# 
+# PASS [23]: jal opcode = 0x00000003
+# PASS [24]: jal address = 0x00004321
+# Instruction 0x0c004321
+#   Format: J
+#   opcode=0x03 address=0x0004321
+# 
+# Ran 24 checks, 0 errors
+# No errors -- passed testbench
+# ** Note: $finish    : mipstest.sv(134)
+#    Time: 0 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at mipstest.sv line 134
+# Stopped at mipstest.sv line 134
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:07:49 on May 23,2026
+# vcover report MIPSInstructionDecoder.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top
+# === Design Unit: work.top
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         2         2    50.00%
+#     Conditions                       2         0         2     0.00%
+#     Statements                      32        29         3    90.62%
+# 
+# 
+# Total Coverage By Instance (filtered view): 46.87%
+# 
+# End time: 16:07:49 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:07:49 on May 23,2026
+# vcover report MIPSInstructionDecoder.ucdb -cvg -details 
+# ** Note: (vcover-17388) No matching coverage data found in file 'MIPSInstructionDecoder.ucdb'.
+# End time: 16:07:49 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+#  quit -f
+# End time: 16:07:49 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

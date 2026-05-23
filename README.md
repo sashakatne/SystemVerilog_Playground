@@ -65,6 +65,14 @@ A parameterized structural add/subtract unit built from full-adder instances, pl
 - **Testbenches**: `fulladdertb.sv` exhaustively checks the full adder, `addsubtb.sv` exhaustively checks all default 8-bit add/sub input combinations against a procedural reference, and `complexm.sv` self-checks complex construction, addition, multiplication, printing, and component extraction.
 - **Verification**: Run `do run_fulladder.do`, `do run_addsub.do`, and `do run_complex.do`. Each script compiles with `-source -lint`, saves coverage, and the testbench prints `No errors -- passed testbench` on success.
 
+### 10. MIPS Instruction Decoder
+A packed-union MIPS instruction decoder that views the same 32-bit word as raw bits, a generic opcode payload, or R/I/J instruction fields.
+
+- **Folder**: MIPSInstructionDecoder
+- **Files**: `mipspkg.sv`, `mipstest.sv`
+- **Testbench**: `mipstest.sv` imports the package, checks R, I, and J field aliases from packed 32-bit instruction values, and calls `DecodeInstruction` for multiple examples.
+- **Verification**: Run `do run.do`. The testbench prints decoded fields and ends with `No errors -- passed testbench` on success.
+
 ## Verification
 
 ### Assertions

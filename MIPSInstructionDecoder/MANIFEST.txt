@@ -1,0 +1,44 @@
+Run:        MIPS instruction decoder package validation
+Start UTC:  2026-05-23T23:07:47Z
+End   UTC:  2026-05-23T23:07:49Z
+Questa:     2021.3_1
+
+Purpose:
+  Verify a packed-union MIPS instruction type that can be read as a raw 32-bit
+  value, generic opcode/payload fields, and R/I/J instruction layouts. The
+  testbench also verifies that DecodeInstruction selects R, I, or J formatting
+  from the opcode.
+
+Command executed from this directory:
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Results:
+  Compile and elaboration:
+    vlog mipspkg.sv ............... Errors: 0, Warnings: 0
+    vlog mipstest.sv .............. Errors: 0, Warnings: 0
+    vopt top ...................... Errors: 0, Warnings: 0
+
+  Simulation:
+    R-format examples decoded: add, sll
+    I-format examples decoded: addi, lw
+    J-format examples decoded: j, jal
+    Self-checks: 24 PASS lines, 0 FAIL lines
+    Final verdict: 'No errors -- passed testbench'
+
+  Coverage:
+    UCDB generated: MIPSInstructionDecoder.ucdb
+    Filtered top-level coverage: 46.87%
+
+Caveats:
+  - The package functions are exercised through the top-level testbench rather
+    than as standalone RTL instances.
+  - The covergroup details report prints a benign no-matching-coverage note
+    because this testbench uses code coverage and self-checking comparisons,
+    not covergroups.
+
+Files in this directory:
+  MANIFEST.txt
+  mipspkg.sv
+  mipstest.sv
+  run.do
+  transcript.txt
