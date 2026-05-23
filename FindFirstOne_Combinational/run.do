@@ -1,4 +1,4 @@
-vdel -all
+catch {vdel -all}
 
 vlib work
 
