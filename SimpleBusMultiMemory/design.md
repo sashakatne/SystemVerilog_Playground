@@ -47,3 +47,9 @@ Passing simulation prints:
 ```text
 No errors -- passed testbench
 ```
+
+## Diagrams
+
+- `fsm.svg` and `fsm.pdf` are the exact-label FSM diagrams used as the main
+  design reference.
+- `fsm_blueprint.png` is an AI-generated blueprint-style visual companion.

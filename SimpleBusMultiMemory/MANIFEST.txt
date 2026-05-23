@@ -39,6 +39,7 @@ Files in this directory:
   design.md
   fsm.pdf
   fsm.svg
+  fsm_blueprint.png
   run.do
   simplebusif.sv
   transcript.txt

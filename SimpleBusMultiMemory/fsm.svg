@@ -1,87 +1,145 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1250" viewBox="0 0 1800 1250">
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    <pattern id="small-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#1c3d5a" stroke-width="1" opacity="0.45"/>
+    </pattern>
+    <pattern id="big-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+      <rect width="120" height="120" fill="url(#small-grid)"/>
+      <path d="M 120 0 L 0 0 0 120" fill="none" stroke="#2d5f82" stroke-width="1.6" opacity="0.55"/>
+    </pattern>
+    <filter id="paper-noise" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="17" result="noise"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.08"/>
+      </feComponentTransfer>
+      <feBlend mode="screen" in2="SourceGraphic"/>
+    </filter>
+    <filter id="pencil-line" x="-4%" y="-4%" width="108%" height="108%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="9" result="rough"/>
+      <feDisplacementMap in="SourceGraphic" in2="rough" scale="1.7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="11" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,10 L12,5 z" fill="#d9f7ff"/>
     </marker>
     <style>
-      text { font-family: Arial, Helvetica, sans-serif; fill: #111; }
-      .title { font-size: 30px; font-weight: 700; }
-      .subtitle { font-size: 22px; font-weight: 700; }
-      .state { fill: #f8fafc; stroke: #1f2937; stroke-width: 2; rx: 8; }
-      .state2 { fill: #f0fdf4; stroke: #166534; stroke-width: 2; rx: 8; }
-      .state3 { fill: #fff7ed; stroke: #9a3412; stroke-width: 2; rx: 8; }
-      .label { font-size: 16px; }
-      .small { font-size: 14px; }
-      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrow); }
-      .dash { stroke: #666; stroke-width: 2; fill: none; stroke-dasharray: 6 6; marker-end: url(#arrow); }
+      text { font-family: Menlo, Monaco, "Courier New", monospace; fill: #e8fbff; }
+      .title { font-size: 42px; font-weight: 700; letter-spacing: 0; }
+      .subtitle { font-size: 18px; fill: #9de7ff; letter-spacing: 0; }
+      .panel-title { font-size: 24px; font-weight: 700; fill: #ffffff; }
+      .state-title { font-size: 20px; font-weight: 700; fill: #ffffff; }
+      .state-note { font-size: 15px; fill: #b9ecff; }
+      .tag-text { font-size: 15px; fill: #f7fdff; }
+      .note-text { font-size: 16px; fill: #dbf8ff; }
+      .tiny { font-size: 12px; fill: #7ecfe8; }
+      .panel { fill: #092238; stroke: #87ddf6; stroke-width: 2.4; rx: 18; opacity: 0.94; filter: url(#pencil-line); }
+      .state { fill: #0e2c45; stroke: #d9f7ff; stroke-width: 2.7; rx: 13; filter: url(#pencil-line); }
+      .state-ok { fill: #0d3a35; stroke: #b8ffe9; stroke-width: 2.7; rx: 13; filter: url(#pencil-line); }
+      .state-warn { fill: #3a2812; stroke: #ffd29a; stroke-width: 2.7; rx: 13; filter: url(#pencil-line); }
+      .note { fill: #0b2a42; stroke: #5dc8ef; stroke-width: 1.8; rx: 10; opacity: 0.94; filter: url(#pencil-line); }
+      .tag { fill: #123450; stroke: #83dff8; stroke-width: 1.4; rx: 7; filter: url(#pencil-line); }
+      .arrow { stroke: #d9f7ff; stroke-width: 2.7; fill: none; marker-end: url(#arrow); filter: url(#pencil-line); }
+      .return { stroke: #9de7ff; stroke-width: 2.4; fill: none; marker-end: url(#arrow); filter: url(#pencil-line); }
+      .dash { stroke: #b8ffe9; stroke-width: 2.2; fill: none; stroke-dasharray: 8 9; marker-end: url(#arrow); filter: url(#pencil-line); }
+      .draft { stroke: #4ea8c9; stroke-width: 1.2; fill: none; opacity: 0.65; }
     </style>
   </defs>
 
-  <text x="600" y="46" text-anchor="middle" class="title">SimpleBus Revised State Transition Diagrams</text>
+  <rect x="0" y="0" width="1800" height="1250" fill="#061421"/>
+  <rect x="0" y="0" width="1800" height="1250" fill="url(#big-grid)"/>
+  <rect x="0" y="0" width="1800" height="1250" fill="#061421" opacity="0.18" filter="url(#paper-noise)"/>
 
-  <text x="270" y="96" text-anchor="middle" class="subtitle">Processor Interface Thread</text>
-  <rect x="80" y="135" width="180" height="70" class="state"/>
-  <text x="170" y="164" text-anchor="middle" class="label">PROC_IDLE</text>
-  <text x="170" y="187" text-anchor="middle" class="small">Strobe=0</text>
+  <line x1="80" y1="88" x2="1720" y2="88" class="draft"/>
+  <line x1="80" y1="1168" x2="1720" y2="1168" class="draft"/>
+  <line x1="80" y1="88" x2="80" y2="1168" class="draft"/>
+  <line x1="1720" y1="88" x2="1720" y2="1168" class="draft"/>
+  <text x="900" y="66" text-anchor="middle" class="title">SIMPLEBUS FSM BLUEPRINT</text>
+  <text x="900" y="102" text-anchor="middle" class="subtitle">24-bit address bus / generated 64KB memory windows / exact state-machine labels</text>
+  <text x="115" y="1220" class="tiny">DRAWING: simplebus_fsm</text>
+  <text x="1510" y="1220" class="tiny">REVISION: readability pass</text>
 
-  <rect x="340" y="135" width="190" height="70" class="state"/>
-  <text x="435" y="164" text-anchor="middle" class="label">PROC_REQUEST</text>
-  <text x="435" y="187" text-anchor="middle" class="small">drive addr/op</text>
+  <rect x="95" y="145" width="1610" height="455" class="panel"/>
+  <text x="135" y="190" class="panel-title">PROCESSOR INTERFACE THREAD</text>
 
-  <rect x="610" y="135" width="190" height="70" class="state"/>
-  <text x="705" y="164" text-anchor="middle" class="label">PROC_WAIT_ACK</text>
-  <text x="705" y="187" text-anchor="middle" class="small">wait for Ack</text>
+  <rect x="155" y="270" width="250" height="108" class="state"/>
+  <text x="280" y="311" text-anchor="middle" class="state-title">PROC_IDLE</text>
+  <text x="280" y="341" text-anchor="middle" class="state-note">request lines low</text>
 
-  <rect x="890" y="105" width="190" height="70" class="state2"/>
-  <text x="985" y="134" text-anchor="middle" class="label">PROC_COMPLETE</text>
-  <text x="985" y="157" text-anchor="middle" class="small">capture/finish</text>
+  <rect x="525" y="270" width="265" height="108" class="state"/>
+  <text x="657" y="311" text-anchor="middle" class="state-title">PROC_REQUEST</text>
+  <text x="657" y="341" text-anchor="middle" class="state-note">drive Addr/op/Data</text>
 
-  <rect x="890" y="205" width="190" height="70" class="state3"/>
-  <text x="985" y="234" text-anchor="middle" class="label">PROC_TIMEOUT</text>
-  <text x="985" y="257" text-anchor="middle" class="small">no Ack</text>
+  <rect x="920" y="270" width="270" height="108" class="state"/>
+  <text x="1055" y="311" text-anchor="middle" class="state-title">PROC_WAIT_ACK</text>
+  <text x="1055" y="341" text-anchor="middle" class="state-note">watch Ack</text>
 
-  <path d="M260 170 L340 170" class="arrow"/>
-  <text x="300" y="158" text-anchor="middle" class="small">ReadMem or WriteMem</text>
+  <rect x="1325" y="210" width="270" height="108" class="state-ok"/>
+  <text x="1460" y="251" text-anchor="middle" class="state-title">PROC_COMPLETE</text>
+  <text x="1460" y="281" text-anchor="middle" class="state-note">capture read data</text>
 
-  <path d="M530 170 L610 170" class="arrow"/>
-  <text x="570" y="158" text-anchor="middle" class="small">Strobe=1</text>
+  <rect x="1325" y="398" width="270" height="108" class="state-warn"/>
+  <text x="1460" y="439" text-anchor="middle" class="state-title">PROC_TIMEOUT</text>
+  <text x="1460" y="469" text-anchor="middle" class="state-note">no selected target</text>
 
-  <path d="M800 160 L890 140" class="arrow"/>
-  <text x="845" y="134" text-anchor="middle" class="small">Ack=1</text>
+  <path d="M405 324 L525 324" class="arrow"/>
+  <rect x="426" y="278" width="78" height="32" class="tag"/>
+  <text x="465" y="299" text-anchor="middle" class="tag-text">task</text>
 
-  <path d="M800 190 L890 240" class="arrow"/>
-  <text x="850" y="232" text-anchor="middle" class="small">timeout</text>
+  <path d="M790 324 L920 324" class="arrow"/>
+  <rect x="821" y="278" width="70" height="32" class="tag"/>
+  <text x="856" y="299" text-anchor="middle" class="tag-text">req=1</text>
 
-  <path d="M985 105 C1030 60 200 60 170 135" class="arrow"/>
-  <text x="590" y="78" text-anchor="middle" class="small">drop request, release Data</text>
+  <path d="M1190 302 L1325 260" class="arrow"/>
+  <rect x="1233" y="240" width="78" height="32" class="tag"/>
+  <text x="1272" y="261" text-anchor="middle" class="tag-text">Ack=1</text>
 
-  <path d="M985 275 C1030 330 200 330 170 205" class="arrow"/>
-  <text x="590" y="326" text-anchor="middle" class="small">drop request, report failure</text>
+  <path d="M1190 356 L1325 432" class="arrow"/>
+  <rect x="1224" y="386" width="96" height="32" class="tag"/>
+  <text x="1272" y="407" text-anchor="middle" class="tag-text">timeout</text>
 
-  <line x1="60" y1="380" x2="1140" y2="380" stroke="#d1d5db" stroke-width="2"/>
+  <path d="M1460 210 C1460 155 280 155 280 270" class="return"/>
+  <rect x="790" y="154" width="176" height="32" class="tag"/>
+  <text x="878" y="175" text-anchor="middle" class="tag-text">drop request lines</text>
 
-  <text x="270" y="430" text-anchor="middle" class="subtitle">Memory Interface Thread</text>
-  <rect x="170" y="485" width="210" height="80" class="state"/>
-  <text x="275" y="516" text-anchor="middle" class="label">MEM_IDLE</text>
-  <text x="275" y="540" text-anchor="middle" class="small">Ack=0, Data=Z</text>
+  <path d="M1460 506 C1460 570 280 570 280 378" class="return"/>
+  <rect x="762" y="542" width="224" height="32" class="tag"/>
+  <text x="874" y="563" text-anchor="middle" class="tag-text">report failure, release bus</text>
 
-  <rect x="635" y="485" width="230" height="80" class="state2"/>
-  <text x="750" y="516" text-anchor="middle" class="label">MEM_RESPOND</text>
-  <text x="750" y="540" text-anchor="middle" class="small">Ack=1, drive read data</text>
+  <rect x="155" y="430" width="520" height="94" class="note"/>
+  <text x="183" y="464" class="note-text">Processor tasks are outside the interface.</text>
+  <text x="183" y="493" class="note-text">ReadMem samples Data only after Ack.</text>
 
-  <path d="M380 525 L635 525" class="arrow"/>
-  <text x="507" y="495" text-anchor="middle" class="small">Strobe &amp; base match</text>
-  <text x="507" y="518" text-anchor="middle" class="small">Read xor Write</text>
+  <rect x="95" y="665" width="1610" height="435" class="panel"/>
+  <text x="135" y="710" class="panel-title">MEMORY INTERFACE THREAD</text>
 
-  <path d="M750 565 C750 650 275 650 275 565" class="arrow"/>
-  <text x="512" y="675" text-anchor="middle" class="small">Strobe=0, release Ack/Data</text>
+  <rect x="210" y="790" width="275" height="112" class="state"/>
+  <text x="348" y="833" text-anchor="middle" class="state-title">MEM_IDLE</text>
+  <text x="348" y="864" text-anchor="middle" class="state-note">Ack=0, Data=Z</text>
 
-  <path d="M275 485 C275 430 750 430 750 485" class="dash"/>
-  <text x="512" y="424" text-anchor="middle" class="small">write: sample Data; read: load selected byte</text>
+  <rect x="810" y="790" width="300" height="112" class="state-ok"/>
+  <text x="960" y="833" text-anchor="middle" class="state-title">MEM_RESPOND</text>
+  <text x="960" y="864" text-anchor="middle" class="state-note">Ack=1 if selected</text>
 
-  <rect x="930" y="464" width="190" height="122" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5" rx="8"/>
-  <text x="1025" y="493" text-anchor="middle" class="label">Address decode</text>
-  <text x="1025" y="522" text-anchor="middle" class="small">Addr[23:16] = base</text>
-  <text x="1025" y="546" text-anchor="middle" class="small">Addr[15:0] = offset</text>
-  <text x="1025" y="570" text-anchor="middle" class="small">one 64KB window</text>
+  <path d="M485 846 L810 846" class="arrow"/>
+  <rect x="571" y="760" width="160" height="62" class="tag"/>
+  <text x="651" y="784" text-anchor="middle" class="tag-text">Strobe=1</text>
+  <text x="651" y="807" text-anchor="middle" class="tag-text">base match</text>
+
+  <path d="M960 902 C960 1020 348 1020 348 902" class="return"/>
+  <rect x="545" y="998" width="220" height="32" class="tag"/>
+  <text x="655" y="1019" text-anchor="middle" class="tag-text">Strobe=0, release bus</text>
+
+  <path d="M348 790 C348 725 960 725 960 790" class="dash"/>
+  <rect x="532" y="707" width="250" height="32" class="tag"/>
+  <text x="657" y="728" text-anchor="middle" class="tag-text">read: latch selected byte</text>
+
+  <rect x="1225" y="745" width="360" height="205" class="note"/>
+  <text x="1405" y="786" text-anchor="middle" class="state-title">ADDRESS DECODE</text>
+  <text x="1260" y="827" class="note-text">Addr[23:16] = memory base</text>
+  <text x="1260" y="858" class="note-text">Addr[15:0]  = local byte offset</text>
+  <text x="1260" y="889" class="note-text">one instance owns 64KB</text>
+  <text x="1260" y="920" class="note-text">only selected target drives Ack/Data</text>
+
+  <rect x="210" y="1050" width="900" height="48" class="note"/>
+  <text x="660" y="1081" text-anchor="middle" class="note-text">Write cycles sample processor Data in MEM_IDLE before acknowledging in MEM_RESPOND.</text>
 </svg>

@@ -77,7 +77,7 @@ A packed-union MIPS instruction decoder that views the same 32-bit word as raw b
 A SimpleBus processor/memory model that uses a SystemVerilog interface, processor and memory modports, 24-bit addresses, and a generated bank of 64KB memory interfaces selected by the upper address byte.
 
 - **Folder**: SimpleBusMultiMemory
-- **Files**: `simplebusif.sv`, `design.md`, `fsm.svg`, `fsm.pdf`
+- **Files**: `simplebusif.sv`, `design.md`, `fsm.svg`, `fsm.pdf`, `fsm_blueprint.png`
 - **Testbench**: `top` in `simplebusif.sv` verifies generated memory selection, read/write transfers, shared local-offset isolation, boundary offsets, and unmapped-base timeout behavior.
 - **Verification**: Run `do run.do`. Override the number of memories with `set NUMMEM <count>` before running; the default is 4. The testbench ends with `No errors -- passed testbench` on success.
 
