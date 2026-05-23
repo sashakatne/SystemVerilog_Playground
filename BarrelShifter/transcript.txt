@@ -1,0 +1,791 @@
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 15:33:42 on May 23,2026
+# vlog -source -lint barrelshifter.sv 
+# -- Compiling module Mux2to1
+# -- Compiling module BarrelShifter
+# 
+# Top level modules:
+# 	BarrelShifter
+# End time: 15:33:42 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 15:33:42 on May 23,2026
+# vlog -source -lint testbench.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 15:33:42 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 15:33:42 on May 23,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+BarrelShifter(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module BarrelShifter
+# -- Loading module Mux2to1
+# Optimizing 3 design-units (inlining 0/7 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module BarrelShifter(fast)
+# -- Optimizing module Mux2to1(fast)
+# Optimized design name is top_optimized
+# End time: 15:33:43 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 15:33:43 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.BarrelShifter(fast)
+# Loading work.Mux2to1(fast)
+# 1
+# PASS [1]: In=00000000 ShiftAmount=0 ShiftIn=0 => Out=00000000
+# PASS [2]: In=00000000 ShiftAmount=0 ShiftIn=1 => Out=00000000
+# PASS [3]: In=00000000 ShiftAmount=1 ShiftIn=0 => Out=00000000
+# PASS [4]: In=00000000 ShiftAmount=1 ShiftIn=1 => Out=00000001
+# PASS [5]: In=00000000 ShiftAmount=2 ShiftIn=0 => Out=00000000
+# PASS [6]: In=00000000 ShiftAmount=2 ShiftIn=1 => Out=00000003
+# PASS [7]: In=00000000 ShiftAmount=3 ShiftIn=0 => Out=00000000
+# PASS [8]: In=00000000 ShiftAmount=3 ShiftIn=1 => Out=00000007
+# PASS [9]: In=00000000 ShiftAmount=4 ShiftIn=0 => Out=00000000
+# PASS [10]: In=00000000 ShiftAmount=4 ShiftIn=1 => Out=0000000f
+# PASS [11]: In=00000000 ShiftAmount=5 ShiftIn=0 => Out=00000000
+# PASS [12]: In=00000000 ShiftAmount=5 ShiftIn=1 => Out=0000001f
+# PASS [13]: In=00000000 ShiftAmount=6 ShiftIn=0 => Out=00000000
+# PASS [14]: In=00000000 ShiftAmount=6 ShiftIn=1 => Out=0000003f
+# PASS [15]: In=00000000 ShiftAmount=7 ShiftIn=0 => Out=00000000
+# PASS [16]: In=00000000 ShiftAmount=7 ShiftIn=1 => Out=0000007f
+# PASS [17]: In=00000000 ShiftAmount=8 ShiftIn=0 => Out=00000000
+# PASS [18]: In=00000000 ShiftAmount=8 ShiftIn=1 => Out=000000ff
+# PASS [19]: In=00000000 ShiftAmount=9 ShiftIn=0 => Out=00000000
+# PASS [20]: In=00000000 ShiftAmount=9 ShiftIn=1 => Out=000001ff
+# PASS [21]: In=00000000 ShiftAmount=10 ShiftIn=0 => Out=00000000
+# PASS [22]: In=00000000 ShiftAmount=10 ShiftIn=1 => Out=000003ff
+# PASS [23]: In=00000000 ShiftAmount=11 ShiftIn=0 => Out=00000000
+# PASS [24]: In=00000000 ShiftAmount=11 ShiftIn=1 => Out=000007ff
+# PASS [25]: In=00000000 ShiftAmount=12 ShiftIn=0 => Out=00000000
+# PASS [26]: In=00000000 ShiftAmount=12 ShiftIn=1 => Out=00000fff
+# PASS [27]: In=00000000 ShiftAmount=13 ShiftIn=0 => Out=00000000
+# PASS [28]: In=00000000 ShiftAmount=13 ShiftIn=1 => Out=00001fff
+# PASS [29]: In=00000000 ShiftAmount=14 ShiftIn=0 => Out=00000000
+# PASS [30]: In=00000000 ShiftAmount=14 ShiftIn=1 => Out=00003fff
+# PASS [31]: In=00000000 ShiftAmount=15 ShiftIn=0 => Out=00000000
+# PASS [32]: In=00000000 ShiftAmount=15 ShiftIn=1 => Out=00007fff
+# PASS [33]: In=00000000 ShiftAmount=16 ShiftIn=0 => Out=00000000
+# PASS [34]: In=00000000 ShiftAmount=16 ShiftIn=1 => Out=0000ffff
+# PASS [35]: In=00000000 ShiftAmount=17 ShiftIn=0 => Out=00000000
+# PASS [36]: In=00000000 ShiftAmount=17 ShiftIn=1 => Out=0001ffff
+# PASS [37]: In=00000000 ShiftAmount=18 ShiftIn=0 => Out=00000000
+# PASS [38]: In=00000000 ShiftAmount=18 ShiftIn=1 => Out=0003ffff
+# PASS [39]: In=00000000 ShiftAmount=19 ShiftIn=0 => Out=00000000
+# PASS [40]: In=00000000 ShiftAmount=19 ShiftIn=1 => Out=0007ffff
+# PASS [41]: In=00000000 ShiftAmount=20 ShiftIn=0 => Out=00000000
+# PASS [42]: In=00000000 ShiftAmount=20 ShiftIn=1 => Out=000fffff
+# PASS [43]: In=00000000 ShiftAmount=21 ShiftIn=0 => Out=00000000
+# PASS [44]: In=00000000 ShiftAmount=21 ShiftIn=1 => Out=001fffff
+# PASS [45]: In=00000000 ShiftAmount=22 ShiftIn=0 => Out=00000000
+# PASS [46]: In=00000000 ShiftAmount=22 ShiftIn=1 => Out=003fffff
+# PASS [47]: In=00000000 ShiftAmount=23 ShiftIn=0 => Out=00000000
+# PASS [48]: In=00000000 ShiftAmount=23 ShiftIn=1 => Out=007fffff
+# PASS [49]: In=00000000 ShiftAmount=24 ShiftIn=0 => Out=00000000
+# PASS [50]: In=00000000 ShiftAmount=24 ShiftIn=1 => Out=00ffffff
+# PASS [51]: In=00000000 ShiftAmount=25 ShiftIn=0 => Out=00000000
+# PASS [52]: In=00000000 ShiftAmount=25 ShiftIn=1 => Out=01ffffff
+# PASS [53]: In=00000000 ShiftAmount=26 ShiftIn=0 => Out=00000000
+# PASS [54]: In=00000000 ShiftAmount=26 ShiftIn=1 => Out=03ffffff
+# PASS [55]: In=00000000 ShiftAmount=27 ShiftIn=0 => Out=00000000
+# PASS [56]: In=00000000 ShiftAmount=27 ShiftIn=1 => Out=07ffffff
+# PASS [57]: In=00000000 ShiftAmount=28 ShiftIn=0 => Out=00000000
+# PASS [58]: In=00000000 ShiftAmount=28 ShiftIn=1 => Out=0fffffff
+# PASS [59]: In=00000000 ShiftAmount=29 ShiftIn=0 => Out=00000000
+# PASS [60]: In=00000000 ShiftAmount=29 ShiftIn=1 => Out=1fffffff
+# PASS [61]: In=00000000 ShiftAmount=30 ShiftIn=0 => Out=00000000
+# PASS [62]: In=00000000 ShiftAmount=30 ShiftIn=1 => Out=3fffffff
+# PASS [63]: In=00000000 ShiftAmount=31 ShiftIn=0 => Out=00000000
+# PASS [64]: In=00000000 ShiftAmount=31 ShiftIn=1 => Out=7fffffff
+# PASS [65]: In=ffffffff ShiftAmount=0 ShiftIn=0 => Out=ffffffff
+# PASS [66]: In=ffffffff ShiftAmount=0 ShiftIn=1 => Out=ffffffff
+# PASS [67]: In=ffffffff ShiftAmount=1 ShiftIn=0 => Out=fffffffe
+# PASS [68]: In=ffffffff ShiftAmount=1 ShiftIn=1 => Out=ffffffff
+# PASS [69]: In=ffffffff ShiftAmount=2 ShiftIn=0 => Out=fffffffc
+# PASS [70]: In=ffffffff ShiftAmount=2 ShiftIn=1 => Out=ffffffff
+# PASS [71]: In=ffffffff ShiftAmount=3 ShiftIn=0 => Out=fffffff8
+# PASS [72]: In=ffffffff ShiftAmount=3 ShiftIn=1 => Out=ffffffff
+# PASS [73]: In=ffffffff ShiftAmount=4 ShiftIn=0 => Out=fffffff0
+# PASS [74]: In=ffffffff ShiftAmount=4 ShiftIn=1 => Out=ffffffff
+# PASS [75]: In=ffffffff ShiftAmount=5 ShiftIn=0 => Out=ffffffe0
+# PASS [76]: In=ffffffff ShiftAmount=5 ShiftIn=1 => Out=ffffffff
+# PASS [77]: In=ffffffff ShiftAmount=6 ShiftIn=0 => Out=ffffffc0
+# PASS [78]: In=ffffffff ShiftAmount=6 ShiftIn=1 => Out=ffffffff
+# PASS [79]: In=ffffffff ShiftAmount=7 ShiftIn=0 => Out=ffffff80
+# PASS [80]: In=ffffffff ShiftAmount=7 ShiftIn=1 => Out=ffffffff
+# PASS [81]: In=ffffffff ShiftAmount=8 ShiftIn=0 => Out=ffffff00
+# PASS [82]: In=ffffffff ShiftAmount=8 ShiftIn=1 => Out=ffffffff
+# PASS [83]: In=ffffffff ShiftAmount=9 ShiftIn=0 => Out=fffffe00
+# PASS [84]: In=ffffffff ShiftAmount=9 ShiftIn=1 => Out=ffffffff
+# PASS [85]: In=ffffffff ShiftAmount=10 ShiftIn=0 => Out=fffffc00
+# PASS [86]: In=ffffffff ShiftAmount=10 ShiftIn=1 => Out=ffffffff
+# PASS [87]: In=ffffffff ShiftAmount=11 ShiftIn=0 => Out=fffff800
+# PASS [88]: In=ffffffff ShiftAmount=11 ShiftIn=1 => Out=ffffffff
+# PASS [89]: In=ffffffff ShiftAmount=12 ShiftIn=0 => Out=fffff000
+# PASS [90]: In=ffffffff ShiftAmount=12 ShiftIn=1 => Out=ffffffff
+# PASS [91]: In=ffffffff ShiftAmount=13 ShiftIn=0 => Out=ffffe000
+# PASS [92]: In=ffffffff ShiftAmount=13 ShiftIn=1 => Out=ffffffff
+# PASS [93]: In=ffffffff ShiftAmount=14 ShiftIn=0 => Out=ffffc000
+# PASS [94]: In=ffffffff ShiftAmount=14 ShiftIn=1 => Out=ffffffff
+# PASS [95]: In=ffffffff ShiftAmount=15 ShiftIn=0 => Out=ffff8000
+# PASS [96]: In=ffffffff ShiftAmount=15 ShiftIn=1 => Out=ffffffff
+# PASS [97]: In=ffffffff ShiftAmount=16 ShiftIn=0 => Out=ffff0000
+# PASS [98]: In=ffffffff ShiftAmount=16 ShiftIn=1 => Out=ffffffff
+# PASS [99]: In=ffffffff ShiftAmount=17 ShiftIn=0 => Out=fffe0000
+# PASS [100]: In=ffffffff ShiftAmount=17 ShiftIn=1 => Out=ffffffff
+# PASS [101]: In=ffffffff ShiftAmount=18 ShiftIn=0 => Out=fffc0000
+# PASS [102]: In=ffffffff ShiftAmount=18 ShiftIn=1 => Out=ffffffff
+# PASS [103]: In=ffffffff ShiftAmount=19 ShiftIn=0 => Out=fff80000
+# PASS [104]: In=ffffffff ShiftAmount=19 ShiftIn=1 => Out=ffffffff
+# PASS [105]: In=ffffffff ShiftAmount=20 ShiftIn=0 => Out=fff00000
+# PASS [106]: In=ffffffff ShiftAmount=20 ShiftIn=1 => Out=ffffffff
+# PASS [107]: In=ffffffff ShiftAmount=21 ShiftIn=0 => Out=ffe00000
+# PASS [108]: In=ffffffff ShiftAmount=21 ShiftIn=1 => Out=ffffffff
+# PASS [109]: In=ffffffff ShiftAmount=22 ShiftIn=0 => Out=ffc00000
+# PASS [110]: In=ffffffff ShiftAmount=22 ShiftIn=1 => Out=ffffffff
+# PASS [111]: In=ffffffff ShiftAmount=23 ShiftIn=0 => Out=ff800000
+# PASS [112]: In=ffffffff ShiftAmount=23 ShiftIn=1 => Out=ffffffff
+# PASS [113]: In=ffffffff ShiftAmount=24 ShiftIn=0 => Out=ff000000
+# PASS [114]: In=ffffffff ShiftAmount=24 ShiftIn=1 => Out=ffffffff
+# PASS [115]: In=ffffffff ShiftAmount=25 ShiftIn=0 => Out=fe000000
+# PASS [116]: In=ffffffff ShiftAmount=25 ShiftIn=1 => Out=ffffffff
+# PASS [117]: In=ffffffff ShiftAmount=26 ShiftIn=0 => Out=fc000000
+# PASS [118]: In=ffffffff ShiftAmount=26 ShiftIn=1 => Out=ffffffff
+# PASS [119]: In=ffffffff ShiftAmount=27 ShiftIn=0 => Out=f8000000
+# PASS [120]: In=ffffffff ShiftAmount=27 ShiftIn=1 => Out=ffffffff
+# PASS [121]: In=ffffffff ShiftAmount=28 ShiftIn=0 => Out=f0000000
+# PASS [122]: In=ffffffff ShiftAmount=28 ShiftIn=1 => Out=ffffffff
+# PASS [123]: In=ffffffff ShiftAmount=29 ShiftIn=0 => Out=e0000000
+# PASS [124]: In=ffffffff ShiftAmount=29 ShiftIn=1 => Out=ffffffff
+# PASS [125]: In=ffffffff ShiftAmount=30 ShiftIn=0 => Out=c0000000
+# PASS [126]: In=ffffffff ShiftAmount=30 ShiftIn=1 => Out=ffffffff
+# PASS [127]: In=ffffffff ShiftAmount=31 ShiftIn=0 => Out=80000000
+# PASS [128]: In=ffffffff ShiftAmount=31 ShiftIn=1 => Out=ffffffff
+# PASS [129]: In=fffffffe ShiftAmount=0 ShiftIn=0 => Out=fffffffe
+# PASS [130]: In=fffffffe ShiftAmount=0 ShiftIn=1 => Out=fffffffe
+# PASS [131]: In=fffffffe ShiftAmount=1 ShiftIn=0 => Out=fffffffc
+# PASS [132]: In=fffffffe ShiftAmount=1 ShiftIn=1 => Out=fffffffd
+# PASS [133]: In=fffffffe ShiftAmount=2 ShiftIn=0 => Out=fffffff8
+# PASS [134]: In=fffffffe ShiftAmount=2 ShiftIn=1 => Out=fffffffb
+# PASS [135]: In=fffffffe ShiftAmount=3 ShiftIn=0 => Out=fffffff0
+# PASS [136]: In=fffffffe ShiftAmount=3 ShiftIn=1 => Out=fffffff7
+# PASS [137]: In=fffffffe ShiftAmount=4 ShiftIn=0 => Out=ffffffe0
+# PASS [138]: In=fffffffe ShiftAmount=4 ShiftIn=1 => Out=ffffffef
+# PASS [139]: In=fffffffe ShiftAmount=5 ShiftIn=0 => Out=ffffffc0
+# PASS [140]: In=fffffffe ShiftAmount=5 ShiftIn=1 => Out=ffffffdf
+# PASS [141]: In=fffffffe ShiftAmount=6 ShiftIn=0 => Out=ffffff80
+# PASS [142]: In=fffffffe ShiftAmount=6 ShiftIn=1 => Out=ffffffbf
+# PASS [143]: In=fffffffe ShiftAmount=7 ShiftIn=0 => Out=ffffff00
+# PASS [144]: In=fffffffe ShiftAmount=7 ShiftIn=1 => Out=ffffff7f
+# PASS [145]: In=fffffffe ShiftAmount=8 ShiftIn=0 => Out=fffffe00
+# PASS [146]: In=fffffffe ShiftAmount=8 ShiftIn=1 => Out=fffffeff
+# PASS [147]: In=fffffffe ShiftAmount=9 ShiftIn=0 => Out=fffffc00
+# PASS [148]: In=fffffffe ShiftAmount=9 ShiftIn=1 => Out=fffffdff
+# PASS [149]: In=fffffffe ShiftAmount=10 ShiftIn=0 => Out=fffff800
+# PASS [150]: In=fffffffe ShiftAmount=10 ShiftIn=1 => Out=fffffbff
+# PASS [151]: In=fffffffe ShiftAmount=11 ShiftIn=0 => Out=fffff000
+# PASS [152]: In=fffffffe ShiftAmount=11 ShiftIn=1 => Out=fffff7ff
+# PASS [153]: In=fffffffe ShiftAmount=12 ShiftIn=0 => Out=ffffe000
+# PASS [154]: In=fffffffe ShiftAmount=12 ShiftIn=1 => Out=ffffefff
+# PASS [155]: In=fffffffe ShiftAmount=13 ShiftIn=0 => Out=ffffc000
+# PASS [156]: In=fffffffe ShiftAmount=13 ShiftIn=1 => Out=ffffdfff
+# PASS [157]: In=fffffffe ShiftAmount=14 ShiftIn=0 => Out=ffff8000
+# PASS [158]: In=fffffffe ShiftAmount=14 ShiftIn=1 => Out=ffffbfff
+# PASS [159]: In=fffffffe ShiftAmount=15 ShiftIn=0 => Out=ffff0000
+# PASS [160]: In=fffffffe ShiftAmount=15 ShiftIn=1 => Out=ffff7fff
+# PASS [161]: In=fffffffe ShiftAmount=16 ShiftIn=0 => Out=fffe0000
+# PASS [162]: In=fffffffe ShiftAmount=16 ShiftIn=1 => Out=fffeffff
+# PASS [163]: In=fffffffe ShiftAmount=17 ShiftIn=0 => Out=fffc0000
+# PASS [164]: In=fffffffe ShiftAmount=17 ShiftIn=1 => Out=fffdffff
+# PASS [165]: In=fffffffe ShiftAmount=18 ShiftIn=0 => Out=fff80000
+# PASS [166]: In=fffffffe ShiftAmount=18 ShiftIn=1 => Out=fffbffff
+# PASS [167]: In=fffffffe ShiftAmount=19 ShiftIn=0 => Out=fff00000
+# PASS [168]: In=fffffffe ShiftAmount=19 ShiftIn=1 => Out=fff7ffff
+# PASS [169]: In=fffffffe ShiftAmount=20 ShiftIn=0 => Out=ffe00000
+# PASS [170]: In=fffffffe ShiftAmount=20 ShiftIn=1 => Out=ffefffff
+# PASS [171]: In=fffffffe ShiftAmount=21 ShiftIn=0 => Out=ffc00000
+# PASS [172]: In=fffffffe ShiftAmount=21 ShiftIn=1 => Out=ffdfffff
+# PASS [173]: In=fffffffe ShiftAmount=22 ShiftIn=0 => Out=ff800000
+# PASS [174]: In=fffffffe ShiftAmount=22 ShiftIn=1 => Out=ffbfffff
+# PASS [175]: In=fffffffe ShiftAmount=23 ShiftIn=0 => Out=ff000000
+# PASS [176]: In=fffffffe ShiftAmount=23 ShiftIn=1 => Out=ff7fffff
+# PASS [177]: In=fffffffe ShiftAmount=24 ShiftIn=0 => Out=fe000000
+# PASS [178]: In=fffffffe ShiftAmount=24 ShiftIn=1 => Out=feffffff
+# PASS [179]: In=fffffffe ShiftAmount=25 ShiftIn=0 => Out=fc000000
+# PASS [180]: In=fffffffe ShiftAmount=25 ShiftIn=1 => Out=fdffffff
+# PASS [181]: In=fffffffe ShiftAmount=26 ShiftIn=0 => Out=f8000000
+# PASS [182]: In=fffffffe ShiftAmount=26 ShiftIn=1 => Out=fbffffff
+# PASS [183]: In=fffffffe ShiftAmount=27 ShiftIn=0 => Out=f0000000
+# PASS [184]: In=fffffffe ShiftAmount=27 ShiftIn=1 => Out=f7ffffff
+# PASS [185]: In=fffffffe ShiftAmount=28 ShiftIn=0 => Out=e0000000
+# PASS [186]: In=fffffffe ShiftAmount=28 ShiftIn=1 => Out=efffffff
+# PASS [187]: In=fffffffe ShiftAmount=29 ShiftIn=0 => Out=c0000000
+# PASS [188]: In=fffffffe ShiftAmount=29 ShiftIn=1 => Out=dfffffff
+# PASS [189]: In=fffffffe ShiftAmount=30 ShiftIn=0 => Out=80000000
+# PASS [190]: In=fffffffe ShiftAmount=30 ShiftIn=1 => Out=bfffffff
+# PASS [191]: In=fffffffe ShiftAmount=31 ShiftIn=0 => Out=00000000
+# PASS [192]: In=fffffffe ShiftAmount=31 ShiftIn=1 => Out=7fffffff
+# PASS [193]: In=deadbeef ShiftAmount=0 ShiftIn=0 => Out=deadbeef
+# PASS [194]: In=deadbeef ShiftAmount=0 ShiftIn=1 => Out=deadbeef
+# PASS [195]: In=deadbeef ShiftAmount=1 ShiftIn=0 => Out=bd5b7dde
+# PASS [196]: In=deadbeef ShiftAmount=1 ShiftIn=1 => Out=bd5b7ddf
+# PASS [197]: In=deadbeef ShiftAmount=2 ShiftIn=0 => Out=7ab6fbbc
+# PASS [198]: In=deadbeef ShiftAmount=2 ShiftIn=1 => Out=7ab6fbbf
+# PASS [199]: In=deadbeef ShiftAmount=3 ShiftIn=0 => Out=f56df778
+# PASS [200]: In=deadbeef ShiftAmount=3 ShiftIn=1 => Out=f56df77f
+# PASS [201]: In=deadbeef ShiftAmount=4 ShiftIn=0 => Out=eadbeef0
+# PASS [202]: In=deadbeef ShiftAmount=4 ShiftIn=1 => Out=eadbeeff
+# PASS [203]: In=deadbeef ShiftAmount=5 ShiftIn=0 => Out=d5b7dde0
+# PASS [204]: In=deadbeef ShiftAmount=5 ShiftIn=1 => Out=d5b7ddff
+# PASS [205]: In=deadbeef ShiftAmount=6 ShiftIn=0 => Out=ab6fbbc0
+# PASS [206]: In=deadbeef ShiftAmount=6 ShiftIn=1 => Out=ab6fbbff
+# PASS [207]: In=deadbeef ShiftAmount=7 ShiftIn=0 => Out=56df7780
+# PASS [208]: In=deadbeef ShiftAmount=7 ShiftIn=1 => Out=56df77ff
+# PASS [209]: In=deadbeef ShiftAmount=8 ShiftIn=0 => Out=adbeef00
+# PASS [210]: In=deadbeef ShiftAmount=8 ShiftIn=1 => Out=adbeefff
+# PASS [211]: In=deadbeef ShiftAmount=9 ShiftIn=0 => Out=5b7dde00
+# PASS [212]: In=deadbeef ShiftAmount=9 ShiftIn=1 => Out=5b7ddfff
+# PASS [213]: In=deadbeef ShiftAmount=10 ShiftIn=0 => Out=b6fbbc00
+# PASS [214]: In=deadbeef ShiftAmount=10 ShiftIn=1 => Out=b6fbbfff
+# PASS [215]: In=deadbeef ShiftAmount=11 ShiftIn=0 => Out=6df77800
+# PASS [216]: In=deadbeef ShiftAmount=11 ShiftIn=1 => Out=6df77fff
+# PASS [217]: In=deadbeef ShiftAmount=12 ShiftIn=0 => Out=dbeef000
+# PASS [218]: In=deadbeef ShiftAmount=12 ShiftIn=1 => Out=dbeeffff
+# PASS [219]: In=deadbeef ShiftAmount=13 ShiftIn=0 => Out=b7dde000
+# PASS [220]: In=deadbeef ShiftAmount=13 ShiftIn=1 => Out=b7ddffff
+# PASS [221]: In=deadbeef ShiftAmount=14 ShiftIn=0 => Out=6fbbc000
+# PASS [222]: In=deadbeef ShiftAmount=14 ShiftIn=1 => Out=6fbbffff
+# PASS [223]: In=deadbeef ShiftAmount=15 ShiftIn=0 => Out=df778000
+# PASS [224]: In=deadbeef ShiftAmount=15 ShiftIn=1 => Out=df77ffff
+# PASS [225]: In=deadbeef ShiftAmount=16 ShiftIn=0 => Out=beef0000
+# PASS [226]: In=deadbeef ShiftAmount=16 ShiftIn=1 => Out=beefffff
+# PASS [227]: In=deadbeef ShiftAmount=17 ShiftIn=0 => Out=7dde0000
+# PASS [228]: In=deadbeef ShiftAmount=17 ShiftIn=1 => Out=7ddfffff
+# PASS [229]: In=deadbeef ShiftAmount=18 ShiftIn=0 => Out=fbbc0000
+# PASS [230]: In=deadbeef ShiftAmount=18 ShiftIn=1 => Out=fbbfffff
+# PASS [231]: In=deadbeef ShiftAmount=19 ShiftIn=0 => Out=f7780000
+# PASS [232]: In=deadbeef ShiftAmount=19 ShiftIn=1 => Out=f77fffff
+# PASS [233]: In=deadbeef ShiftAmount=20 ShiftIn=0 => Out=eef00000
+# PASS [234]: In=deadbeef ShiftAmount=20 ShiftIn=1 => Out=eeffffff
+# PASS [235]: In=deadbeef ShiftAmount=21 ShiftIn=0 => Out=dde00000
+# PASS [236]: In=deadbeef ShiftAmount=21 ShiftIn=1 => Out=ddffffff
+# PASS [237]: In=deadbeef ShiftAmount=22 ShiftIn=0 => Out=bbc00000
+# PASS [238]: In=deadbeef ShiftAmount=22 ShiftIn=1 => Out=bbffffff
+# PASS [239]: In=deadbeef ShiftAmount=23 ShiftIn=0 => Out=77800000
+# PASS [240]: In=deadbeef ShiftAmount=23 ShiftIn=1 => Out=77ffffff
+# PASS [241]: In=deadbeef ShiftAmount=24 ShiftIn=0 => Out=ef000000
+# PASS [242]: In=deadbeef ShiftAmount=24 ShiftIn=1 => Out=efffffff
+# PASS [243]: In=deadbeef ShiftAmount=25 ShiftIn=0 => Out=de000000
+# PASS [244]: In=deadbeef ShiftAmount=25 ShiftIn=1 => Out=dfffffff
+# PASS [245]: In=deadbeef ShiftAmount=26 ShiftIn=0 => Out=bc000000
+# PASS [246]: In=deadbeef ShiftAmount=26 ShiftIn=1 => Out=bfffffff
+# PASS [247]: In=deadbeef ShiftAmount=27 ShiftIn=0 => Out=78000000
+# PASS [248]: In=deadbeef ShiftAmount=27 ShiftIn=1 => Out=7fffffff
+# PASS [249]: In=deadbeef ShiftAmount=28 ShiftIn=0 => Out=f0000000
+# PASS [250]: In=deadbeef ShiftAmount=28 ShiftIn=1 => Out=ffffffff
+# PASS [251]: In=deadbeef ShiftAmount=29 ShiftIn=0 => Out=e0000000
+# PASS [252]: In=deadbeef ShiftAmount=29 ShiftIn=1 => Out=ffffffff
+# PASS [253]: In=deadbeef ShiftAmount=30 ShiftIn=0 => Out=c0000000
+# PASS [254]: In=deadbeef ShiftAmount=30 ShiftIn=1 => Out=ffffffff
+# PASS [255]: In=deadbeef ShiftAmount=31 ShiftIn=0 => Out=80000000
+# PASS [256]: In=deadbeef ShiftAmount=31 ShiftIn=1 => Out=ffffffff
+# PASS [257]: In=a5a5a5a5 ShiftAmount=0 ShiftIn=0 => Out=a5a5a5a5
+# PASS [258]: In=a5a5a5a5 ShiftAmount=0 ShiftIn=1 => Out=a5a5a5a5
+# PASS [259]: In=a5a5a5a5 ShiftAmount=1 ShiftIn=0 => Out=4b4b4b4a
+# PASS [260]: In=a5a5a5a5 ShiftAmount=1 ShiftIn=1 => Out=4b4b4b4b
+# PASS [261]: In=a5a5a5a5 ShiftAmount=2 ShiftIn=0 => Out=96969694
+# PASS [262]: In=a5a5a5a5 ShiftAmount=2 ShiftIn=1 => Out=96969697
+# PASS [263]: In=a5a5a5a5 ShiftAmount=3 ShiftIn=0 => Out=2d2d2d28
+# PASS [264]: In=a5a5a5a5 ShiftAmount=3 ShiftIn=1 => Out=2d2d2d2f
+# PASS [265]: In=a5a5a5a5 ShiftAmount=4 ShiftIn=0 => Out=5a5a5a50
+# PASS [266]: In=a5a5a5a5 ShiftAmount=4 ShiftIn=1 => Out=5a5a5a5f
+# PASS [267]: In=a5a5a5a5 ShiftAmount=5 ShiftIn=0 => Out=b4b4b4a0
+# PASS [268]: In=a5a5a5a5 ShiftAmount=5 ShiftIn=1 => Out=b4b4b4bf
+# PASS [269]: In=a5a5a5a5 ShiftAmount=6 ShiftIn=0 => Out=69696940
+# PASS [270]: In=a5a5a5a5 ShiftAmount=6 ShiftIn=1 => Out=6969697f
+# PASS [271]: In=a5a5a5a5 ShiftAmount=7 ShiftIn=0 => Out=d2d2d280
+# PASS [272]: In=a5a5a5a5 ShiftAmount=7 ShiftIn=1 => Out=d2d2d2ff
+# PASS [273]: In=a5a5a5a5 ShiftAmount=8 ShiftIn=0 => Out=a5a5a500
+# PASS [274]: In=a5a5a5a5 ShiftAmount=8 ShiftIn=1 => Out=a5a5a5ff
+# PASS [275]: In=a5a5a5a5 ShiftAmount=9 ShiftIn=0 => Out=4b4b4a00
+# PASS [276]: In=a5a5a5a5 ShiftAmount=9 ShiftIn=1 => Out=4b4b4bff
+# PASS [277]: In=a5a5a5a5 ShiftAmount=10 ShiftIn=0 => Out=96969400
+# PASS [278]: In=a5a5a5a5 ShiftAmount=10 ShiftIn=1 => Out=969697ff
+# PASS [279]: In=a5a5a5a5 ShiftAmount=11 ShiftIn=0 => Out=2d2d2800
+# PASS [280]: In=a5a5a5a5 ShiftAmount=11 ShiftIn=1 => Out=2d2d2fff
+# PASS [281]: In=a5a5a5a5 ShiftAmount=12 ShiftIn=0 => Out=5a5a5000
+# PASS [282]: In=a5a5a5a5 ShiftAmount=12 ShiftIn=1 => Out=5a5a5fff
+# PASS [283]: In=a5a5a5a5 ShiftAmount=13 ShiftIn=0 => Out=b4b4a000
+# PASS [284]: In=a5a5a5a5 ShiftAmount=13 ShiftIn=1 => Out=b4b4bfff
+# PASS [285]: In=a5a5a5a5 ShiftAmount=14 ShiftIn=0 => Out=69694000
+# PASS [286]: In=a5a5a5a5 ShiftAmount=14 ShiftIn=1 => Out=69697fff
+# PASS [287]: In=a5a5a5a5 ShiftAmount=15 ShiftIn=0 => Out=d2d28000
+# PASS [288]: In=a5a5a5a5 ShiftAmount=15 ShiftIn=1 => Out=d2d2ffff
+# PASS [289]: In=a5a5a5a5 ShiftAmount=16 ShiftIn=0 => Out=a5a50000
+# PASS [290]: In=a5a5a5a5 ShiftAmount=16 ShiftIn=1 => Out=a5a5ffff
+# PASS [291]: In=a5a5a5a5 ShiftAmount=17 ShiftIn=0 => Out=4b4a0000
+# PASS [292]: In=a5a5a5a5 ShiftAmount=17 ShiftIn=1 => Out=4b4bffff
+# PASS [293]: In=a5a5a5a5 ShiftAmount=18 ShiftIn=0 => Out=96940000
+# PASS [294]: In=a5a5a5a5 ShiftAmount=18 ShiftIn=1 => Out=9697ffff
+# PASS [295]: In=a5a5a5a5 ShiftAmount=19 ShiftIn=0 => Out=2d280000
+# PASS [296]: In=a5a5a5a5 ShiftAmount=19 ShiftIn=1 => Out=2d2fffff
+# PASS [297]: In=a5a5a5a5 ShiftAmount=20 ShiftIn=0 => Out=5a500000
+# PASS [298]: In=a5a5a5a5 ShiftAmount=20 ShiftIn=1 => Out=5a5fffff
+# PASS [299]: In=a5a5a5a5 ShiftAmount=21 ShiftIn=0 => Out=b4a00000
+# PASS [300]: In=a5a5a5a5 ShiftAmount=21 ShiftIn=1 => Out=b4bfffff
+# PASS [301]: In=a5a5a5a5 ShiftAmount=22 ShiftIn=0 => Out=69400000
+# PASS [302]: In=a5a5a5a5 ShiftAmount=22 ShiftIn=1 => Out=697fffff
+# PASS [303]: In=a5a5a5a5 ShiftAmount=23 ShiftIn=0 => Out=d2800000
+# PASS [304]: In=a5a5a5a5 ShiftAmount=23 ShiftIn=1 => Out=d2ffffff
+# PASS [305]: In=a5a5a5a5 ShiftAmount=24 ShiftIn=0 => Out=a5000000
+# PASS [306]: In=a5a5a5a5 ShiftAmount=24 ShiftIn=1 => Out=a5ffffff
+# PASS [307]: In=a5a5a5a5 ShiftAmount=25 ShiftIn=0 => Out=4a000000
+# PASS [308]: In=a5a5a5a5 ShiftAmount=25 ShiftIn=1 => Out=4bffffff
+# PASS [309]: In=a5a5a5a5 ShiftAmount=26 ShiftIn=0 => Out=94000000
+# PASS [310]: In=a5a5a5a5 ShiftAmount=26 ShiftIn=1 => Out=97ffffff
+# PASS [311]: In=a5a5a5a5 ShiftAmount=27 ShiftIn=0 => Out=28000000
+# PASS [312]: In=a5a5a5a5 ShiftAmount=27 ShiftIn=1 => Out=2fffffff
+# PASS [313]: In=a5a5a5a5 ShiftAmount=28 ShiftIn=0 => Out=50000000
+# PASS [314]: In=a5a5a5a5 ShiftAmount=28 ShiftIn=1 => Out=5fffffff
+# PASS [315]: In=a5a5a5a5 ShiftAmount=29 ShiftIn=0 => Out=a0000000
+# PASS [316]: In=a5a5a5a5 ShiftAmount=29 ShiftIn=1 => Out=bfffffff
+# PASS [317]: In=a5a5a5a5 ShiftAmount=30 ShiftIn=0 => Out=40000000
+# PASS [318]: In=a5a5a5a5 ShiftAmount=30 ShiftIn=1 => Out=7fffffff
+# PASS [319]: In=a5a5a5a5 ShiftAmount=31 ShiftIn=0 => Out=80000000
+# PASS [320]: In=a5a5a5a5 ShiftAmount=31 ShiftIn=1 => Out=ffffffff
+# PASS [321]: In=00000001 ShiftAmount=0 ShiftIn=0 => Out=00000001
+# PASS [322]: In=00000001 ShiftAmount=0 ShiftIn=1 => Out=00000001
+# PASS [323]: In=00000001 ShiftAmount=1 ShiftIn=0 => Out=00000002
+# PASS [324]: In=00000001 ShiftAmount=1 ShiftIn=1 => Out=00000003
+# PASS [325]: In=00000001 ShiftAmount=2 ShiftIn=0 => Out=00000004
+# PASS [326]: In=00000001 ShiftAmount=2 ShiftIn=1 => Out=00000007
+# PASS [327]: In=00000001 ShiftAmount=3 ShiftIn=0 => Out=00000008
+# PASS [328]: In=00000001 ShiftAmount=3 ShiftIn=1 => Out=0000000f
+# PASS [329]: In=00000001 ShiftAmount=4 ShiftIn=0 => Out=00000010
+# PASS [330]: In=00000001 ShiftAmount=4 ShiftIn=1 => Out=0000001f
+# PASS [331]: In=00000001 ShiftAmount=5 ShiftIn=0 => Out=00000020
+# PASS [332]: In=00000001 ShiftAmount=5 ShiftIn=1 => Out=0000003f
+# PASS [333]: In=00000001 ShiftAmount=6 ShiftIn=0 => Out=00000040
+# PASS [334]: In=00000001 ShiftAmount=6 ShiftIn=1 => Out=0000007f
+# PASS [335]: In=00000001 ShiftAmount=7 ShiftIn=0 => Out=00000080
+# PASS [336]: In=00000001 ShiftAmount=7 ShiftIn=1 => Out=000000ff
+# PASS [337]: In=00000001 ShiftAmount=8 ShiftIn=0 => Out=00000100
+# PASS [338]: In=00000001 ShiftAmount=8 ShiftIn=1 => Out=000001ff
+# PASS [339]: In=00000001 ShiftAmount=9 ShiftIn=0 => Out=00000200
+# PASS [340]: In=00000001 ShiftAmount=9 ShiftIn=1 => Out=000003ff
+# PASS [341]: In=00000001 ShiftAmount=10 ShiftIn=0 => Out=00000400
+# PASS [342]: In=00000001 ShiftAmount=10 ShiftIn=1 => Out=000007ff
+# PASS [343]: In=00000001 ShiftAmount=11 ShiftIn=0 => Out=00000800
+# PASS [344]: In=00000001 ShiftAmount=11 ShiftIn=1 => Out=00000fff
+# PASS [345]: In=00000001 ShiftAmount=12 ShiftIn=0 => Out=00001000
+# PASS [346]: In=00000001 ShiftAmount=12 ShiftIn=1 => Out=00001fff
+# PASS [347]: In=00000001 ShiftAmount=13 ShiftIn=0 => Out=00002000
+# PASS [348]: In=00000001 ShiftAmount=13 ShiftIn=1 => Out=00003fff
+# PASS [349]: In=00000001 ShiftAmount=14 ShiftIn=0 => Out=00004000
+# PASS [350]: In=00000001 ShiftAmount=14 ShiftIn=1 => Out=00007fff
+# PASS [351]: In=00000001 ShiftAmount=15 ShiftIn=0 => Out=00008000
+# PASS [352]: In=00000001 ShiftAmount=15 ShiftIn=1 => Out=0000ffff
+# PASS [353]: In=00000001 ShiftAmount=16 ShiftIn=0 => Out=00010000
+# PASS [354]: In=00000001 ShiftAmount=16 ShiftIn=1 => Out=0001ffff
+# PASS [355]: In=00000001 ShiftAmount=17 ShiftIn=0 => Out=00020000
+# PASS [356]: In=00000001 ShiftAmount=17 ShiftIn=1 => Out=0003ffff
+# PASS [357]: In=00000001 ShiftAmount=18 ShiftIn=0 => Out=00040000
+# PASS [358]: In=00000001 ShiftAmount=18 ShiftIn=1 => Out=0007ffff
+# PASS [359]: In=00000001 ShiftAmount=19 ShiftIn=0 => Out=00080000
+# PASS [360]: In=00000001 ShiftAmount=19 ShiftIn=1 => Out=000fffff
+# PASS [361]: In=00000001 ShiftAmount=20 ShiftIn=0 => Out=00100000
+# PASS [362]: In=00000001 ShiftAmount=20 ShiftIn=1 => Out=001fffff
+# PASS [363]: In=00000001 ShiftAmount=21 ShiftIn=0 => Out=00200000
+# PASS [364]: In=00000001 ShiftAmount=21 ShiftIn=1 => Out=003fffff
+# PASS [365]: In=00000001 ShiftAmount=22 ShiftIn=0 => Out=00400000
+# PASS [366]: In=00000001 ShiftAmount=22 ShiftIn=1 => Out=007fffff
+# PASS [367]: In=00000001 ShiftAmount=23 ShiftIn=0 => Out=00800000
+# PASS [368]: In=00000001 ShiftAmount=23 ShiftIn=1 => Out=00ffffff
+# PASS [369]: In=00000001 ShiftAmount=24 ShiftIn=0 => Out=01000000
+# PASS [370]: In=00000001 ShiftAmount=24 ShiftIn=1 => Out=01ffffff
+# PASS [371]: In=00000001 ShiftAmount=25 ShiftIn=0 => Out=02000000
+# PASS [372]: In=00000001 ShiftAmount=25 ShiftIn=1 => Out=03ffffff
+# PASS [373]: In=00000001 ShiftAmount=26 ShiftIn=0 => Out=04000000
+# PASS [374]: In=00000001 ShiftAmount=26 ShiftIn=1 => Out=07ffffff
+# PASS [375]: In=00000001 ShiftAmount=27 ShiftIn=0 => Out=08000000
+# PASS [376]: In=00000001 ShiftAmount=27 ShiftIn=1 => Out=0fffffff
+# PASS [377]: In=00000001 ShiftAmount=28 ShiftIn=0 => Out=10000000
+# PASS [378]: In=00000001 ShiftAmount=28 ShiftIn=1 => Out=1fffffff
+# PASS [379]: In=00000001 ShiftAmount=29 ShiftIn=0 => Out=20000000
+# PASS [380]: In=00000001 ShiftAmount=29 ShiftIn=1 => Out=3fffffff
+# PASS [381]: In=00000001 ShiftAmount=30 ShiftIn=0 => Out=40000000
+# PASS [382]: In=00000001 ShiftAmount=30 ShiftIn=1 => Out=7fffffff
+# PASS [383]: In=00000001 ShiftAmount=31 ShiftIn=0 => Out=80000000
+# PASS [384]: In=00000001 ShiftAmount=31 ShiftIn=1 => Out=ffffffff
+# PASS [385]: In=80000000 ShiftAmount=0 ShiftIn=0 => Out=80000000
+# PASS [386]: In=80000000 ShiftAmount=0 ShiftIn=1 => Out=80000000
+# PASS [387]: In=80000000 ShiftAmount=1 ShiftIn=0 => Out=00000000
+# PASS [388]: In=80000000 ShiftAmount=1 ShiftIn=1 => Out=00000001
+# PASS [389]: In=80000000 ShiftAmount=2 ShiftIn=0 => Out=00000000
+# PASS [390]: In=80000000 ShiftAmount=2 ShiftIn=1 => Out=00000003
+# PASS [391]: In=80000000 ShiftAmount=3 ShiftIn=0 => Out=00000000
+# PASS [392]: In=80000000 ShiftAmount=3 ShiftIn=1 => Out=00000007
+# PASS [393]: In=80000000 ShiftAmount=4 ShiftIn=0 => Out=00000000
+# PASS [394]: In=80000000 ShiftAmount=4 ShiftIn=1 => Out=0000000f
+# PASS [395]: In=80000000 ShiftAmount=5 ShiftIn=0 => Out=00000000
+# PASS [396]: In=80000000 ShiftAmount=5 ShiftIn=1 => Out=0000001f
+# PASS [397]: In=80000000 ShiftAmount=6 ShiftIn=0 => Out=00000000
+# PASS [398]: In=80000000 ShiftAmount=6 ShiftIn=1 => Out=0000003f
+# PASS [399]: In=80000000 ShiftAmount=7 ShiftIn=0 => Out=00000000
+# PASS [400]: In=80000000 ShiftAmount=7 ShiftIn=1 => Out=0000007f
+# PASS [401]: In=80000000 ShiftAmount=8 ShiftIn=0 => Out=00000000
+# PASS [402]: In=80000000 ShiftAmount=8 ShiftIn=1 => Out=000000ff
+# PASS [403]: In=80000000 ShiftAmount=9 ShiftIn=0 => Out=00000000
+# PASS [404]: In=80000000 ShiftAmount=9 ShiftIn=1 => Out=000001ff
+# PASS [405]: In=80000000 ShiftAmount=10 ShiftIn=0 => Out=00000000
+# PASS [406]: In=80000000 ShiftAmount=10 ShiftIn=1 => Out=000003ff
+# PASS [407]: In=80000000 ShiftAmount=11 ShiftIn=0 => Out=00000000
+# PASS [408]: In=80000000 ShiftAmount=11 ShiftIn=1 => Out=000007ff
+# PASS [409]: In=80000000 ShiftAmount=12 ShiftIn=0 => Out=00000000
+# PASS [410]: In=80000000 ShiftAmount=12 ShiftIn=1 => Out=00000fff
+# PASS [411]: In=80000000 ShiftAmount=13 ShiftIn=0 => Out=00000000
+# PASS [412]: In=80000000 ShiftAmount=13 ShiftIn=1 => Out=00001fff
+# PASS [413]: In=80000000 ShiftAmount=14 ShiftIn=0 => Out=00000000
+# PASS [414]: In=80000000 ShiftAmount=14 ShiftIn=1 => Out=00003fff
+# PASS [415]: In=80000000 ShiftAmount=15 ShiftIn=0 => Out=00000000
+# PASS [416]: In=80000000 ShiftAmount=15 ShiftIn=1 => Out=00007fff
+# PASS [417]: In=80000000 ShiftAmount=16 ShiftIn=0 => Out=00000000
+# PASS [418]: In=80000000 ShiftAmount=16 ShiftIn=1 => Out=0000ffff
+# PASS [419]: In=80000000 ShiftAmount=17 ShiftIn=0 => Out=00000000
+# PASS [420]: In=80000000 ShiftAmount=17 ShiftIn=1 => Out=0001ffff
+# PASS [421]: In=80000000 ShiftAmount=18 ShiftIn=0 => Out=00000000
+# PASS [422]: In=80000000 ShiftAmount=18 ShiftIn=1 => Out=0003ffff
+# PASS [423]: In=80000000 ShiftAmount=19 ShiftIn=0 => Out=00000000
+# PASS [424]: In=80000000 ShiftAmount=19 ShiftIn=1 => Out=0007ffff
+# PASS [425]: In=80000000 ShiftAmount=20 ShiftIn=0 => Out=00000000
+# PASS [426]: In=80000000 ShiftAmount=20 ShiftIn=1 => Out=000fffff
+# PASS [427]: In=80000000 ShiftAmount=21 ShiftIn=0 => Out=00000000
+# PASS [428]: In=80000000 ShiftAmount=21 ShiftIn=1 => Out=001fffff
+# PASS [429]: In=80000000 ShiftAmount=22 ShiftIn=0 => Out=00000000
+# PASS [430]: In=80000000 ShiftAmount=22 ShiftIn=1 => Out=003fffff
+# PASS [431]: In=80000000 ShiftAmount=23 ShiftIn=0 => Out=00000000
+# PASS [432]: In=80000000 ShiftAmount=23 ShiftIn=1 => Out=007fffff
+# PASS [433]: In=80000000 ShiftAmount=24 ShiftIn=0 => Out=00000000
+# PASS [434]: In=80000000 ShiftAmount=24 ShiftIn=1 => Out=00ffffff
+# PASS [435]: In=80000000 ShiftAmount=25 ShiftIn=0 => Out=00000000
+# PASS [436]: In=80000000 ShiftAmount=25 ShiftIn=1 => Out=01ffffff
+# PASS [437]: In=80000000 ShiftAmount=26 ShiftIn=0 => Out=00000000
+# PASS [438]: In=80000000 ShiftAmount=26 ShiftIn=1 => Out=03ffffff
+# PASS [439]: In=80000000 ShiftAmount=27 ShiftIn=0 => Out=00000000
+# PASS [440]: In=80000000 ShiftAmount=27 ShiftIn=1 => Out=07ffffff
+# PASS [441]: In=80000000 ShiftAmount=28 ShiftIn=0 => Out=00000000
+# PASS [442]: In=80000000 ShiftAmount=28 ShiftIn=1 => Out=0fffffff
+# PASS [443]: In=80000000 ShiftAmount=29 ShiftIn=0 => Out=00000000
+# PASS [444]: In=80000000 ShiftAmount=29 ShiftIn=1 => Out=1fffffff
+# PASS [445]: In=80000000 ShiftAmount=30 ShiftIn=0 => Out=00000000
+# PASS [446]: In=80000000 ShiftAmount=30 ShiftIn=1 => Out=3fffffff
+# PASS [447]: In=80000000 ShiftAmount=31 ShiftIn=0 => Out=00000000
+# PASS [448]: In=80000000 ShiftAmount=31 ShiftIn=1 => Out=7fffffff
+# PASS [449]: In=17750c26 ShiftAmount=6 ShiftIn=0 => Out=dd430980
+# PASS [450]: In=83956e46 ShiftAmount=18 ShiftIn=0 => Out=b9180000
+# PASS [451]: In=3386553a ShiftAmount=10 ShiftIn=0 => Out=1954e800
+# PASS [452]: In=d29b1a56 ShiftAmount=21 ShiftIn=0 => Out=4ac00000
+# PASS [453]: In=38f1817d ShiftAmount=27 ShiftIn=1 => Out=efffffff
+# PASS [454]: In=26008320 ShiftAmount=5 ShiftIn=1 => Out=c010641f
+# PASS [455]: In=61c71ee9 ShiftAmount=29 ShiftIn=0 => Out=20000000
+# PASS [456]: In=9c02498b ShiftAmount=22 ShiftIn=1 => Out=62ffffff
+# PASS [457]: In=f115b140 ShiftAmount=0 ShiftIn=0 => Out=f115b140
+# PASS [458]: In=4a7ce98e ShiftAmount=0 ShiftIn=1 => Out=4a7ce98e
+# PASS [459]: In=c573dbc7 ShiftAmount=24 ShiftIn=1 => Out=c7ffffff
+# PASS [460]: In=ff20de23 ShiftAmount=20 ShiftIn=1 => Out=e23fffff
+# PASS [461]: In=63ae1ae6 ShiftAmount=22 ShiftIn=1 => Out=b9bfffff
+# PASS [462]: In=2f535b0f ShiftAmount=15 ShiftIn=0 => Out=ad878000
+# PASS [463]: In=88ef10cb ShiftAmount=7 ShiftIn=1 => Out=778865ff
+# PASS [464]: In=893a9be1 ShiftAmount=5 ShiftIn=0 => Out=27537c20
+# PASS [465]: In=ab4d491d ShiftAmount=18 ShiftIn=0 => Out=24740000
+# PASS [466]: In=ed421340 ShiftAmount=21 ShiftIn=1 => Out=681fffff
+# PASS [467]: In=ef1210a0 ShiftAmount=23 ShiftIn=1 => Out=507fffff
+# PASS [468]: In=40c71fdd ShiftAmount=26 ShiftIn=0 => Out=74000000
+# PASS [469]: In=5d1ebc89 ShiftAmount=10 ShiftIn=1 => Out=7af227ff
+# PASS [470]: In=1a163e4c ShiftAmount=30 ShiftIn=1 => Out=3fffffff
+# PASS [471]: In=90621dbc ShiftAmount=27 ShiftIn=1 => Out=e7ffffff
+# PASS [472]: In=0d7a45b7 ShiftAmount=11 ShiftIn=1 => Out=d22dbfff
+# PASS [473]: In=1d5d4909 ShiftAmount=10 ShiftIn=1 => Out=752427ff
+# PASS [474]: In=cfecaf60 ShiftAmount=15 ShiftIn=1 => Out=57b07fff
+# PASS [475]: In=ebffe7cd ShiftAmount=12 ShiftIn=0 => Out=fe7cd000
+# PASS [476]: In=f2a0cdfc ShiftAmount=5 ShiftIn=1 => Out=5419bf9f
+# PASS [477]: In=14b4d8be ShiftAmount=1 ShiftIn=1 => Out=2969b17d
+# PASS [478]: In=bda3dfa0 ShiftAmount=21 ShiftIn=0 => Out=f4000000
+# PASS [479]: In=1e4eb78b ShiftAmount=8 ShiftIn=1 => Out=4eb78bff
+# PASS [480]: In=0154eb7d ShiftAmount=11 ShiftIn=0 => Out=a75be800
+# PASS [481]: In=75491ab2 ShiftAmount=22 ShiftIn=0 => Out=ac800000
+# PASS [482]: In=75ab22e1 ShiftAmount=20 ShiftIn=1 => Out=2e1fffff
+# PASS [483]: In=c0315769 ShiftAmount=6 ShiftIn=0 => Out=0c55da40
+# PASS [484]: In=a0dd94ca ShiftAmount=8 ShiftIn=1 => Out=dd94caff
+# PASS [485]: In=5f58d3ec ShiftAmount=30 ShiftIn=0 => Out=00000000
+# PASS [486]: In=a9f266c5 ShiftAmount=30 ShiftIn=0 => Out=40000000
+# PASS [487]: In=2706f00d ShiftAmount=22 ShiftIn=1 => Out=037fffff
+# PASS [488]: In=44f1adf9 ShiftAmount=25 ShiftIn=1 => Out=f3ffffff
+# PASS [489]: In=2483eadd ShiftAmount=15 ShiftIn=1 => Out=f56effff
+# PASS [490]: In=b444a59a ShiftAmount=16 ShiftIn=0 => Out=a59a0000
+# PASS [491]: In=5fed23ee ShiftAmount=20 ShiftIn=0 => Out=3ee00000
+# PASS [492]: In=dec1e27c ShiftAmount=13 ShiftIn=1 => Out=3c4f9fff
+# PASS [493]: In=d8e20a46 ShiftAmount=16 ShiftIn=1 => Out=0a46ffff
+# PASS [494]: In=fa04273c ShiftAmount=22 ShiftIn=0 => Out=cf000000
+# PASS [495]: In=160f7526 ShiftAmount=25 ShiftIn=1 => Out=4dffffff
+# PASS [496]: In=004101b4 ShiftAmount=7 ShiftIn=0 => Out=2080da00
+# PASS [497]: In=062a3452 ShiftAmount=10 ShiftIn=0 => Out=a8d14800
+# PASS [498]: In=e9747ddf ShiftAmount=7 ShiftIn=1 => Out=ba3eefff
+# PASS [499]: In=3ff788ea ShiftAmount=15 ShiftIn=1 => Out=c4757fff
+# PASS [500]: In=1823a716 ShiftAmount=8 ShiftIn=0 => Out=23a71600
+# PASS [501]: In=96154251 ShiftAmount=28 ShiftIn=1 => Out=1fffffff
+# PASS [502]: In=beb2748c ShiftAmount=30 ShiftIn=0 => Out=00000000
+# PASS [503]: In=605101de ShiftAmount=1 ShiftIn=0 => Out=c0a203bc
+# PASS [504]: In=c44940c8 ShiftAmount=13 ShiftIn=0 => Out=28190000
+# PASS [505]: In=4e80d159 ShiftAmount=20 ShiftIn=0 => Out=15900000
+# PASS [506]: In=d77a0562 ShiftAmount=8 ShiftIn=1 => Out=7a0562ff
+# PASS [507]: In=a7980053 ShiftAmount=21 ShiftIn=1 => Out=0a7fffff
+# PASS [508]: In=291f5848 ShiftAmount=12 ShiftIn=1 => Out=f5848fff
+# PASS [509]: In=a953e916 ShiftAmount=22 ShiftIn=0 => Out=45800000
+# PASS [510]: In=47b74de0 ShiftAmount=6 ShiftIn=0 => Out=edd37800
+# PASS [511]: In=dc0a8411 ShiftAmount=14 ShiftIn=0 => Out=a1044000
+# PASS [512]: In=442bd110 ShiftAmount=6 ShiftIn=0 => Out=0af44400
+# PASS [513]: In=6605a213 ShiftAmount=18 ShiftIn=1 => Out=884fffff
+# PASS [514]: In=5f19e79b ShiftAmount=11 ShiftIn=0 => Out=cf3cd800
+# PASS [515]: In=4df081f7 ShiftAmount=9 ShiftIn=1 => Out=e103efff
+# PASS [516]: In=09b023cf ShiftAmount=2 ShiftIn=1 => Out=26c08f3f
+# PASS [517]: In=f5183634 ShiftAmount=28 ShiftIn=1 => Out=4fffffff
+# PASS [518]: In=aa1c72b2 ShiftAmount=23 ShiftIn=1 => Out=597fffff
+# PASS [519]: In=99238e53 ShiftAmount=1 ShiftIn=1 => Out=32471ca7
+# PASS [520]: In=fd272c9d ShiftAmount=21 ShiftIn=1 => Out=93bfffff
+# PASS [521]: In=800b5101 ShiftAmount=15 ShiftIn=0 => Out=a8808000
+# PASS [522]: In=386a2c8b ShiftAmount=21 ShiftIn=1 => Out=917fffff
+# PASS [523]: In=ef0286e0 ShiftAmount=15 ShiftIn=1 => Out=43707fff
+# PASS [524]: In=82969340 ShiftAmount=12 ShiftIn=1 => Out=69340fff
+# PASS [525]: In=ad014b97 ShiftAmount=13 ShiftIn=0 => Out=2972e000
+# PASS [526]: In=323aba54 ShiftAmount=13 ShiftIn=1 => Out=574a9fff
+# PASS [527]: In=d3a9e4f8 ShiftAmount=16 ShiftIn=1 => Out=e4f8ffff
+# PASS [528]: In=8d614eb8 ShiftAmount=1 ShiftIn=0 => Out=1ac29d70
+# PASS [529]: In=4f8236a2 ShiftAmount=8 ShiftIn=1 => Out=8236a2ff
+# PASS [530]: In=3a6ee6c6 ShiftAmount=22 ShiftIn=0 => Out=b1800000
+# PASS [531]: In=f68f5033 ShiftAmount=23 ShiftIn=0 => Out=19800000
+# PASS [532]: In=d52f3b9a ShiftAmount=9 ShiftIn=0 => Out=5e773400
+# PASS [533]: In=c6471218 ShiftAmount=24 ShiftIn=1 => Out=18ffffff
+# PASS [534]: In=7b032269 ShiftAmount=9 ShiftIn=1 => Out=0644d3ff
+# PASS [535]: In=dd598de1 ShiftAmount=2 ShiftIn=0 => Out=75663784
+# PASS [536]: In=a606236f ShiftAmount=24 ShiftIn=1 => Out=6fffffff
+# PASS [537]: In=b87c161b ShiftAmount=4 ShiftIn=0 => Out=87c161b0
+# PASS [538]: In=9b7bba27 ShiftAmount=10 ShiftIn=1 => Out=eee89fff
+# PASS [539]: In=18dd86ac ShiftAmount=5 ShiftIn=0 => Out=1bb0d580
+# PASS [540]: In=b6544cd1 ShiftAmount=5 ShiftIn=1 => Out=ca899a3f
+# PASS [541]: In=deaa5416 ShiftAmount=11 ShiftIn=0 => Out=52a0b000
+# PASS [542]: In=f7b3ba03 ShiftAmount=5 ShiftIn=0 => Out=f6774060
+# PASS [543]: In=edcc1f1c ShiftAmount=11 ShiftIn=0 => Out=60f8e000
+# PASS [544]: In=616623c5 ShiftAmount=1 ShiftIn=1 => Out=c2cc478b
+# PASS [545]: In=a2ce5d65 ShiftAmount=30 ShiftIn=1 => Out=7fffffff
+# PASS [546]: In=8c1fd4e1 ShiftAmount=10 ShiftIn=1 => Out=7f5387ff
+# PASS [547]: In=fd82f9dd ShiftAmount=23 ShiftIn=1 => Out=eeffffff
+# PASS [548]: In=c2b473d1 ShiftAmount=12 ShiftIn=0 => Out=473d1000
+# PASS [549]: In=a4e906db ShiftAmount=4 ShiftIn=0 => Out=4e906db0
+# PASS [550]: In=e74e241f ShiftAmount=24 ShiftIn=0 => Out=1f000000
+# PASS [551]: In=09243147 ShiftAmount=30 ShiftIn=1 => Out=ffffffff
+# PASS [552]: In=bde1a201 ShiftAmount=19 ShiftIn=1 => Out=100fffff
+# PASS [553]: In=4f45b5f3 ShiftAmount=6 ShiftIn=0 => Out=d16d7cc0
+# PASS [554]: In=88a82003 ShiftAmount=22 ShiftIn=0 => Out=00c00000
+# PASS [555]: In=e693613b ShiftAmount=2 ShiftIn=0 => Out=9a4d84ec
+# PASS [556]: In=47f91de6 ShiftAmount=3 ShiftIn=0 => Out=3fc8ef30
+# PASS [557]: In=cf825002 ShiftAmount=30 ShiftIn=0 => Out=80000000
+# PASS [558]: In=76f3a3d9 ShiftAmount=30 ShiftIn=0 => Out=40000000
+# PASS [559]: In=8acee299 ShiftAmount=9 ShiftIn=0 => Out=9dc53200
+# PASS [560]: In=780a5aea ShiftAmount=7 ShiftIn=1 => Out=052d757f
+# PASS [561]: In=a22ed937 ShiftAmount=13 ShiftIn=0 => Out=db26e000
+# PASS [562]: In=6bbf989b ShiftAmount=22 ShiftIn=1 => Out=26ffffff
+# PASS [563]: In=a6b06eae ShiftAmount=21 ShiftIn=0 => Out=d5c00000
+# PASS [564]: In=0d17305f ShiftAmount=5 ShiftIn=0 => Out=a2e60be0
+# PASS [565]: In=aba1acf0 ShiftAmount=19 ShiftIn=0 => Out=67800000
+# PASS [566]: In=496740a5 ShiftAmount=11 ShiftIn=0 => Out=3a052800
+# PASS [567]: In=03f22f04 ShiftAmount=10 ShiftIn=1 => Out=c8bc13ff
+# PASS [568]: In=e71fd490 ShiftAmount=21 ShiftIn=0 => Out=92000000
+# PASS [569]: In=25c537da ShiftAmount=24 ShiftIn=0 => Out=da000000
+# PASS [570]: In=d14c2cad ShiftAmount=8 ShiftIn=1 => Out=4c2cadff
+# PASS [571]: In=c02e8bb3 ShiftAmount=12 ShiftIn=0 => Out=e8bb3000
+# PASS [572]: In=835393d1 ShiftAmount=11 ShiftIn=0 => Out=9c9e8800
+# PASS [573]: In=16c19b89 ShiftAmount=17 ShiftIn=0 => Out=37120000
+# PASS [574]: In=c087aca9 ShiftAmount=6 ShiftIn=0 => Out=21eb2a40
+# PASS [575]: In=797f6681 ShiftAmount=22 ShiftIn=1 => Out=a07fffff
+# PASS [576]: In=886941ec ShiftAmount=1 ShiftIn=1 => Out=10d283d9
+# PASS [577]: In=712dc41f ShiftAmount=15 ShiftIn=0 => Out=e20f8000
+# PASS [578]: In=8225dc3f ShiftAmount=6 ShiftIn=0 => Out=89770fc0
+# PASS [579]: In=d465c6c4 ShiftAmount=3 ShiftIn=0 => Out=a32e3620
+# PASS [580]: In=b030a261 ShiftAmount=3 ShiftIn=0 => Out=81851308
+# PASS [581]: In=a8bdd2b5 ShiftAmount=5 ShiftIn=0 => Out=17ba56a0
+# PASS [582]: In=a2d10059 ShiftAmount=28 ShiftIn=0 => Out=90000000
+# PASS [583]: In=7d1edd6a ShiftAmount=19 ShiftIn=0 => Out=eb500000
+# PASS [584]: In=595aaf14 ShiftAmount=21 ShiftIn=1 => Out=e29fffff
+# PASS [585]: In=e6a96ed3 ShiftAmount=31 ShiftIn=0 => Out=80000000
+# PASS [586]: In=80b6ff3f ShiftAmount=7 ShiftIn=0 => Out=5b7f9f80
+# PASS [587]: In=35b18e62 ShiftAmount=0 ShiftIn=1 => Out=35b18e62
+# PASS [588]: In=8a361fa9 ShiftAmount=12 ShiftIn=1 => Out=61fa9fff
+# PASS [589]: In=410377b2 ShiftAmount=12 ShiftIn=1 => Out=377b2fff
+# PASS [590]: In=4c8e85fc ShiftAmount=14 ShiftIn=1 => Out=a17f3fff
+# PASS [591]: In=50e338ef ShiftAmount=26 ShiftIn=0 => Out=bc000000
+# PASS [592]: In=9404f892 ShiftAmount=6 ShiftIn=0 => Out=013e2480
+# PASS [593]: In=7429b546 ShiftAmount=26 ShiftIn=0 => Out=18000000
+# PASS [594]: In=08d363ae ShiftAmount=26 ShiftIn=0 => Out=b8000000
+# PASS [595]: In=ce084abc ShiftAmount=22 ShiftIn=0 => Out=af000000
+# PASS [596]: In=f24bfe64 ShiftAmount=31 ShiftIn=0 => Out=00000000
+# PASS [597]: In=d7117820 ShiftAmount=22 ShiftIn=1 => Out=083fffff
+# PASS [598]: In=42b81e64 ShiftAmount=24 ShiftIn=0 => Out=64000000
+# PASS [599]: In=fc36ed71 ShiftAmount=21 ShiftIn=0 => Out=ae200000
+# PASS [600]: In=5b685569 ShiftAmount=1 ShiftIn=0 => Out=b6d0aad2
+# PASS [601]: In=28ca2ffc ShiftAmount=0 ShiftIn=0 => Out=28ca2ffc
+# PASS [602]: In=fcdc8df5 ShiftAmount=7 ShiftIn=0 => Out=6e46fa80
+# PASS [603]: In=e3b722cf ShiftAmount=30 ShiftIn=1 => Out=ffffffff
+# PASS [604]: In=8bac98cc ShiftAmount=13 ShiftIn=0 => Out=93198000
+# PASS [605]: In=cb952790 ShiftAmount=26 ShiftIn=0 => Out=40000000
+# PASS [606]: In=4855a777 ShiftAmount=12 ShiftIn=1 => Out=5a777fff
+# PASS [607]: In=72bdd054 ShiftAmount=3 ShiftIn=0 => Out=95ee82a0
+# PASS [608]: In=0495c8d3 ShiftAmount=22 ShiftIn=1 => Out=34ffffff
+# PASS [609]: In=0366b6ad ShiftAmount=13 ShiftIn=1 => Out=d6d5bfff
+# PASS [610]: In=dd4ca60f ShiftAmount=22 ShiftIn=1 => Out=83ffffff
+# PASS [611]: In=32e8db04 ShiftAmount=17 ShiftIn=1 => Out=b609ffff
+# PASS [612]: In=4f7194b7 ShiftAmount=4 ShiftIn=1 => Out=f7194b7f
+# PASS [613]: In=accc927a ShiftAmount=18 ShiftIn=0 => Out=49e80000
+# PASS [614]: In=a86001c4 ShiftAmount=13 ShiftIn=1 => Out=00389fff
+# PASS [615]: In=5ee4659e ShiftAmount=20 ShiftIn=0 => Out=59e00000
+# PASS [616]: In=7b6a0f0d ShiftAmount=6 ShiftIn=1 => Out=da83c37f
+# PASS [617]: In=32162f8f ShiftAmount=28 ShiftIn=1 => Out=ffffffff
+# PASS [618]: In=fb42f4c0 ShiftAmount=10 ShiftIn=1 => Out=0bd303ff
+# PASS [619]: In=b891de8c ShiftAmount=23 ShiftIn=1 => Out=467fffff
+# PASS [620]: In=7c06b647 ShiftAmount=17 ShiftIn=1 => Out=6c8fffff
+# PASS [621]: In=d4bbf819 ShiftAmount=13 ShiftIn=1 => Out=7f033fff
+# PASS [622]: In=e849bb07 ShiftAmount=31 ShiftIn=0 => Out=80000000
+# PASS [623]: In=cc20a831 ShiftAmount=2 ShiftIn=1 => Out=3082a0c7
+# PASS [624]: In=3eded98b ShiftAmount=17 ShiftIn=1 => Out=b317ffff
+# PASS [625]: In=e2d8f0ae ShiftAmount=3 ShiftIn=0 => Out=16c78570
+# PASS [626]: In=c013157b ShiftAmount=30 ShiftIn=1 => Out=ffffffff
+# PASS [627]: In=0f2e185e ShiftAmount=6 ShiftIn=1 => Out=cb8617bf
+# PASS [628]: In=97139622 ShiftAmount=24 ShiftIn=1 => Out=22ffffff
+# PASS [629]: In=0d12f8ba ShiftAmount=18 ShiftIn=1 => Out=e2ebffff
+# PASS [630]: In=41361cdb ShiftAmount=17 ShiftIn=1 => Out=39b7ffff
+# PASS [631]: In=a38b11e6 ShiftAmount=30 ShiftIn=1 => Out=bfffffff
+# PASS [632]: In=2465e33f ShiftAmount=26 ShiftIn=0 => Out=fc000000
+# PASS [633]: In=55fa3f97 ShiftAmount=23 ShiftIn=1 => Out=cbffffff
+# PASS [634]: In=cf345dc8 ShiftAmount=22 ShiftIn=1 => Out=723fffff
+# PASS [635]: In=32008962 ShiftAmount=13 ShiftIn=0 => Out=112c4000
+# PASS [636]: In=73271891 ShiftAmount=0 ShiftIn=1 => Out=73271891
+# PASS [637]: In=a6d5d9ec ShiftAmount=4 ShiftIn=0 => Out=6d5d9ec0
+# PASS [638]: In=503857e8 ShiftAmount=26 ShiftIn=0 => Out=a0000000
+# PASS [639]: In=8c3fb5c5 ShiftAmount=15 ShiftIn=1 => Out=dae2ffff
+# PASS [640]: In=b3dde171 ShiftAmount=19 ShiftIn=0 => Out=0b880000
+# PASS [641]: In=2b594c17 ShiftAmount=26 ShiftIn=0 => Out=5c000000
+# PASS [642]: In=87120600 ShiftAmount=25 ShiftIn=0 => Out=00000000
+# PASS [643]: In=53354190 ShiftAmount=29 ShiftIn=0 => Out=00000000
+# PASS [644]: In=be925922 ShiftAmount=11 ShiftIn=1 => Out=92c917ff
+# PASS [645]: In=86fff3a3 ShiftAmount=23 ShiftIn=1 => Out=d1ffffff
+# PASS [646]: In=9813253e ShiftAmount=26 ShiftIn=0 => Out=f8000000
+# PASS [647]: In=79963ba3 ShiftAmount=1 ShiftIn=1 => Out=f32c7747
+# PASS [648]: In=ac045db2 ShiftAmount=5 ShiftIn=0 => Out=808bb640
+# 
+# Ran 648 checks, 0 errors
+# No errors -- passed testbench
+# ** Note: $finish    : testbench.sv(100)
+#    Time: 648 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at testbench.sv line 100
+# Stopped at testbench.sv line 100
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 15:33:44 on May 23,2026
+# vcover report BarrelShifter.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/DUT/g_stage[4]/u_mux
+# === Design Unit: work.Mux2to1
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         2         0   100.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/g_stage[3]/u_mux
+# === Design Unit: work.Mux2to1
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         2         0   100.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/g_stage[2]/u_mux
+# === Design Unit: work.Mux2to1
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         2         0   100.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/g_stage[1]/u_mux
+# === Design Unit: work.Mux2to1
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         2         0   100.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/g_stage[0]/u_mux
+# === Design Unit: work.Mux2to1
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         2         0   100.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT
+# === Design Unit: work.BarrelShifter
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Statements                       6         6         0   100.00%
+# 
+# 
+# Total Coverage By Instance (filtered view): 100.00%
+# 
+# End time: 15:33:44 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 15:33:44 on May 23,2026
+# vcover report BarrelShifter.ucdb -cvg -details 
+# ** Note: (vcover-17388) No matching coverage data found in file 'BarrelShifter.ucdb'.
+# End time: 15:33:44 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 15:33:44 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

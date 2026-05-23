@@ -1,0 +1,52 @@
+Run:        Parameterized N-bit barrel shifter (BarrelShifter module)
+Start UTC:  2026-05-23T22-33-25Z
+End   UTC:  2026-05-23T22-33-44Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the dataflow N-bit barrel shifter and its 2:1 mux building block on
+  an exhaustive sweep plus randomized inputs. Default test elaborates with
+  N=32 (5 stages of N-bit muxes), the same width the original 32:1 problem
+  targeted.
+
+Commands executed (in order, from this directory):
+  1. vsim -c -do 'do run.do; quit -f'    > transcript
+
+Results:
+  Compile and elaboration:
+    vlog barrelshifter.sv .......... Errors: 0, Warnings: 0
+    vlog testbench.sv .............. Errors: 0, Warnings: 0
+    vopt top ....................... Errors: 0, Warnings: 0
+  Simulation:
+    7 distinctive input patterns swept across all 32 shift amounts, both
+    ShiftIn polarities -> 448 directed checks
+    200 random vectors -> 200 random checks
+    Total: 648 PASS lines, 0 FAIL lines
+    Final verdict: 'No errors -- passed testbench'
+  Coverage (filtered to BarrelShifter(rtl), per-instance):
+    /top/DUT/g_stage[4]/u_mux  Mux2to1  branches 2/2  statements 1/1  100%
+    /top/DUT/g_stage[3]/u_mux  Mux2to1  branches 2/2  statements 1/1  100%
+    /top/DUT/g_stage[2]/u_mux  Mux2to1  branches 2/2  statements 1/1  100%
+    /top/DUT/g_stage[1]/u_mux  Mux2to1  branches 2/2  statements 1/1  100%
+    /top/DUT/g_stage[0]/u_mux  Mux2to1  branches 2/2  statements 1/1  100%
+    /top/DUT                   BarrelShifter         statements 6/6  100%
+    Total coverage by instance (filtered view): 100.00%
+  UCDB: BarrelShifter.ucdb
+
+Caveats:
+  - The second 'vcover report ... -cvg -details' invocation prints a benign
+    'No matching coverage data found' note because the design has no
+    covergroups (only statement/branch/expression coverage was collected).
+    Functional correctness is fully proven by the 648-vector self-check.
+
+Files in this run directory:
+  MANIFEST.txt
+  BarrelShifter.ucdb
+  barrelshifter.sv
+  run.do
+  testbench.sv
+  transcript
+  vsim.wlf
+  work
