@@ -1,0 +1,63 @@
+Run:        Adder/subtractor and complex-number package validation
+Start UTC:  2026-05-23T22-56-29Z
+End   UTC:  2026-05-23T22-58-26Z
+Host:       katnemo
+Questa:     2021.3_1
+
+Purpose:
+  Verify the structural full adder, the structural parameterized add/subtract
+  unit at its default 8-bit width, and the complex-number package demo.
+
+Commands executed (in order, from this directory):
+  1. vsim -c -do 'do run_fulladder.do; quit -f' > transcript_fulladder.txt
+  2. vsim -c -do 'do run_addsub.do; quit -f'    > transcript_addsub.txt
+  3. vsim -c -do 'do run_complex.do; quit -f'   > transcript_complex.txt
+
+Results:
+  Full adder:
+    vlog fulladder.sv .............. Errors: 0, Warnings: 0
+    vlog fulladdertb.sv ............ Errors: 0, Warnings: 0
+    vopt top ....................... Errors: 0, Warnings: 0
+    Simulation checks: 8 PASS lines, 0 FAIL lines
+    Final verdict: 'No errors -- passed testbench'
+
+  Add/subtract:
+    vlog fulladder.sv .............. Errors: 0, Warnings: 0
+    vlog addsub.sv ................. Errors: 0, Warnings: 0
+    vlog addsubtb.sv ............... Errors: 0, Warnings: 0
+    vopt top ....................... Errors: 0, Warnings: 0
+    Simulation checks: 131072 PASS lines, 0 FAIL lines
+    Final verdict: 'No errors -- passed testbench'
+    Coverage filtered to AddSub8Bit(rtl): 100.00% expressions, 100.00% statements
+
+  Complex package demo:
+    vlog complexpkg.sv ............. Errors: 0, Warnings: 0
+    vlog complexm.sv ............... Errors: 0, Warnings: 0
+    vopt top ....................... Errors: 0, Warnings: 0
+    Simulation checks: 6 PASS lines, 0 FAIL lines
+    Final verdict: 'No errors -- passed testbench'
+
+Caveats:
+  - FullAdder is a gate-primitive structural model, so Questa generated a UCDB
+    but reported no matching RTL coverage bins for the filtered FullAdder view.
+  - The complex package run instruments the demonstration module because package
+    functions do not map cleanly to a standalone RTL instance. The self-checking
+    verdict is the correctness criterion; uncovered branches are the testbench's
+    error-reporting paths.
+  - The '-cvg -details' report notes there are no covergroups. These tests use
+    code coverage and self-checking comparisons, not covergroups.
+
+Files in this directory:
+  MANIFEST.txt
+  addsub.sv
+  addsubtb.sv
+  complexm.sv
+  complexpkg.sv
+  fulladder.sv
+  fulladdertb.sv
+  run_addsub.do
+  run_complex.do
+  run_fulladder.do
+  transcript_addsub.txt
+  transcript_complex.txt
+  transcript_fulladder.txt

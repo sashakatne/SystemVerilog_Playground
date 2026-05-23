@@ -57,6 +57,14 @@ A parameterized N-bit left-shift barrel shifter built in behavioural dataflow st
 - **Testbenches**: `testbench.sv` (module `top`, default `N=32`; sweeps 7 directed patterns × all 32 shift amounts × both `ShiftIn` values plus 200 random vectors against a behavioural reference, prints `No errors -- passed testbench` after 648 self-checks)
 - **Verification**: Run `do run.do`. Clean `Errors: 0, Warnings: 0` on every `vlog`/`vopt` stage; produces `BarrelShifter.ucdb` with 100.00% per-instance statement and branch coverage on all five mux instances.
 
+### 9. Adder/Subtractor and Complex Numbers
+A parameterized structural add/subtract unit built from full-adder instances, plus a SystemVerilog package for complex numbers backed by `shortreal` real and imaginary components.
+
+- **Folder**: AdderSubtractorComplex
+- **Files**: `fulladder.sv`, `addsub.sv`, `complexpkg.sv`, `complexm.sv`
+- **Testbenches**: `fulladdertb.sv` exhaustively checks the full adder, `addsubtb.sv` exhaustively checks all default 8-bit add/sub input combinations against a procedural reference, and `complexm.sv` self-checks complex construction, addition, multiplication, printing, and component extraction.
+- **Verification**: Run `do run_fulladder.do`, `do run_addsub.do`, and `do run_complex.do`. Each script compiles with `-source -lint`, saves coverage, and the testbench prints `No errors -- passed testbench` on success.
+
 ## Verification
 
 ### Assertions
