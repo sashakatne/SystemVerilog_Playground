@@ -1,0 +1,45 @@
+Run:        SimpleBus multi-memory interface validation
+Start UTC:  2026-05-23T23:18:13Z
+End UTC:    2026-05-23T23:18:33Z
+Questa:     2021.3_1
+
+Purpose:
+  Verify a SimpleBus implementation with a SystemVerilog interface, separate
+  processor and memory modports, 24-bit addresses, and generated 64KB memory
+  windows selected by the upper address byte.
+
+Commands executed from the validation directory:
+  1. vsim -c -do 'do run.do; quit -f' > transcript.txt
+  2. vsim -c -do 'set NUMMEM 8; do run.do; quit -f' > transcript_nummem8.txt
+
+Results:
+  Default NUMMEM=4:
+    vlog simplebusif.sv ............ Errors: 0, Warnings: 0
+    vopt top ....................... Errors: 0, Warnings: 0
+    Self-checks .................... 24 PASS lines, 0 FAIL lines
+    Final verdict .................. 'No errors -- passed testbench'
+    Total coverage by instance ..... 82.29%
+
+  Override NUMMEM=8:
+    vlog simplebusif.sv ............ Errors: 0, Warnings: 0
+    vopt top ....................... Errors: 0, Warnings: 0
+    Self-checks .................... 40 PASS lines, 0 FAIL lines
+    Final verdict .................. 'No errors -- passed testbench'
+    Total coverage by instance ..... 82.66%
+
+Caveats:
+  - The detailed covergroup report prints a benign no-matching-coverage note
+    because this testbench uses code coverage and self-checking comparisons,
+    not covergroups.
+  - Memory contents are not reset; every checked read is preceded by a write
+    to the same selected memory and local address.
+
+Files in this directory:
+  MANIFEST.txt
+  design.md
+  fsm.pdf
+  fsm.svg
+  run.do
+  simplebusif.sv
+  transcript.txt
+  transcript_nummem8.txt

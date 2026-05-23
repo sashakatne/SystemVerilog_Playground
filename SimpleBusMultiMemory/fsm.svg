@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #111; }
+      .title { font-size: 30px; font-weight: 700; }
+      .subtitle { font-size: 22px; font-weight: 700; }
+      .state { fill: #f8fafc; stroke: #1f2937; stroke-width: 2; rx: 8; }
+      .state2 { fill: #f0fdf4; stroke: #166534; stroke-width: 2; rx: 8; }
+      .state3 { fill: #fff7ed; stroke: #9a3412; stroke-width: 2; rx: 8; }
+      .label { font-size: 16px; }
+      .small { font-size: 14px; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #666; stroke-width: 2; fill: none; stroke-dasharray: 6 6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="title">SimpleBus Revised State Transition Diagrams</text>
+
+  <text x="270" y="96" text-anchor="middle" class="subtitle">Processor Interface Thread</text>
+  <rect x="80" y="135" width="180" height="70" class="state"/>
+  <text x="170" y="164" text-anchor="middle" class="label">PROC_IDLE</text>
+  <text x="170" y="187" text-anchor="middle" class="small">Strobe=0</text>
+
+  <rect x="340" y="135" width="190" height="70" class="state"/>
+  <text x="435" y="164" text-anchor="middle" class="label">PROC_REQUEST</text>
+  <text x="435" y="187" text-anchor="middle" class="small">drive addr/op</text>
+
+  <rect x="610" y="135" width="190" height="70" class="state"/>
+  <text x="705" y="164" text-anchor="middle" class="label">PROC_WAIT_ACK</text>
+  <text x="705" y="187" text-anchor="middle" class="small">wait for Ack</text>
+
+  <rect x="890" y="105" width="190" height="70" class="state2"/>
+  <text x="985" y="134" text-anchor="middle" class="label">PROC_COMPLETE</text>
+  <text x="985" y="157" text-anchor="middle" class="small">capture/finish</text>
+
+  <rect x="890" y="205" width="190" height="70" class="state3"/>
+  <text x="985" y="234" text-anchor="middle" class="label">PROC_TIMEOUT</text>
+  <text x="985" y="257" text-anchor="middle" class="small">no Ack</text>
+
+  <path d="M260 170 L340 170" class="arrow"/>
+  <text x="300" y="158" text-anchor="middle" class="small">ReadMem or WriteMem</text>
+
+  <path d="M530 170 L610 170" class="arrow"/>
+  <text x="570" y="158" text-anchor="middle" class="small">Strobe=1</text>
+
+  <path d="M800 160 L890 140" class="arrow"/>
+  <text x="845" y="134" text-anchor="middle" class="small">Ack=1</text>
+
+  <path d="M800 190 L890 240" class="arrow"/>
+  <text x="850" y="232" text-anchor="middle" class="small">timeout</text>
+
+  <path d="M985 105 C1030 60 200 60 170 135" class="arrow"/>
+  <text x="590" y="78" text-anchor="middle" class="small">drop request, release Data</text>
+
+  <path d="M985 275 C1030 330 200 330 170 205" class="arrow"/>
+  <text x="590" y="326" text-anchor="middle" class="small">drop request, report failure</text>
+
+  <line x1="60" y1="380" x2="1140" y2="380" stroke="#d1d5db" stroke-width="2"/>
+
+  <text x="270" y="430" text-anchor="middle" class="subtitle">Memory Interface Thread</text>
+  <rect x="170" y="485" width="210" height="80" class="state"/>
+  <text x="275" y="516" text-anchor="middle" class="label">MEM_IDLE</text>
+  <text x="275" y="540" text-anchor="middle" class="small">Ack=0, Data=Z</text>
+
+  <rect x="635" y="485" width="230" height="80" class="state2"/>
+  <text x="750" y="516" text-anchor="middle" class="label">MEM_RESPOND</text>
+  <text x="750" y="540" text-anchor="middle" class="small">Ack=1, drive read data</text>
+
+  <path d="M380 525 L635 525" class="arrow"/>
+  <text x="507" y="495" text-anchor="middle" class="small">Strobe &amp; base match</text>
+  <text x="507" y="518" text-anchor="middle" class="small">Read xor Write</text>
+
+  <path d="M750 565 C750 650 275 650 275 565" class="arrow"/>
+  <text x="512" y="675" text-anchor="middle" class="small">Strobe=0, release Ack/Data</text>
+
+  <path d="M275 485 C275 430 750 430 750 485" class="dash"/>
+  <text x="512" y="424" text-anchor="middle" class="small">write: sample Data; read: load selected byte</text>
+
+  <rect x="930" y="464" width="190" height="122" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5" rx="8"/>
+  <text x="1025" y="493" text-anchor="middle" class="label">Address decode</text>
+  <text x="1025" y="522" text-anchor="middle" class="small">Addr[23:16] = base</text>
+  <text x="1025" y="546" text-anchor="middle" class="small">Addr[15:0] = offset</text>
+  <text x="1025" y="570" text-anchor="middle" class="small">one 64KB window</text>
+</svg>

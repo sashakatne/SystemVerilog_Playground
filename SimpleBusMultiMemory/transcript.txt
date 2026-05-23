@@ -1,0 +1,189 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:18:13 on May 23,2026
+# vlog -source -lint simplebusif.sv
+# -- Compiling interface simplebus_if
+# -- Compiling module processor_interface
+# -- Compiling module memory_interface
+# -- Compiling module top
+#
+# Top level modules:
+# 	top
+# End time: 16:18:13 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:18:13 on May 23,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec" -GNUMMEM=4
+#
+# Top level modules:
+# 	top
+#
+# Analyzing design...
+# -- Loading module top
+# -- Loading interface simplebus_if
+# -- Loading module processor_interface
+# -- Loading module memory_interface
+# Optimizing 8 design-units (inlining 0/7 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module processor_interface(fast)
+# -- Optimizing module memory_interface(fast)
+# ** Note: (vopt-143) Recognized 1 FSM in module "memory_interface(fast)".
+# -- Optimizing module memory_interface(fast__1)
+# ** Note: (vopt-143) Recognized 1 FSM in module "memory_interface(fast__1)".
+# -- Optimizing module memory_interface(fast__2)
+# ** Note: (vopt-143) Recognized 1 FSM in module "memory_interface(fast__2)".
+# -- Optimizing module memory_interface(fast__3)
+# ** Note: (vopt-143) Recognized 1 FSM in module "memory_interface(fast__3)".
+# -- Optimizing interface simplebus_if(fast__1)
+# -- Optimizing interface simplebus_if(fast)
+# Optimized design name is top_optimized
+# End time: 16:18:14 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage
+# Start time: 16:18:14 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.simplebus_if(fast__1)
+# Loading work.processor_interface(fast)
+# Loading work.memory_interface(fast)
+# Loading work.memory_interface(fast__1)
+# Loading work.memory_interface(fast__2)
+# Loading work.memory_interface(fast__3)
+# 1
+# Starting SimpleBus multi-memory self-check with NUMMEM=4
+# PASS [1]: base 0 directed write addr=0x000100 data=0x40
+# PASS [2]: base 0 directed read addr=0x000100 data=0x40
+# PASS [3]: base 1 directed write addr=0x010100 data=0x41
+# PASS [4]: base 1 directed read addr=0x010100 data=0x41
+# PASS [5]: base 2 directed write addr=0x020100 data=0x42
+# PASS [6]: base 2 directed read addr=0x020100 data=0x42
+# PASS [7]: base 3 directed write addr=0x030100 data=0x43
+# PASS [8]: base 3 directed read addr=0x030100 data=0x43
+# PASS [9]: base 0 low boundary write addr=0x000000 data=0xa5
+# PASS [10]: base 0 low boundary read addr=0x000000 data=0xa5
+# PASS [11]: base 0 high-1 boundary write addr=0x00fffe data=0x5a
+# PASS [12]: base 0 high-1 boundary read addr=0x00fffe data=0x5a
+# PASS [13]: last base high boundary write addr=0x03ffff data=0xc3
+# PASS [14]: last base high boundary read addr=0x03ffff data=0xc3
+# PASS [15]: base 0 isolated offset write addr=0x001234 data=0x80
+# PASS [16]: base 1 isolated offset write addr=0x011234 data=0x81
+# PASS [17]: base 2 isolated offset write addr=0x021234 data=0x82
+# PASS [18]: base 3 isolated offset write addr=0x031234 data=0x83
+# PASS [19]: base 0 isolated offset read addr=0x001234 data=0x80
+# PASS [20]: base 1 isolated offset read addr=0x011234 data=0x81
+# PASS [21]: base 2 isolated offset read addr=0x021234 data=0x82
+# PASS [22]: base 3 isolated offset read addr=0x031234 data=0x83
+# PASS [23]: unmapped base read timeout addr=0x0400aa
+# PASS [24]: unmapped base write timeout addr=0x0400aa data=0x99
+# Completed 24 self-checks with 0 errors
+# No errors -- passed testbench
+# ** Note: $finish    : simplebusif.sv(440)
+#    Time: 1305 ns  Iteration: 1  Instance: /top
+# 1
+# Break in Module top at simplebusif.sv line 440
+# Stopped at simplebusif.sv line 440
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:18:15 on May 23,2026
+# vcover report SimpleBusMultiMemory.ucdb
+# Coverage Report Summary Data by instance
+#
+# =================================================================================
+# === Instance: /top/g_memory[3]/mem
+# === Design Unit: work.memory_interface
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        15        14         1    93.33%
+#     Expressions                      4         2         2    50.00%
+#     FSM States                       2         2         0   100.00%
+#     FSM Transitions                  2         2         0   100.00%
+#     Statements                      26        23         3    88.46%
+#
+# =================================================================================
+# === Instance: /top/g_memory[2]/mem
+# === Design Unit: work.memory_interface
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        15        14         1    93.33%
+#     Expressions                      4         2         2    50.00%
+#     FSM States                       2         2         0   100.00%
+#     FSM Transitions                  2         2         0   100.00%
+#     Statements                      26        23         3    88.46%
+#
+# =================================================================================
+# === Instance: /top/g_memory[1]/mem
+# === Design Unit: work.memory_interface
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        15        14         1    93.33%
+#     Expressions                      4         2         2    50.00%
+#     FSM States                       2         2         0   100.00%
+#     FSM Transitions                  2         2         0   100.00%
+#     Statements                      26        23         3    88.46%
+#
+# =================================================================================
+# === Instance: /top/g_memory[0]/mem
+# === Design Unit: work.memory_interface
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        15        14         1    93.33%
+#     Expressions                      4         2         2    50.00%
+#     FSM States                       2         2         0   100.00%
+#     FSM Transitions                  2         2         0   100.00%
+#     Statements                      26        23         3    88.46%
+#
+# =================================================================================
+# === Instance: /top/cpu
+# === Design Unit: work.processor_interface
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         6         6         0   100.00%
+#     Conditions                       4         4         0   100.00%
+#     Statements                      56        56         0   100.00%
+#
+# =================================================================================
+# === Instance: /top
+# === Design Unit: work.top
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        11         5         6    45.45%
+#     Conditions                       2         0         2     0.00%
+#     Statements                      62        52        10    83.87%
+#
+#
+# Total Coverage By Instance (filtered view): 82.29%
+#
+# End time: 16:18:15 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:18:15 on May 23,2026
+# vcover report SimpleBusMultiMemory.ucdb -cvg -details
+# ** Note: (vcover-17388) No matching coverage data found in file 'SimpleBusMultiMemory.ucdb'.
+# End time: 16:18:15 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 16:18:15 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
