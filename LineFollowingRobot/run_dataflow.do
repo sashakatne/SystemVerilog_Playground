@@ -1,9 +1,11 @@
-catch {vdel -all}
+if {[file isdirectory work]} {
+    vdel -all
+}
 
 vlib work
 
 vlog -source -lint robotdataflow.sv
-vlog -source -lint testbench.sv
+vlog -source -lint +define+VCD_FILE=\"linefollowing_dataflow_waveforms.vcd\" testbench.sv
 
 # vlog -source -lint robotstructural.sv
 

@@ -3,32 +3,35 @@ Reading pref.tcl
 # 2021.3_1
 
 # do run_dataflow.do
-# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
-# No such file or directory. (errno = ENOENT)
-# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
-# 1
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 15:14:47 on May 23,2026
+# Start time: 18:06:12 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # vlog -source -lint robotdataflow.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # -- Compiling module RobotController
 # 
 # Top level modules:
 # 	RobotController
-# End time: 15:14:48 on May 23,2026, Elapsed time: 0:00:01
+# End time: 18:06:13 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 15:14:48 on May 23,2026
-# vlog -source -lint testbench.sv 
+# Start time: 18:06:13 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint "+define+VCD_FILE="linefollowing_dataflow_waveforms.vcd"" testbench.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # -- Compiling module RobotControllerGolden
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 15:14:48 on May 23,2026, Elapsed time: 0:00:00
+# End time: 18:06:13 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 15:14:48 on May 23,2026
+# Start time: 18:06:13 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # vopt top -o top_optimized "+acc" "+cover=sbfec+RobotController(rtl)." 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # 
 # Top level modules:
 # 	top
@@ -38,14 +41,16 @@ Reading pref.tcl
 # -- Loading module RobotControllerGolden
 # -- Loading module RobotController
 # Optimizing 3 design-units (inlining 0/3 module instances):
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Optimizing module top(fast)
 # -- Optimizing module RobotController(fast)
 # -- Optimizing module RobotControllerGolden(fast)
-# -- Optimizing module top(fast)
 # Optimized design name is top_optimized
-# End time: 15:14:49 on May 23,2026, Elapsed time: 0:00:01
+# End time: 18:06:14 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim top_optimized -coverage 
-# Start time: 15:14:49 on May 23,2026
+# Start time: 18:06:14 on May 23,2026
 # //  Questa Sim-64
 # //  Version 2021.3_1 linux_x86_64 Aug 15 2021
 # //
@@ -98,13 +103,13 @@ Reading pref.tcl
 # PASS: Sensors = 11110 -> ML=1 MR=1 InMotion=1 Error=0
 # PASS: Sensors = 11111 -> ML=1 MR=1 InMotion=1 Error=0
 # No errors -- passed testbench
-# ** Note: $finish    : testbench.sv(88)
-#    Time: 32 ns  Iteration: 0  Instance: /top
+# ** Note: $finish    : testbench.sv(136)
+#    Time: 64 ns  Iteration: 0  Instance: /top
 # 1
-# Break in Module top at testbench.sv line 88
-# Stopped at testbench.sv line 88
+# Break in Module top at testbench.sv line 136
+# Stopped at testbench.sv line 136
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 15:14:50 on May 23,2026
+# Start time: 18:06:15 on May 23,2026
 # vcover report RobotController_dataflow.ucdb 
 # Coverage Report Summary Data by instance
 # 
@@ -120,14 +125,18 @@ Reading pref.tcl
 # 
 # Total Coverage By Instance (filtered view): 100.00%
 # 
-# End time: 15:14:50 on May 23,2026, Elapsed time: 0:00:00
+# End time: 18:06:15 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 15:14:50 on May 23,2026
+# Start time: 18:06:15 on May 23,2026
 # vcover report RobotController_dataflow.ucdb -cvg -details 
 # ** Note: (vcover-17388) No matching coverage data found in file 'RobotController_dataflow.ucdb'.
-# End time: 15:14:50 on May 23,2026, Elapsed time: 0:00:00
+# End time: 18:06:15 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 #  quit -f
-# End time: 15:14:50 on May 23,2026, Elapsed time: 0:00:01
+# End time: 18:06:15 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0

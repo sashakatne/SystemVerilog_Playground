@@ -45,9 +45,9 @@ A module that generates non-overlapping clock signals for a given set of inputs.
 A combinational controller that drives the two motors of a line-following robot from five photo-sensors, with `InMotion` and `Error` status outputs. Shipped as both a minimal-SOP dataflow model and a gate-primitive structural model that share one self-checking testbench.
 
 - **Folder**: LineFollowingRobot
-- **Files**: `robotdataflow.sv`, `robotstructural.sv`, `testbench.sv`, `design.md`
+- **Files**: `robotdataflow.sv`, `robotstructural.sv`, `testbench.sv`, `run_dataflow.do`, `run_structural.do`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `logic_flow.png`, `waveforms.png`, `waveform_samples.csv`, `report.pdf`, `transcript_dataflow.txt`, `transcript_structural.txt`
 - **Testbenches**: `testbench.sv` (sweeps all 32 sensor patterns against a behavioural reference; prints `No errors -- passed testbench` on success)
-- **Verification**: Run `do run_dataflow.do` to verify the dataflow model, `do run_structural.do` for the structural model. Both compile with `-source -lint` and produce a UCDB.
+- **Verification**: Run `do run_dataflow.do` to verify the dataflow model, `do run_structural.do` for the structural model. Both compile with `-source -lint`; the dataflow run reports 100.00% filtered instance coverage and the waveform image is plotted from real checked-sample VCD data.
 
 ### 8. Barrel Shifter
 A parameterized N-bit left-shift barrel shifter built in behavioural dataflow style. Five stages of N-bit 2:1 muxes — controlled bit-by-bit from `ShiftAmount` — cascade shifts of N/2, N/4, ... 1, with `ShiftIn` replicated into the vacated LSB positions. The 2:1 mux is its own module, instantiated `$clog2(N)` times so a single `N` parameter resizes both the data path and the cascade depth.

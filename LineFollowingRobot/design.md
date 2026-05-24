@@ -228,3 +228,13 @@ Total primitive count: 6 inverters (5 sensor + 1 for Error) + 10 ANDs + 3 ORs.
   the DUT against a separate behavioural Known-Good-Device that re-derives the outputs
   from the contiguity / centre-sensor rules above, so any disagreement signals a typo
   rather than a methodology bug.
+
+## Generated artifacts
+
+- `logic_flow.png` is a combinational logic-flow diagram for the classifier,
+  motor-output logic, and derived status signals. It is intentionally not named
+  as an FSM diagram because the controller stores no state.
+- `waveform_samples.csv` is derived from the dataflow-run simulation VCD and
+  contains every checked sensor pattern.
+- `waveforms.png` is plotted from those real simulation samples.
+- `report.pdf` combines the logic-flow diagram and waveform snapshot.
