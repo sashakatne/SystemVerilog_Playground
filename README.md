@@ -77,9 +77,25 @@ A packed-union MIPS instruction decoder that views the same 32-bit word as raw b
 A SimpleBus processor/memory model that uses a SystemVerilog interface, processor and memory modports, 24-bit addresses, and a generated bank of 64KB memory interfaces selected by the upper address byte.
 
 - **Folder**: SimpleBusMultiMemory
-- **Files**: `simplebusif.sv`, `design.md`, `fsm.svg`, `fsm.pdf`, `fsm_blueprint.png`
+- **Files**: `simplebusif.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `fsm.png`, `waveforms.png`, `report.pdf`
 - **Testbench**: `top` in `simplebusif.sv` verifies generated memory selection, read/write transfers, shared local-offset isolation, boundary offsets, and unmapped-base timeout behavior.
 - **Verification**: Run `do run.do`. Override the number of memories with `set NUMMEM <count>` before running; the default is 4. The testbench ends with `No errors -- passed testbench` on success.
+
+### 12. Headlamp Button Controller
+A synchronous button controller with short-press, hold, and recall outputs. The design uses a four-state one-hot FSM and parameterized timing thresholds.
+
+- **Folder**: HeadlampButtonController
+- **Files**: `buttons.sv`, `assertions.sv`, `testbench.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `fsm.png`, `waveforms.png`, `report.pdf`
+- **Testbench**: `top` in `testbench.sv` instantiates `Buttons B0`, binds `ButtonAssertions BA0`, and checks reset, short press, immediate re-press, hold threshold, extended hold, idle recall, recall persistence, and recall clear on release.
+- **Verification**: Run `do run.do`. The default thresholds are `HOLDTICKS=1000` and `RECALLTICKS=8000`; the testbench ends with `No errors -- passed testbench` on success.
+
+### 13. Floating-Point Class Randomization
+A class-based IEEE-754 single-precision bit-pattern generator with randomizable sign, exponent, and fraction attributes plus denormal, NaN, infinity, and exponent-range constraints.
+
+- **Folder**: FloatingPointClassRandomization
+- **Files**: `floatingpointpkg.sv`, `fpclass.sv`, `testbench.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `fsm.png`, `waveforms.png`, `waveform_samples.csv`, `report.pdf`, `transcript.txt`, `transcript_smoke.txt`
+- **Testbench**: `top` in `testbench.sv` checks direct component-to-float construction, directed classification probes, each randomization constraint by mode, and one combined finite ranged-normal mode.
+- **Verification**: Run `do run.do`. The default run completes 6005 self-checks with 0 errors and prints `No errors -- passed testbench`.
 
 ## Verification
 
