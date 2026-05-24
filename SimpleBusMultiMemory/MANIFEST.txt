@@ -37,10 +37,10 @@ Caveats:
 Files in this directory:
   MANIFEST.txt
   design.md
-  fsm.pdf
-  fsm.svg
-  fsm_blueprint.png
+  fsm.png
+  report.pdf
   run.do
   simplebusif.sv
   transcript.txt
   transcript_nummem8.txt
+  waveforms.png

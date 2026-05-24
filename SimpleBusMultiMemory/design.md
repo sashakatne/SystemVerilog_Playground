@@ -50,6 +50,9 @@ No errors -- passed testbench
 
 ## Diagrams
 
-- `fsm.svg` and `fsm.pdf` are the exact-label FSM diagrams used as the main
-  design reference.
-- `fsm_blueprint.png` is an AI-generated blueprint-style visual companion.
+- `fsm.png` is the black-and-white pencil sketch FSM generated from the
+  state/transition list.
+- `waveforms.png` is rendered from the simulation waveform data. Light dotted
+  vertical guides mark each `clk` rising edge.
+- `report.pdf` combines the FSM sketch and waveform snapshot. Raw VCD/WLF dumps
+  are intentionally excluded.
