@@ -1,0 +1,62 @@
+Run:        Headlamp button controller validation
+Simulator:  Questa 2021.3_1
+
+Purpose:
+  Verify a synchronous button controller with short-press, hold, and recall
+  behavior. The design uses a four-state one-hot FSM and parameterized timing
+  thresholds.
+
+Commands executed from this directory:
+  1. vsim -c -do 'do run.do; quit -f' > transcript_default.txt
+  2. vsim -c -do 'set HOLDTICKS 4; set RECALLTICKS 10; do run.do; quit -f' > transcript_fast.txt
+  3. vsim -c -do 'set HOLDTICKS 4; set RECALLTICKS 10; set ASSERT_RECALLTICKS 8; set EXPECT_ASSERTION_FAILURE 1; do run.do; quit -f' > transcript_mismatch.txt
+
+Results:
+  Default HOLDTICKS=1000, RECALLTICKS=8000:
+    vlog buttons.sv assertions.sv testbench.sv ... Errors: 0, Warnings: 0
+    vopt top ...................................... Errors: 0, Warnings: 0
+    Self-checks ................................... 18 PASS lines, 0 FAIL lines
+    Final verdict ................................. 'No errors -- passed testbench'
+    Assertion coverage ............................ 100.00%
+    FSM state coverage ............................ 100.00%
+    FSM transition coverage ....................... 75.00%
+    Total coverage by instance .................... 88.24%
+
+  Fast HOLDTICKS=4, RECALLTICKS=10:
+    vlog buttons.sv assertions.sv testbench.sv ... Errors: 0, Warnings: 0
+    vopt top ...................................... Errors: 0, Warnings: 0
+    Self-checks ................................... 18 PASS lines, 0 FAIL lines
+    Final verdict ................................. 'No errors -- passed testbench'
+    Assertion coverage ............................ 100.00%
+    FSM state coverage ............................ 100.00%
+    FSM transition coverage ....................... 75.00%
+    Total coverage by instance .................... 88.24%
+
+  Intentional checker mismatch:
+    Design timing ................................. HOLDTICKS=4, RECALLTICKS=10
+    Assertion timing .............................. HOLDTICKS=4, RECALLTICKS=8
+    Self-checks ................................... 18 PASS lines, 0 FAIL lines
+    Expected assertion diagnostics ................ 4 EXPECTED ASSERTION FAILURE lines
+    Transcript ending ............................. Errors: 4, Warnings: 0
+
+Caveats:
+  - The mismatch run is a negative validation mode; the four error diagnostics
+    are intentional and are labelled as expected assertion failures.
+  - The detailed covergroup report prints a benign no-matching-coverage note
+    because this testbench uses code coverage, FSM coverage, assertion coverage,
+    and self-checking comparisons rather than covergroups.
+  - Raw VCD, WLF, work library, and UCDB files are not retained in this folder.
+
+Files in this directory:
+  MANIFEST.txt
+  assertions.sv
+  buttons.sv
+  design.md
+  fsm.png
+  report.pdf
+  run.do
+  testbench.sv
+  transcript_default.txt
+  transcript_fast.txt
+  transcript_mismatch.txt
+  waveforms.png

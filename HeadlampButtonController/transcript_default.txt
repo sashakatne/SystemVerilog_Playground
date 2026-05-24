@@ -1,0 +1,149 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:08:45 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint "+define+ASSERT_HOLDTICKS_VALUE=1000" "+define+ASSERT_RECALLTICKS_VALUE=8000" "+define+EXPECT_ASSERTION_FAILURE_VALUE=0" buttons.sv assertions.sv testbench.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling module Buttons
+# -- Compiling module ButtonAssertions
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 17:08:46 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:08:46 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vopt top -o top_optimized "+acc" "+cover=sbfec" -GHOLDTICKS=1000 -GRECALLTICKS=8000 -GDESIGN_HOLDTICKS=1000 -GDESIGN_RECALLTICKS=8000 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module Buttons
+# -- Loading module ButtonAssertions
+# Optimizing 3 design-units (inlining 0/3 module instances):
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Optimizing module ButtonAssertions(fast)
+# -- Optimizing module top(fast)
+# -- Optimizing module Buttons(fast)
+# ** Note: (vopt-143) Recognized 1 FSM in module "Buttons(fast)".
+# Optimized design name is top_optimized
+# End time: 17:08:46 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 17:08:46 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.Buttons(fast)
+# Loading work.ButtonAssertions(fast)
+# 1
+# Starting headlamp button self-check: design HOLDTICKS=1000 RECALLTICKS=8000, assertions HOLDTICKS=1000 RECALLTICKS=8000
+# PASS [1]: reset clears outputs Press/Hold/Recall=0/0/0
+# PASS [2]: short press below hold threshold before release Press/Hold/Recall=0/0/0
+# PASS [3]: short press below hold threshold release pulse Press/Hold/Recall=1/0/0
+# PASS [4]: short press below hold threshold press clears Press/Hold/Recall=0/0/0
+# PASS [5]: short press followed by immediate re-press first release pulse Press/Hold/Recall=1/0/0
+# PASS [6]: short press followed by immediate re-press immediate re-press clears pulse Press/Hold/Recall=0/0/0
+# PASS [7]: short press followed by immediate re-press second release pulse Press/Hold/Recall=1/0/0
+# PASS [8]: short press followed by immediate re-press second pulse clears Press/Hold/Recall=0/0/0
+# PASS [9]: long press at hold threshold hold active Press/Hold/Recall=0/1/0
+# PASS [10]: long press at hold threshold release clears hold Press/Hold/Recall=0/0/0
+# PASS [11]: long press at hold threshold stays clear Press/Hold/Recall=0/0/0
+# PASS [12]: idle interval sets recall Press/Hold/Recall=0/0/1
+# PASS [13]: recall remains during next press Press/Hold/Recall=0/0/1
+# PASS [14]: release clears recall and pulses press Press/Hold/Recall=1/0/0
+# PASS [15]: post-recall press clears Press/Hold/Recall=0/0/0
+# PASS [16]: extended hold remains hold-only hold active Press/Hold/Recall=0/1/0
+# PASS [17]: extended hold remains hold-only release clears hold Press/Hold/Recall=0/0/0
+# PASS [18]: extended hold remains hold-only stays clear Press/Hold/Recall=0/0/0
+# Completed 18 self-checks with 0 errors
+# No errors -- passed testbench
+# ** Note: $finish    : testbench.sv(226)
+#    Time: 120216 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at testbench.sv line 226
+# Stopped at testbench.sv line 226
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:08:47 on May 23,2026
+# vcover report HeadlampButtonController.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/B0/BA0
+# === Design Unit: work.ButtonAssertions
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Assertions                       7         7         0   100.00%
+#     Branches                        14        14         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Expressions                      1         1         0   100.00%
+#     Statements                      23        21         2    91.30%
+# 
+# =================================================================================
+# === Instance: /top/B0
+# === Design Unit: work.Buttons
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        21        20         1    95.23%
+#     Conditions                       4         4         0   100.00%
+#     Expressions                      1         1         0   100.00%
+#     FSM States                       4         4         0   100.00%
+#     FSM Transitions                  8         6         2    75.00%
+#     Statements                      33        28         5    84.84%
+# 
+# =================================================================================
+# === Instance: /top
+# === Design Unit: work.top
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         2         2    50.00%
+#     Conditions                       4         0         4     0.00%
+#     Statements                      80        74         6    92.50%
+# 
+# 
+# TOTAL ASSERTION COVERAGE: 100.00%  ASSERTIONS: 7
+# 
+# Total Coverage By Instance (filtered view): 88.24%
+# 
+# End time: 17:08:47 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:08:47 on May 23,2026
+# vcover report HeadlampButtonController.ucdb -cvg -details 
+# ** Note: (vcover-17388) No matching coverage data found in file 'HeadlampButtonController.ucdb'.
+# End time: 17:08:47 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+#  quit -f
+# End time: 17:08:47 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
