@@ -52,21 +52,49 @@ module NxN_multiplier (multiplicand, multiplier, product);
     wire [N-1:0] m_out [N-1:0]; // Multiplicand bits for next cells
     wire [N-1:0] q_out [N-1:0]; // Multiplier bits for next cells
 
-    // Generate the NxN grid of multiplier cells
+    // Generate the NxN grid of multiplier cells.
+    // The cell inputs depend on (i, j); ternary selects with i-1 / j-1
+    // indices triggered vopt-2576/2696 BSOB warnings on row 0 / column 0
+    // even though those branches are never live. The generate-if structure
+    // below picks the right wire per (i, j) tile, so the out-of-range
+    // references never elaborate.
     genvar i, j, k;
     generate
         for (i = 0; i < N; i++) begin : rows
             for (j = 0; j < N; j++) begin : cols
-                // Instantiate the multiplier cell
+                wire m_in, q_in, pp_in_w, carry_in_w;
+
+                if (i == 0)
+                    assign m_in = multiplicand[j];
+                else
+                    assign m_in = m_out[i-1][j];
+
+                if (j == 0)
+                    assign q_in = multiplier[i];
+                else
+                    assign q_in = q_out[i][j-1];
+
+                if (i == 0)
+                    assign pp_in_w = 1'b0;
+                else if (j < N-1)
+                    assign pp_in_w = pp[i-1][j+1];
+                else
+                    assign pp_in_w = carry[i-1][N-1];
+
+                if (j == 0)
+                    assign carry_in_w = 1'b0;
+                else
+                    assign carry_in_w = carry[i][j-1];
+
                 multiplier_cell mc(
-                    .m(i == 0 ? multiplicand[j] : m_out[i-1][j]), // First row gets multiplicand bits
-                    .q(j == 0 ? multiplier[i] : q_out[i][j-1]), // First column gets multiplier bits
-                    .pp_in(i == 0 ? '0 : (j < N-1 ? pp[i-1][j+1] : carry[i-1][N-1])),
-                    .carry_in(j == 0 ? '0 : carry[i][j-1]), // Incoming carry
-                    .pp_out(pp[i][j]), // Outgoing partial product
-                    .carry_out(carry[i][j]), // Outgoing carry
-                    .m_out(m_out[i][j]), // Multiplicand bit for next cell
-                    .q_out(q_out[i][j]) // Multiplier bit for next cell
+                    .m(m_in),
+                    .q(q_in),
+                    .pp_in(pp_in_w),
+                    .carry_in(carry_in_w),
+                    .pp_out(pp[i][j]),
+                    .carry_out(carry[i][j]),
+                    .m_out(m_out[i][j]),
+                    .q_out(q_out[i][j])
                 );
             end
         end

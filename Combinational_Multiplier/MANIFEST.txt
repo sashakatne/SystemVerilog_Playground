@@ -1,0 +1,56 @@
+Run:        Combinational NxN multiplier (default N=4)
+Start UTC:  2026-05-24T00-04-56Z
+End   UTC:  2026-05-24T00-04-59Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the structural NxN combinational multiplier built from a grid of
+  multiplier_cell (full-adder + AND-gate) instances. At N=4 the exhaustive
+  sweep is 16 x 16 = 256 multiplications, each compared against the
+  reference `multiplicand * multiplier` predictor.
+
+Source changes in this commit:
+  combmultiplier.sv (NxN_multiplier generate block, lines ~55-90):
+    The original generate used ternary selects with `m_out[i-1][j]`,
+    `q_out[i][j-1]`, `pp[i-1][j+1]`, `carry[i-1][N-1]`, and `carry[i][j-1]`
+    that referenced i-1 / j-1 even on row 0 / column 0 where those indices
+    are out of bounds. Even though the ternary made those branches dead
+    code, vopt still flagged 36 vopt-2576 (BSOB) and vopt-2696 (Index -1)
+    warnings during optimization.
+    The fix replaces the ternary cell-input expressions with a per-tile
+    set of intermediate wires (`m_in`, `q_in`, `pp_in_w`, `carry_in_w`)
+    driven by a generate-if chain so the i-1 / j-1 references never
+    elaborate on the boundary tiles. The structural circuit is identical;
+    only the elaboration shape changed. With the fix every vlog/vopt stage
+    reports Errors: 0, Warnings: 0.
+
+  combmultipliertb.sv lines 34, 36: '*** FAILED ***' / '*** PASSED ***' ->
+    'Failed testbench' / 'No errors -- passed testbench'.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint combmultiplier.sv
+  vlog -source -lint combmultipliertb.sv
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    256 (multiplicand, multiplier) pairs (N=4 exhaustive sweep), each
+    self-checked against `multiplicand * multiplier`. Zero error prints.
+    Final verdict: 'No errors -- passed testbench'
+
+Caveats:
+  - At N=4 the input space is small enough to enumerate exhaustively. If
+    the parameter is raised the sweep grows as 2^(2N); the TB loop in
+    combmultipliertb.sv uses `for ... < (1 << N)` so it still terminates.
+
+Files in this directory:
+  MANIFEST.txt
+  combmultiplier.sv
+  combmultipliertb.sv
+  run.do
+  transcript.txt
