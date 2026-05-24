@@ -46,7 +46,7 @@ always_ff @(posedge clock)
 	if (load)
 		m <= din;
 	else if (enable)
-		m <= m + '1;
+		m <= m + 1'b1;
 	else
 		m <= m;
 	end
@@ -107,19 +107,23 @@ output busy;
 wire [ADDRWIDTH-1:0] dina, dinb, dcnt;
 wire [ADDRWIDTH-1:0] addrm;
 wire [DATAWIDTH-1:0] dinm;
+wire busy_ff;
+wire mem_we;
 
 Register #(ADDRWIDTH) R1 (ld_high,  addr, dina);
 Register #(ADDRWIDTH) R2 (ld_low,	addr, dcnt);
 
 UpCounter #(ADDRWIDTH) UC (clock, dcnt, ld_cnt, cnt_en, dinb);
-JKFF BusyFF (clock, set_busy, clr_busy, busy);
+JKFF BusyFF (clock, set_busy, clr_busy, busy_ff);
+assign busy = busy_ff | set_busy;
 
 Mux2x1 #(ADDRWIDTH) AddrMux(dinb, addr, addr_sel, addrm);
 Mux2x1 #(DATAWIDTH) DataMux('0,    din, addr_sel, dinm);
 
 Comparator #(ADDRWIDTH) C (dina, dinb, cnt_eq);
 
-Memory64x8 #(ADDRWIDTH, DATAWIDTH) Mem (clock, addrm, dinm, write | zero_we, dout);
+assign mem_we = zero_we | (write & !busy);
+Memory64x8 #(ADDRWIDTH, DATAWIDTH) Mem (clock, addrm, dinm, mem_we, dout);
 
 endmodule
 
@@ -153,26 +157,32 @@ end
 always_comb
 begin
 {set_busy, clr_busy, ld_cnt, cnt_en, addr_sel, zero_we} = '0;
-case (State) 
-	Init:
-		begin
-		clr_busy = '1;
-		end
+if (reset)
+	clr_busy = '1;
+else
+	case (State)
+		Init:
+			begin
+			if (zero)
+				set_busy = '1;
+			else
+				clr_busy = '1;
+			end
 		
-	Load:
-		begin			
-		set_busy = '1;
-		ld_cnt = '1;
-		end
-		
-	Write:
-		begin
-		zero_we = '1;		
-		set_busy = '1;
-		cnt_en = '1;
-		addr_sel = '1;
-		end
-endcase
+		Load:
+			begin
+			set_busy = '1;
+			ld_cnt = '1;
+			end
+
+		Write:
+			begin
+			zero_we = '1;
+			set_busy = '1;
+			cnt_en = '1;
+			addr_sel = '1;
+			end
+	endcase
 end
 
 // Next state logic
