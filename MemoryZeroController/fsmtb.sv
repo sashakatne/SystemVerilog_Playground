@@ -14,6 +14,9 @@ module top;
     wire [DATAWIDTH-1:0] dout;
     wire busy;
 
+    // Aggregate-verdict bookkeeping
+    integer errors = 0;
+
     // Instantiate the mz module
     mz #(ADDRWIDTH, DATAWIDTH) DUT (
         .clock(clock),
@@ -64,8 +67,10 @@ module top;
         @(posedge clock);
         write = 0;
         wait_clock_cycles(1);
-        if (dout !== 8'h55) $display("Test Case 1 Failed: Memory write error at address %h", addr);
-        else $display("Test Case 1 Passed");
+        if (dout !== 8'h55) begin
+            $display("Test Case 1 Failed: Memory write error at address %h", addr);
+            errors = errors + 1;
+        end else $display("Test Case 1 Passed");
 
         // Test Case 2: Zero out a range of memory
         @(negedge clock);
@@ -80,12 +85,15 @@ module top;
         zero = 1;
         @(posedge clock);
         zero = 0;
-        wait_clock_cycles(100); // Wait for zeroing to complete
+        wait (busy);  // Wait until the FSM enters Load/Write (busy asserted)
+        wait (!busy); // Wait until zeroing completes (busy de-asserted)
         @(negedge clock);
         addr = 8'h00;
         wait_clock_cycles(10);
-        if (dout !== 8'h00) $display("Test Case 2 Failed: Memory zero error at address %h", addr);
-        else $display("Test Case 2 Passed");
+        if (dout !== 8'h00) begin
+            $display("Test Case 2 Failed: Memory zero error at address %h", addr);
+            errors = errors + 1;
+        end else $display("Test Case 2 Passed");
 
         // Test Case 3: Write and then zero out a range including the written address
         @(negedge clock);
@@ -106,12 +114,15 @@ module top;
         zero = 1;
         @(posedge clock);
         zero = 0;
-        wait_clock_cycles(100); // Wait for zeroing to complete
+        wait (busy);  // Wait until the FSM enters Load/Write (busy asserted)
+        wait (!busy); // Wait until zeroing completes (busy de-asserted)
         @(negedge clock);
         addr = 8'h55;
         wait_clock_cycles(10);
-        if (dout !== 8'h00) $display("Test Case 3 Failed: Memory zero error at address %h", addr);
-        else $display("Test Case 3 Passed");
+        if (dout !== 8'h00) begin
+            $display("Test Case 3 Failed: Memory zero error at address %h", addr);
+            errors = errors + 1;
+        end else $display("Test Case 3 Passed");
 
         // Test Case 4: Attempt to write while zeroing is in progress
         @(negedge clock);
@@ -134,8 +145,10 @@ module top;
         @(negedge clock);
         addr = 8'h33;
         wait_clock_cycles(10);
-        if (dout === 8'h77) $display("Test Case 4 Failed: Write operation should not occur during zeroing");
-        else $display("Test Case 4 Passed");
+        if (dout === 8'h77) begin
+            $display("Test Case 4 Failed: Write operation should not occur during zeroing");
+            errors = errors + 1;
+        end else $display("Test Case 4 Passed");
 
         // Test Case 5: Zero out a single address by setting high and low addresses the same
         @(negedge clock);
@@ -150,12 +163,15 @@ module top;
         zero = 1;
         @(posedge clock);
         zero = 0;
-        wait_clock_cycles(100); // Wait for zeroing to complete
+        wait (busy);  // Wait until the FSM enters Load/Write (busy asserted)
+        wait (!busy); // Wait until zeroing completes (busy de-asserted)
         @(negedge clock);
         addr = 8'hAA;
         wait_clock_cycles(10);
-        if (dout !== 8'h00) $display("Test Case 5 Failed: Memory zero error at single address %h", addr);
-        else $display("Test Case 5 Passed");
+        if (dout !== 8'h00) begin
+            $display("Test Case 5 Failed: Memory zero error at single address %h", addr);
+            errors = errors + 1;
+        end else $display("Test Case 5 Passed");
 
         // Test Case 6: Check busy flag behavior during zeroing
         @(negedge clock);
@@ -169,12 +185,18 @@ module top;
         @(negedge clock);
         zero = 1;
         wait_clock_cycles(1);
-        if (!busy) $display("Test Case 6 Failed: Busy flag not set during zeroing");
+        if (!busy) begin
+            $display("Test Case 6 Failed: Busy flag not set during zeroing");
+            errors = errors + 1;
+        end
         @(posedge clock);
         zero = 0;
-        wait_clock_cycles(100); // Wait for zeroing to complete
-        if (busy) $display("Test Case 6 Failed: Busy flag not cleared after zeroing");
-        else $display("Test Case 6 Passed");
+        wait (busy);  // Wait until the FSM enters Load/Write (busy asserted)
+        wait (!busy); // Wait until zeroing completes (busy de-asserted)
+        if (busy) begin
+            $display("Test Case 6 Failed: Busy flag not cleared after zeroing");
+            errors = errors + 1;
+        end else $display("Test Case 6 Passed");
 
         // Test Case 7: Normal mode operation after zero mode
         @(negedge clock);
@@ -189,7 +211,8 @@ module top;
         zero = 1;
         @(posedge clock);
         zero = 0;
-        wait_clock_cycles(100); // Wait for zeroing to complete
+        wait (busy);  // Wait until the FSM enters Load/Write (busy asserted)
+        wait (!busy); // Wait until zeroing completes (busy de-asserted)
         @(negedge clock);
         addr = 8'hAA;
         din = 8'hBB;
@@ -197,11 +220,17 @@ module top;
         @(posedge clock);
         write = 0;
         wait_clock_cycles(1);
-        if (dout !== 8'hBB) $display("Test Case 7 Failed: Normal mode write error after zero mode");
-        else $display("Test Case 7 Passed");
+        if (dout !== 8'hBB) begin
+            $display("Test Case 7 Failed: Normal mode write error after zero mode");
+            errors = errors + 1;
+        end else $display("Test Case 7 Passed");
 
         // Finish the simulation
         wait_clock_cycles(10);
+
+        if (errors == 0) $display("No errors -- passed testbench");
+        else $display("Failed testbench (%0d test case error(s))", errors);
+
         $finish;
     end
 

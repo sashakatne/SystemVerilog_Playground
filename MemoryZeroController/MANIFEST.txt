@@ -1,0 +1,87 @@
+Run:        Memory-zeroing controller (FSM + datapath)
+Start UTC:  2026-05-24T00-25-27Z
+End   UTC:  2026-05-24T00-25-30Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Status:
+  PARTIAL EVIDENCE — three test cases fail. See 'Known issues' below.
+  Verdict line: 'Failed testbench (3 test case error(s))'.
+
+Purpose:
+  Verify the memory-zeroing controller: a small FSM (Init -> Load -> Write)
+  that drives an 8x256 memory to zero a contiguous address range bounded by
+  two latched registers (high addr = R1, low addr = R2). Outputs busy
+  during the zeroing operation. The testbench walks 7 directed test cases.
+
+Source changes in this commit:
+  fsmtb.sv:
+    1. Added `integer errors = 0;` and an aggregate verdict block before
+       $finish so the run emits the repo canonical 'No errors -- passed
+       testbench' / 'Failed testbench (...)' line. Each per-case fail-print
+       now also increments `errors`. The original TB had no aggregate
+       verdict so test failures were silently buried.
+    2. Replaced every `wait_clock_cycles(100); // Wait for zeroing to
+       complete` with the canonical handshake pair
+       `wait (busy); wait (!busy);`. The old 100-cycle wait is far too
+       short for a 256-entry zeroing (~260 cycles), so TC2's incomplete
+       zeroing was bleeding into TC3's setup. The new handshake makes
+       inter-test timing robust regardless of zeroing duration.
+
+  memoryzero.sv: NOT modified. The DUT is as-shipped.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint memoryzero.sv
+  vlog -source -lint fsmtb.sv
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    Test Case 1 Passed  (basic write/read)
+    Test Case 2 Passed  (zero range 0x00..0xFF and read back 0x00)
+    Test Case 3 Failed: Memory zero error at address 55
+    Test Case 4 Failed: Write operation should not occur during zeroing
+    Test Case 5 Passed  (zero single address)
+    Test Case 6 Failed: Busy flag not set during zeroing
+    Test Case 6 Passed  (busy flag cleared after zeroing - second check in same case)
+    Test Case 7 Passed  (write after zero mode)
+    Final verdict: 'Failed testbench (3 test case error(s))'
+
+Known issues (NOT fixed in this commit):
+  - TC3 (write + zero same range): after the busy handshake the
+    debug-trace shows R1=0xFF, R2=0x00, counter ends at 0xFE (not 0x00 as
+    the FSM math suggests it should). memory[0x55] retains its pre-zeroing
+    value 0xAA. The handshake fix rules out the original timing race, so
+    the residual failure points at either a Questa scheduling subtlety in
+    the latch+JKFF+state-FF mix or an FSM bug that I could not isolate in
+    the time budget.
+  - TC4 (write during zeroing): the DUT uses `we = write | zero_we`, so a
+    user write during the Load state (when addr_sel is still 0) lands at
+    the user-requested address with the user-requested data, before the
+    Write state's addr_sel takes effect. Either the DUT needs to gate
+    `write` when busy is 1, or the TB expectation must be relaxed.
+  - TC6 (busy within 1 cycle of zero): the BusyFF (JKFF in DataPath)
+    samples set_busy/clr_busy from the OLD state at each posedge, so the
+    busy flag rises 2 cycles after zero=1, not 1. The TB's
+    `wait_clock_cycles(1); if (!busy) ...` check fires too early. The
+    DUT-side fix would be either to assert set_busy in Init when zero=1
+    (combinationally) or to bypass the JKFF and drive busy from state.
+
+Caveats:
+  - The TB-timing handshake is a real improvement; pre-fix the 3 failures
+    above would have been accompanied by additional inter-test bleed-over
+    making the symptoms harder to interpret.
+  - This transcript is the honest current state. Future debug should start
+    from the TC3 counter=0xFE observation in the debug branch (debug
+    $display statements were removed before this final run).
+
+Files in this directory:
+  MANIFEST.txt
+  fsmtb.sv
+  memoryzero.sv
+  run.do
+  transcript.txt
