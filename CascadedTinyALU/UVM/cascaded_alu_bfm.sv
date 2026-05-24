@@ -12,6 +12,7 @@ interface cascaded_alu_bfm;
 	// Clock Generation for Write and Read domains
 	initial begin
 		clk = '0;
+		rst = '1;
 		forever begin
 			#(CYCLE_TIME/2) clk = ~clk;
 		end

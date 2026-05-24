@@ -1,0 +1,109 @@
+Run:        Cascaded TinyALU, UVM testbench
+Start UTC:  2026-05-23T23-48-59Z
+End   UTC:  2026-05-23T23-49-15Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu  (UVM library from Questa install)
+
+Purpose:
+  Verify the cascaded ALU via a UVM testbench (test, environment, agent,
+  driver, monitor, scoreboard, sequencer + sequence, coverage subscriber,
+  BFM interface). Exercises 10,000 randomized transactions through the
+  standard UVM phase machinery and reports correctness via UVM_ERROR counts.
+
+Source changes in this commit:
+  monitor.sv (line 47):
+    - mon_tx.op_sel = bfm.op_sel;
+    + mon_tx.op_sel = op_type'(bfm.op_sel);
+    The BFM declares op_sel as `logic [2:0]` and the transaction declares it
+    as `op_type` (enum). Without the explicit cast Questa 2021.3_1 refuses
+    elaboration with vsim-8386 'Illegal assignment to type op_type from
+    type reg[2:0]'. Adding the cast resolves the elaboration failure; the
+    bit pattern is preserved.
+
+  cascaded_alu_bfm.sv (clock generation initial block):
+    Added `rst = '1;` at the start of the clock-generation initial block so
+    rst has a defined value at t=0. Without this, the first posedge clk
+    inside cascaded_alu.sv's three-cycle FSM saw mul_state = X with rst = X,
+    triggering vsim-8315 'No condition is true in the unique case statement'
+    once at the start of every UVM run. The ConventionalTB and ClassBasedTB
+    do not see this warning because their testbenches assert rst = '1
+    immediately on entry.
+
+  test.sv:
+    Added a report_phase override that reads
+    uvm_report_server::get_severity_count(UVM_ERROR/UVM_FATAL) and prints
+    the repo's canonical 'No errors -- passed testbench' or 'Failed
+    testbench' verdict before the UVM REPORT SUMMARY block. This lets the
+    transcript carry the same pass/fail line as Arbiter, BrailleDecoder,
+    and the two non-UVM CascadedTinyALU variants. The original UVM TB
+    relied on uvm_top.finish_on_completion = 1 to call $finish without
+    emitting a verdict in the repo's idiom.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint cascaded_alu.sv
+  vlog -source -lint cascaded_alu_pkg.sv  (UVM package wrapping all classes)
+  vlog -source -lint top.sv               (UVM top module + DUT instantiation)
+  vlog -source -lint test.sv              (test class with report_phase verdict)
+  vlog -source -lint driver.sv
+  vlog -source -lint environment.sv
+  vlog -source -lint cascaded_alu_bfm.sv  (BFM interface with rst-init fix)
+  vlog -source -lint agent.sv
+  vlog -source -lint scoreboard.sv
+  vlog -source -lint sequence.sv
+  vlog -source -lint sequencer.sv
+  vlog -source -lint coverage.sv
+  vlog -source -lint monitor.sv           (monitor with enum-cast fix)
+
+Results:
+  Compile and elaboration:
+    Every vlog stage ........... Errors: 0, Warnings: 0
+    vopt top -> top_optimized .. Errors: 0, Warnings: 0
+  Simulation:
+    UVM_WARNING : 0
+    UVM_ERROR   : 0
+    UVM_FATAL   : 0
+    Final verdict: 'No errors -- passed testbench'
+    Transactions: 10,000 (TX_COUNT in cascaded_alu_pkg.sv)
+    UVM REPORT SUMMARY block also present below the canonical line.
+  Coverage:
+    Two covergroups: op_type sequencing (op_cov) and corner crosses
+    (zeros_or_ones_on_ops) in coverage.sv.
+    TOTAL COVERGROUP COVERAGE: 97.74%
+    Total Coverage By Instance (filtered view): 97.74%
+    UCDB written on farm; not committed.
+
+Caveats:
+  - 97.74% covergroup coverage rather than 100% reflects random vector
+    underflow on the corner-cross bins that require both A and B to be 0x0
+    or 0xFFFF simultaneously. Increasing TX_COUNT or adding a directed
+    sequence would close the gap; the existing TB intent (random) is
+    preserved here.
+  - $random in sequence.sv is unseeded; vectors are deterministic on this
+    Questa build but not portable across seeds.
+  - The TB enables the DATA_CORRUPTION_BUG +define injection path
+    (commented out in run.do line 6) for negative testing. This run uses
+    the clean DUT compile; uncomment the bug line to verify the scoreboard
+    catches a known defect.
+
+Files in this directory:
+  MANIFEST.txt
+  agent.sv
+  cascaded_alu.sv
+  cascaded_alu_bfm.sv
+  cascaded_alu_pkg.sv
+  coverage.sv
+  driver.sv
+  environment.sv
+  monitor.sv
+  run.do
+  scoreboard.sv
+  sequence.sv
+  sequencer.sv
+  test.sv
+  top.sv
+  transaction.sv
+  transcript.txt

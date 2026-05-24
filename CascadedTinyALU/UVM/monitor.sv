@@ -44,7 +44,7 @@ class cascaded_alu_monitor extends uvm_monitor;
       mon_tx.start_op = bfm.start_op;
       mon_tx.A = bfm.A;
       mon_tx.B = bfm.B;
-      mon_tx.op_sel = bfm.op_sel;
+      mon_tx.op_sel = op_type'(bfm.op_sel);
       mon_tx.end_op = bfm.end_op;
       mon_tx.result = bfm.result;
 

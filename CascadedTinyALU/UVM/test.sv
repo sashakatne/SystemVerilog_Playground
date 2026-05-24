@@ -45,7 +45,23 @@ class cascaded_alu_test extends uvm_test;
             sequence_h.start(environment_h.agent_h.sequencer_h);
         join
 
-        phase.drop_objection(this); 
+        phase.drop_objection(this);
     endtask
-  
+
+    // Report phase emits the repo's canonical verdict so the captured
+    // transcript carries the same pass/fail line as the conventional and
+    // class-based testbenches alongside the UVM_REPORT_SUMMARY block.
+    function void report_phase(uvm_phase phase);
+        uvm_report_server svr;
+        int err_count;
+        super.report_phase(phase);
+        svr = uvm_report_server::get_server();
+        err_count = svr.get_severity_count(UVM_ERROR)
+                  + svr.get_severity_count(UVM_FATAL);
+        if (err_count == 0)
+            $display("No errors -- passed testbench");
+        else
+            $display("Failed testbench");
+    endfunction : report_phase
+
 endclass
