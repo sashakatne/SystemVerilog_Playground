@@ -2,13 +2,12 @@ Reading pref.tcl
 
 # 2021.3_1
 
-# do run_mealy.do
-# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
-# No such file or directory. (errno = ENOENT)
-# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
-# 1
+# catch {vdel -all}
+# 0
+#  vlib work
+#  vlog -source -lint FFO32.sv
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 16:56:09 on May 23,2026
+# Start time: 20:39:44 on May 23,2026
 # vlog -source -lint FFO32.sv 
 # -- Compiling module FFO32
 # -- Compiling module LZD2
@@ -16,19 +15,21 @@ Reading pref.tcl
 # 
 # Top level modules:
 # 	FFO32
-# End time: 16:56:09 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:39:44 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+#  vlog -source -lint FFO32sMealy.sv
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 16:56:09 on May 23,2026
+# Start time: 20:39:44 on May 23,2026
 # vlog -source -lint FFO32sMealy.sv 
 # -- Compiling module FFO32sMealy
 # 
 # Top level modules:
 # 	FFO32sMealy
-# End time: 16:56:09 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:39:44 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+#  vlog -source -lint FFO32sMealytb.sv
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 16:56:09 on May 23,2026
+# Start time: 20:39:44 on May 23,2026
 # vlog -source -lint FFO32sMealytb.sv 
 # -- Compiling module top
 # -- Compiling module FFO32
@@ -37,10 +38,11 @@ Reading pref.tcl
 # 
 # Top level modules:
 # 	top
-# End time: 16:56:10 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:39:45 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
+#  vopt top -o top_optimized +acc +cover=sbfec+FFO32sMealy(rtl).
 # QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 16:56:10 on May 23,2026
+# Start time: 20:39:45 on May 23,2026
 # vopt top -o top_optimized "+acc" "+cover=sbfec+FFO32sMealy(rtl)." 
 # 
 # Top level modules:
@@ -63,10 +65,11 @@ Reading pref.tcl
 # -- Optimizing module LZDn(fast__3)
 # -- Optimizing module LZD2(fast)
 # Optimized design name is top_optimized
-# End time: 16:56:11 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:39:46 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
+#  vsim top_optimized -coverage
 # vsim top_optimized -coverage 
-# Start time: 16:56:11 on May 23,2026
+# Start time: 20:39:46 on May 23,2026
 # //  Questa Sim-64
 # //  Version 2021.3_1 linux_x86_64 Aug 15 2021
 # //
@@ -90,15 +93,24 @@ Reading pref.tcl
 # Loading work.LZDn(fast__1)
 # Loading work.LZDn(fast__2)
 # Loading work.LZDn(fast__3)
+#  set NoQuitOnFinish 1
 # 1
+#  onbreak {resume}
+#  Warning: onbreak command for use within macro
+#  log /* -r
+#  vcd file mealy.vcd
+#  vcd add /top/clock /top/reset /top/start /top/ready /top/b /top/v /top/ve /top/p /top/pe /top/Error /top/DUT/State /top/DUT/NextState /top/DUT/Count /top/DUT/SR /top/DUT/ClearCount /top/DUT/IncCount /top/DUT/LoadSR /top/DUT/ShiftSR
+#  run -all
 # No errors -- passed testbench
 # ** Note: $finish    : FFO32sMealytb.sv(98)
 #    Time: 61650 ns  Iteration: 1  Instance: /top
 # 1
 # Break in Module top at FFO32sMealytb.sv line 98
 # Stopped at FFO32sMealytb.sv line 98
+#  coverage save FFO32sMealy.ucdb
+#  vcover report FFO32sMealy.ucdb
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 16:56:11 on May 23,2026
+# Start time: 20:39:47 on May 23,2026
 # vcover report FFO32sMealy.ucdb 
 # Coverage Report Summary Data by instance
 # 
@@ -117,14 +129,15 @@ Reading pref.tcl
 # 
 # Total Coverage By Instance (filtered view): 100.00%
 # 
-# End time: 16:56:12 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:39:47 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+#  vcover report FFO32sMealy.ucdb -cvg -details
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 16:56:12 on May 23,2026
+# Start time: 20:39:47 on May 23,2026
 # vcover report FFO32sMealy.ucdb -cvg -details 
 # ** Note: (vcover-17388) No matching coverage data found in file 'FFO32sMealy.ucdb'.
-# End time: 16:56:12 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:39:47 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 #  quit -f
-# End time: 16:56:12 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:39:47 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0

@@ -2,13 +2,12 @@ Reading pref.tcl
 
 # 2021.3_1
 
-# do run_pipeline.do
-# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
-# No such file or directory. (errno = ENOENT)
-# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
-# 1
+# catch {vdel -all}
+# 0
+#  vlib work
+#  vlog -source -lint FFO32.sv
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 16:56:18 on May 23,2026
+# Start time: 20:39:49 on May 23,2026
 # vlog -source -lint FFO32.sv 
 # -- Compiling module FFO32
 # -- Compiling module LZD2
@@ -16,10 +15,11 @@ Reading pref.tcl
 # 
 # Top level modules:
 # 	FFO32
-# End time: 16:56:18 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:39:49 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+#  vlog -source -lint FFO32p.sv
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 16:56:18 on May 23,2026
+# Start time: 20:39:49 on May 23,2026
 # vlog -source -lint FFO32p.sv 
 # -- Compiling module FFO32p
 # -- Compiling module LZD2
@@ -27,20 +27,22 @@ Reading pref.tcl
 # 
 # Top level modules:
 # 	FFO32p
-# End time: 16:56:19 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:39:50 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
+#  vlog -source -lint FFO32ptb.sv
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 16:56:19 on May 23,2026
+# Start time: 20:39:50 on May 23,2026
 # vlog -source -lint FFO32ptb.sv 
 # -- Compiling module top
 # -- Compiling module FFO32
 # 
 # Top level modules:
 # 	top
-# End time: 16:56:19 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:39:50 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+#  vopt top -o top_optimized +acc +cover=sbfec+FFO32p(rtl).
 # QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 16:56:19 on May 23,2026
+# Start time: 20:39:50 on May 23,2026
 # vopt top -o top_optimized "+acc" "+cover=sbfec+FFO32p(rtl)." 
 # 
 # Top level modules:
@@ -67,10 +69,11 @@ Reading pref.tcl
 # -- Optimizing module LZD2(fast)
 # -- Optimizing module LZD2(fast__1)
 # Optimized design name is top_optimized
-# End time: 16:56:20 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:39:51 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
+#  vsim top_optimized -coverage
 # vsim top_optimized -coverage 
-# Start time: 16:56:20 on May 23,2026
+# Start time: 20:39:51 on May 23,2026
 # //  Questa Sim-64
 # //  Version 2021.3_1 linux_x86_64 Aug 15 2021
 # //
@@ -99,15 +102,24 @@ Reading pref.tcl
 # Loading work.LZDn(fast__5)
 # Loading work.LZDn(fast__6)
 # Loading work.LZDn(fast__7)
+#  set NoQuitOnFinish 1
 # 1
+#  onbreak {resume}
+#  Warning: onbreak command for use within macro
+#  log /* -r
+#  vcd file pipeline.vcd
+#  vcd add /top/clock /top/b /top/v /top/ve /top/p /top/pe /top/Error /top/DUT/v2_reg /top/DUT/p2_reg /top/DUT/v4_reg /top/DUT/p4_reg /top/DUT/v8_reg /top/DUT/p8_reg /top/DUT/v16_reg /top/DUT/p16_reg /top/DUT/v32_reg /top/DUT/p32_reg
+#  run -all
 # No errors -- passed testbench
 # ** Note: $finish    : FFO32ptb.sv(80)
 #    Time: 3850 ns  Iteration: 1  Instance: /top
 # 1
 # Break in Module top at FFO32ptb.sv line 80
 # Stopped at FFO32ptb.sv line 80
+#  coverage save FFO32p.ucdb
+#  vcover report FFO32p.ucdb
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 16:56:21 on May 23,2026
+# Start time: 20:39:52 on May 23,2026
 # vcover report FFO32p.ucdb 
 # Coverage Report Summary Data by instance
 # 
@@ -416,14 +428,15 @@ Reading pref.tcl
 # 
 # Total Coverage By Instance (filtered view): 83.33%
 # 
-# End time: 16:56:21 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:39:52 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+#  vcover report FFO32p.ucdb -cvg -details
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 16:56:21 on May 23,2026
+# Start time: 20:39:52 on May 23,2026
 # vcover report FFO32p.ucdb -cvg -details 
 # ** Note: (vcover-17388) No matching coverage data found in file 'FFO32p.ucdb'.
-# End time: 16:56:21 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:39:52 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 #  quit -f
-# End time: 16:56:21 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:39:52 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0

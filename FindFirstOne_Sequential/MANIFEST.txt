@@ -1,34 +1,28 @@
 Run:        Sequential find-first-one — three variants (Moore, Mealy, Pipeline)
-Start UTC:  2026-05-23T23-55-55Z   (moore)
-            2026-05-23T23-56-04Z   (mealy)
-            2026-05-23T23-56-14Z   (pipeline)
-End   UTC:  2026-05-23T23-56-04Z   (moore wall clock ~9s)
-            2026-05-23T23-56-14Z   (mealy wall clock ~10s)
-            2026-05-23T23-56-25Z   (pipeline wall clock ~11s)
+Start UTC:  2026-05-24T03-39-31Z
+End   UTC:  2026-05-24T03-39-52Z
 Host:       mo.ece.pdx.edu
 Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
 License:    1717@mentor-lic.cecs.pdx.edu
+Remote dir: ~/claude-runs/2026-05-24T03-39-31Z_findfirstone-sequential-artifacts
 
 Purpose:
   Verify three sequential find-first-one variants of a 32-bit input bus:
     moore    FSM with all output assignments inside states (FFO32s.sv)
     mealy    Mealy variant that asserts ready combinationally on the last
              scanned bit (FFO32sMealy.sv)
-    pipeline 3-stage pipelined scanner (FFO32p.sv)
+    pipeline 5-cycle registered LZD-tree scanner (FFO32p.sv)
   Each variant is compared per-cycle against a KGD/predictor; the TB drives
   a 32-vector single-bit walk (Moore/Mealy) or a 37-vector queue-delayed
   walk (Pipeline) and reports a single aggregate verdict.
 
-Source changes in this commit:
-  FFO32ptb.sv, FFO32sMealytb.sv, FFO32stb.sv:
-    ' *** FAILED *** ' / ' *** PASSED *** ' -> 'Failed testbench' /
-    'No errors -- passed testbench' (multi-line whitespace also removed).
-  No behavioural change. Same edit applied to all three testbenches.
-
-Commands executed (from this directory, one variant at a time):
-  vsim -c -do 'do run_moore.do; quit -f'    > transcript_moore.txt
-  vsim -c -do 'do run_mealy.do; quit -f'    > transcript_mealy.txt
-  vsim -c -do 'do run_pipeline.do; quit -f' > transcript_pipeline.txt
+Commands executed (from this directory on the farm, one variant at a time):
+  vsim -c -do '<run_moore.do commands plus Tcl VCD logging>; quit -f'
+    > transcript_moore.txt
+  vsim -c -do '<run_mealy.do commands plus Tcl VCD logging>; quit -f'
+    > transcript_mealy.txt
+  vsim -c -do '<run_pipeline.do commands plus Tcl VCD logging>; quit -f'
+    > transcript_pipeline.txt
 
 Files compiled (varies by run.do):
   moore    FFO32.sv, FFO32s.sv,        FFO32stb.sv
@@ -40,22 +34,34 @@ Results (all three runs):
   Simulation:
     moore    32+1 vectors swept, zero KGD mismatches.
     mealy    32+1 vectors swept, zero KGD mismatches.
-    pipeline 32+4 vectors swept (3-stage pipeline delay accounted for via
-             a queue inside the TB), zero KGD mismatches.
+    pipeline walking sequence swept with the 5-cycle pipeline delay accounted
+             for via a queue inside the TB; zero KGD mismatches.
     Final verdict (all three): 'No errors -- passed testbench'
   Coverage:
     UCDB per variant on farm; filtered to the relevant FFO module.
+    moore    92.10% filtered instance coverage; FSM states 4/4, transitions 5/7.
+    mealy    100.00% filtered instance coverage; FSM states/transitions 100%.
+    pipeline 83.33% filtered instance coverage.
+  Artifacts:
+    make_artifacts.py parsed farm VCDs into waveform CSV/PNG files.
+    fsm_moore.png and fsm_mealy.png were generated with the `visualize`
+    skill through the LiteLLM image-generation proxy using
+    gemini-3-pro-image-preview. They use the same hand-drawn graph-paper
+    style as SimpleBusMultiMemory/fsm.png. The pipeline variant has no FSM,
+    so pipeline_flow.png documents the registered LZD-tree flow.
 
 Caveats:
   - Mealy and Pipeline TBs use $random for inter-test spacing (unseeded);
     the stimulus sequence is the Questa default seeded stream and is
     deterministic on this build.
-  - Pipeline transcript (429 lines) is longer than Moore (154) and Mealy
-    (130) because it logs more per-vector state during the delay-pipeline
+  - Pipeline transcript (442 lines) is longer than Moore (170) and Mealy
+    (143) because it logs more per-vector state during the delay-pipeline
     setup.
+  - The Tcl VCD files are generated farm artifacts and are not kept in the repo.
 
 Files in this directory:
   MANIFEST.txt
+  design.md
   FFO32.sv
   FFO32p.sv
   FFO32ptb.sv
@@ -63,9 +69,19 @@ Files in this directory:
   FFO32sMealy.sv
   FFO32sMealytb.sv
   FFO32stb.sv
+  fsm_mealy.png
+  fsm_moore.png
+  make_artifacts.py
+  pipeline_flow.png
   run_mealy.do
   run_moore.do
   run_pipeline.do
   transcript_mealy.txt
   transcript_moore.txt
   transcript_pipeline.txt
+  waveform_mealy.csv
+  waveform_mealy.png
+  waveform_moore.csv
+  waveform_moore.png
+  waveform_pipeline.csv
+  waveform_pipeline.png
