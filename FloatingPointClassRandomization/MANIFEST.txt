@@ -1,0 +1,44 @@
+Run:        Floating-point class randomization validation
+
+Purpose:
+  Verify a SystemVerilog class that builds IEEE-754 single-precision packed
+  values from sign, exponent, and fraction attributes, then randomizes those
+  attributes under mode-specific constraints.
+
+Commands:
+  1. vsim -c -do 'set TESTS_PER_MODE 64; do run.do; quit -f' > transcript_smoke.txt
+  2. vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Results:
+  Smoke TESTS_PER_MODE=64:
+    Compile and elaboration ....................... Errors: 0, Warnings: 0
+    Self-checks ................................... 389 checks, 0 errors
+    Final verdict ................................. 'No errors -- passed testbench'
+    Covergroup coverage ........................... 100.00%
+    Detailed covergroup instance coverage ......... 100.00%
+
+  Default TESTS_PER_MODE=1000:
+    Compile and elaboration ....................... Errors: 0, Warnings: 0
+    Self-checks ................................... 6005 checks, 0 errors
+    Final verdict ................................. 'No errors -- passed testbench'
+    Covergroup coverage ........................... 100.00%
+    Detailed covergroup instance coverage ......... 100.00%
+
+Caveats:
+  - The waveform image is generated from the default-run VCD. The derived CSV
+    sample file is retained; raw VCD, WLF, work library, and UCDB files are not.
+
+Files in this directory:
+  MANIFEST.txt
+  design.md
+  floatingpointpkg.sv
+  fpclass.sv
+  fsm.png
+  make_artifacts.py
+  report.pdf
+  run.do
+  testbench.sv
+  transcript.txt
+  transcript_smoke.txt
+  waveform_samples.csv
+  waveforms.png

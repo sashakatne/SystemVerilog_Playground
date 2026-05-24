@@ -1,0 +1,326 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:52:32 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint floatingpointpkg.sv fpclass.sv testbench.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling package floatingpointpkg
+# -- Compiling package fpclasspkg
+# -- Importing package floatingpointpkg
+# -- Compiling module top
+# -- Importing package fpclasspkg
+# 
+# Top level modules:
+# 	top
+# End time: 17:52:32 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:52:32 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vopt top -o top_optimized "+acc" "+cover=sbfec" -GTESTS_PER_MODE=1000 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Importing package floatingpointpkg
+# -- Importing package fpclasspkg
+# Optimizing 3 design-units (inlining 0/1 module instances):
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Optimizing package floatingpointpkg(fast)
+# -- Optimizing package fpclasspkg(fast)
+# -- Optimizing module top(fast)
+# Optimized design name is top_optimized
+# End time: 17:52:34 on May 23,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 17:52:34 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.floatingpointpkg(fast)
+# Loading work.fpclasspkg(fast)
+# Loading work.top(fast)
+# 1
+# Starting floating-point class randomization checks: TESTS_PER_MODE=1000
+# PASS: component attributes build the expected packed float
+# PASS: built value is a finite normalized float
+# PASS: direct denormal probe is classified correctly
+# PASS: direct infinity probe is classified correctly
+# PASS: direct NaN probe is classified correctly
+# PASS: nodenorm_c rejects denormalized values across 1000 randomized samples
+# PASS: alldenorm_c accepts only denormalized values across 1000 randomized samples
+# PASS: nonan_c rejects NaN values across 1000 randomized samples
+# PASS: noinf_c rejects infinity values across 1000 randomized samples
+# PASS: exprange_c limits unbiased exponents across 1000 randomized samples
+# PASS: combined constraints produce finite ranged normals across 1000 randomized samples
+# Completed 6005 self-checks with 0 errors
+# No errors -- passed testbench
+# ** Note: $finish    : testbench.sv(327)
+#    Time: 12008 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at testbench.sv line 327
+# Stopped at testbench.sv line 327
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:52:35 on May 23,2026
+# vcover report FloatingPointClassRandomization.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top
+# === Design Unit: work.top
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        38        26        12    68.42%
+#     Conditions                      17         0        17     0.00%
+#     Covergroups                      1        na        na   100.00%
+#         Coverpoints/Crosses          7        na        na        na
+#             Covergroup Bins         18        18         0   100.00%
+#     Statements                     116       101        15    87.06%
+# 
+# =================================================================================
+# === Instance: /floatingpointpkg
+# === Design Unit: work.floatingpointpkg
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Statements                      12         8         4    66.66%
+# 
+# =================================================================================
+# === Instance: /fpclasspkg
+# === Design Unit: work.fpclasspkg
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Statements                      15        15         0   100.00%
+# 
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
+# 
+# Total Coverage By Instance (filtered view): 63.78%
+# 
+# End time: 17:52:35 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:52:35 on May 23,2026
+# vcover report FloatingPointClassRandomization.ucdb -cvg -details 
+# Coverage Report by instance with details
+# 
+# =================================================================================
+# === Instance: /top
+# === Design Unit: work.top
+# =================================================================================
+# 
+# Covergroup Coverage:
+#     Covergroups                      1        na        na   100.00%
+#         Coverpoints/Crosses          7        na        na        na
+#             Covergroup Bins         18        18         0   100.00%
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /top/fpclass_cg                                 100.00%        100          -    Covered              
+#     covered/total bins:                                    18         18          -                      
+#     missing/total bins:                                     0         18          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint mode_cp                                100.00%        100          -    Covered              
+#         covered/total bins:                                 7          7          -                      
+#         missing/total bins:                                 0          7          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint exponent_cp                            100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint denorm_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint nan_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint inf_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint range_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint randomize_cp                           100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#  Covergroup instance \/top/Coverage                   100.00%        100          -    Covered              
+#     covered/total bins:                                    18         18          -                      
+#     missing/total bins:                                     0         18          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint mode_cp                                100.00%        100          -    Covered              
+#         covered/total bins:                                 7          7          -                      
+#         missing/total bins:                                 0          7          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin direct                                          4          1          -    Covered              
+#         bin nodenorm                                     1000          1          -    Covered              
+#         bin alldenorm                                    1000          1          -    Covered              
+#         bin nonan                                        1000          1          -    Covered              
+#         bin noinf                                        1000          1          -    Covered              
+#         bin exprange                                     1000          1          -    Covered              
+#         bin combined                                     1000          1          -    Covered              
+#     Coverpoint exponent_cp                            100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                         1012          1          -    Covered              
+#         bin normal                                       4978          1          -    Covered              
+#         bin special                                        14          1          -    Covered              
+#     Coverpoint denorm_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      4995          1          -    Covered              
+#         bin auto[1]                                      1009          1          -    Covered              
+#     Coverpoint nan_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      5991          1          -    Covered              
+#         bin auto[1]                                        13          1          -    Covered              
+#     Coverpoint inf_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      6003          1          -    Covered              
+#         bin auto[1]                                         1          1          -    Covered              
+#     Coverpoint range_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin in_range                                     6004          1          -    Covered              
+#     Coverpoint randomize_cp                           100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin succeeded                                    6004          1          -    Covered              
+# 
+# COVERGROUP COVERAGE:
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /top/fpclass_cg                                 100.00%        100          -    Covered              
+#     covered/total bins:                                    18         18          -                      
+#     missing/total bins:                                     0         18          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint mode_cp                                100.00%        100          -    Covered              
+#         covered/total bins:                                 7          7          -                      
+#         missing/total bins:                                 0          7          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint exponent_cp                            100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint denorm_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint nan_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint inf_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint range_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#     Coverpoint randomize_cp                           100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#  Covergroup instance \/top/Coverage                   100.00%        100          -    Covered              
+#     covered/total bins:                                    18         18          -                      
+#     missing/total bins:                                     0         18          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint mode_cp                                100.00%        100          -    Covered              
+#         covered/total bins:                                 7          7          -                      
+#         missing/total bins:                                 0          7          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin direct                                          4          1          -    Covered              
+#         bin nodenorm                                     1000          1          -    Covered              
+#         bin alldenorm                                    1000          1          -    Covered              
+#         bin nonan                                        1000          1          -    Covered              
+#         bin noinf                                        1000          1          -    Covered              
+#         bin exprange                                     1000          1          -    Covered              
+#         bin combined                                     1000          1          -    Covered              
+#     Coverpoint exponent_cp                            100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                         1012          1          -    Covered              
+#         bin normal                                       4978          1          -    Covered              
+#         bin special                                        14          1          -    Covered              
+#     Coverpoint denorm_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      4995          1          -    Covered              
+#         bin auto[1]                                      1009          1          -    Covered              
+#     Coverpoint nan_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      5991          1          -    Covered              
+#         bin auto[1]                                        13          1          -    Covered              
+#     Coverpoint inf_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin auto[0]                                      6003          1          -    Covered              
+#         bin auto[1]                                         1          1          -    Covered              
+#     Coverpoint range_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin in_range                                     6004          1          -    Covered              
+#     Coverpoint randomize_cp                           100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin succeeded                                    6004          1          -    Covered              
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
+# 
+# Total Coverage By Instance (filtered view): 100.00%
+# 
+# End time: 17:52:35 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+#  quit -f
+# End time: 17:52:35 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
