@@ -14,9 +14,10 @@ The Arbiter module manages access to a shared resource among multiple requesters
 ### 2. FindFirstOne (FFO)
 The FFO module identifies the position of the first '1' in a 32-bit input vector, useful in priority encoders and similar applications.
 
-- **Files**: `FFO32s.sv`, `FFO32ptb.sv`, `FFO32sMealytb.sv`
-- **Testbenches**: `FFO32sMealytb.sv`, `FFO32ptb.sv`
-- **Verification**: Run `run_moore.do` which will also generate coverage reports.
+- **Folder**: FindFirstOne_Sequential
+- **Files**: `FFO32.sv`, `FFO32s.sv`, `FFO32sMealy.sv`, `FFO32p.sv`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `fsm_moore.png`, `fsm_mealy.png`, `pipeline_flow.png`, `waveform_moore.png`, `waveform_mealy.png`, `waveform_pipeline.png`
+- **Testbenches**: `FFO32stb.sv`, `FFO32sMealytb.sv`, `FFO32ptb.sv`
+- **Verification**: Run `run_moore.do`, `run_mealy.do`, or `run_pipeline.do`. The Moore and Mealy variants have generated FSM diagrams; the pipeline variant has a pipeline-flow diagram instead of an FSM.
 
 ### 3. Sequential Multiplier
 A parameterized sequential multiplier module for multiplying two binary numbers using sequential logic.
@@ -39,7 +40,9 @@ A versatile ALU module capable of performing various arithmetic and logical oper
 A module that generates non-overlapping clock signals for a given set of inputs.
 
 - **Folder**: NonOverlappingClockGenerator
-- **Files**: `novckgen_structural.sv`, `novckgen_tb.sv`
+- **Files**: `novckgen_structural.sv`, `novckgen_tb.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `novckgen.png`, `waveforms.png`, `waveform_samples.csv`, `transcript.txt`
+- **Testbench**: `novckgen_tb.sv` drives a 10 ns `CK`, checks `CK1 & CK2` never overlaps, checks both phases toggle, checks complements, and prints `No errors -- passed testbench` on success.
+- **Verification**: Run `do run.do`. The farm waveform artifact is plotted from the generated VCD; no FSM artifact is applicable because the RTL has no state register or state transition process.
 
 ### 7. Line-Following Robot
 A combinational controller that drives the two motors of a line-following robot from five photo-sensors, with `InMotion` and `Error` status outputs. Shipped as both a minimal-SOP dataflow model and a gate-primitive structural model that share one self-checking testbench.
