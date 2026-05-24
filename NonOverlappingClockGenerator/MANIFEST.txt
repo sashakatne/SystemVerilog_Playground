@@ -1,9 +1,10 @@
 Run:        Non-overlapping clock generator (delay-chain + cross-NAND)
-Start UTC:  2026-05-24T00-28-17Z
-End   UTC:  2026-05-24T00-28-20Z
+Start UTC:  2026-05-24T03-23-22Z
+End   UTC:  2026-05-24T03-23-29Z
 Host:       mo.ece.pdx.edu
 Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
 License:    1717@mentor-lic.cecs.pdx.edu
+Remote dir: ~/claude-runs/2026-05-24T03-23-22Z_nonoverlappingclockgenerator-sim
 
 Purpose:
   Verify the structural non-overlapping clock generator: two NAND-fed
@@ -14,20 +15,6 @@ Purpose:
     2. CK1 toggles
     3. CK2 toggles
     4. CK1/CK1_b are complementary; CK2/CK2_b are complementary
-
-Source changes in this commit:
-  novckgen_structural.sv:
-    Added explicit `wire` declarations for delay1_out_a..e and
-    delay2_out_a..e. Previously these intermediate signals were used
-    without declaration, which Questa accepts via implicit wire inference
-    but warns about (10x vlog-2623 'Undefined variable'). Declaring them
-    silences the warnings without changing structural behaviour.
-
-  novckgen_tb.sv:
-    Verdict block: '*** FAILED ***' / '*** PASSED ***' -> 'Failed
-    testbench' / 'No errors -- passed testbench', and replaced $stop with
-    $finish so the script exits cleanly rather than dropping into the Tcl
-    prompt at end-of-run.
 
 Commands executed (from this directory):
   vsim -c -do 'do run.do; quit -f' > transcript.txt
@@ -43,19 +30,30 @@ Results:
     change, plus toggle detection every CK edge once start_checking
     asserts after the first 2 clock cycles). Zero error prints emitted.
     Final verdict: 'No errors -- passed testbench'
+  Waveform artifacts:
+    The farm run produced dump.vcd. make_artifacts.py parsed that VCD into
+    waveform_samples.csv and waveforms.png. dump.vcd is treated as generated
+    simulator output and is not kept in the repo.
+  FSM artifacts:
+    No FSM image is applicable. The RTL has no state register or state
+    transition process; it is a structural gate-level clock-phase generator.
 
 Caveats:
   - The TB also opens a dump.vcd file via $dumpfile/$dumpvars. The dump
     is local to the run directory and not committed.
-  - The original TB used $stop instead of $finish, which would leave the
-    simulator at the Tcl prompt indefinitely under non-interactive
-    invocation; the canonical run.do appended `quit -f` to recover, but
-    using $finish is the cleaner fix and matches the repo convention.
+  - Questa reports no matching coverage data in novckgen.ucdb. The clean
+    pass/fail evidence is the self-checking simulation transcript.
+  - The buffer primitives have no delay annotation, so the RTL waveform
+    shows CK1 and CK2 as complementary phases with zero visible dead band.
 
 Files in this directory:
   MANIFEST.txt
+  design.md
+  make_artifacts.py
   novckgen.png
   novckgen_structural.sv
   novckgen_tb.sv
   run.do
   transcript.txt
+  waveform_samples.csv
+  waveforms.png

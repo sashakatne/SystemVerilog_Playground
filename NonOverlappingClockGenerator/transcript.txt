@@ -8,25 +8,25 @@ Reading pref.tcl
 # ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
 # 1
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 17:28:17 on May 23,2026
+# Start time: 20:23:26 on May 23,2026
 # vlog -source -lint novckgen_structural.sv 
 # -- Compiling module novckgen
 # 
 # Top level modules:
 # 	novckgen
-# End time: 17:28:18 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:23:27 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 17:28:18 on May 23,2026
+# Start time: 20:23:27 on May 23,2026
 # vlog -source -lint novckgen_tb.sv 
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 17:28:18 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:23:27 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 17:28:18 on May 23,2026
+# Start time: 20:23:27 on May 23,2026
 # vopt top -o top_optimized "+acc" "+cover=sbfec+novckgen(rtl)." 
 # 
 # Top level modules:
@@ -39,10 +39,10 @@ Reading pref.tcl
 # -- Optimizing module top(fast)
 # -- Optimizing module novckgen(fast)
 # Optimized design name is top_optimized
-# End time: 17:28:19 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:23:28 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim top_optimized -coverage 
-# Start time: 17:28:19 on May 23,2026
+# Start time: 20:23:28 on May 23,2026
 # //  Questa Sim-64
 # //  Version 2021.3_1 linux_x86_64 Aug 15 2021
 # //
@@ -268,17 +268,17 @@ Reading pref.tcl
 # Break in Module top at novckgen_tb.sv line 100
 # Stopped at novckgen_tb.sv line 100
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 17:28:20 on May 23,2026
+# Start time: 20:23:29 on May 23,2026
 # vcover report novckgen.ucdb 
 # ** Note: (vcover-17388) No matching coverage data found in file 'novckgen.ucdb'.
-# End time: 17:28:20 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:23:29 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 17:28:20 on May 23,2026
+# Start time: 20:23:29 on May 23,2026
 # vcover report novckgen.ucdb -cvg -details 
 # ** Note: (vcover-17388) No matching coverage data found in file 'novckgen.ucdb'.
-# End time: 17:28:20 on May 23,2026, Elapsed time: 0:00:00
+# End time: 20:23:29 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 #  quit -f
-# End time: 17:28:20 on May 23,2026, Elapsed time: 0:00:01
+# End time: 20:23:29 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
