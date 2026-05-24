@@ -92,12 +92,12 @@ module top;
     initial begin
         #1000;
         if (error_flag) begin
-            $display("*** FAILED ***");
+            $display("Failed testbench");
         end
         else begin
-            $display("*** PASSED ***");
+            $display("No errors -- passed testbench");
         end
-        $stop;
+        $finish;
     end
 
 endmodule

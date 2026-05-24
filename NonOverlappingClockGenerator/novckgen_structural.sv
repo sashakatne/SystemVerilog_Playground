@@ -9,6 +9,8 @@ module novckgen (
     wire CK_b;
     wire nand1_out, nand2_out;
     wire delay1_out, delay2_out;
+    wire delay1_out_a, delay1_out_b, delay1_out_c, delay1_out_d, delay1_out_e;
+    wire delay2_out_a, delay2_out_b, delay2_out_c, delay2_out_d, delay2_out_e;
 
     // Invert the clock signal
     not u_not1 (CK_b, CK);

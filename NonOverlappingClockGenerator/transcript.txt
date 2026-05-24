@@ -1,0 +1,284 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:28:17 on May 23,2026
+# vlog -source -lint novckgen_structural.sv 
+# -- Compiling module novckgen
+# 
+# Top level modules:
+# 	novckgen
+# End time: 17:28:18 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:28:18 on May 23,2026
+# vlog -source -lint novckgen_tb.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 17:28:18 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:28:18 on May 23,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+novckgen(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module novckgen
+# Optimizing 2 design-units (inlining 0/2 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module novckgen(fast)
+# Optimized design name is top_optimized
+# End time: 17:28:19 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 17:28:19 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.novckgen(fast)
+# 1
+# Time: 0 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 5 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 10 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 15 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 20 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 25 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 30 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 35 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 40 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 45 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 50 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 55 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 60 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 65 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 70 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 75 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 80 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 85 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 90 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 95 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 100 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 105 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 110 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 115 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 120 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 125 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 130 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 135 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 140 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 145 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 150 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 155 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 160 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 165 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 170 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 175 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 180 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 185 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 190 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 195 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 200 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 205 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 210 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 215 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 220 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 225 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 230 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 235 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 240 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 245 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 250 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 255 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 260 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 265 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 270 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 275 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 280 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 285 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 290 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 295 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 300 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 305 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 310 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 315 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 320 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 325 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 330 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 335 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 340 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 345 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 350 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 355 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 360 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 365 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 370 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 375 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 380 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 385 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 390 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 395 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 400 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 405 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 410 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 415 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 420 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 425 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 430 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 435 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 440 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 445 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 450 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 455 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 460 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 465 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 470 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 475 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 480 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 485 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 490 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 495 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 500 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 505 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 510 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 515 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 520 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 525 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 530 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 535 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 540 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 545 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 550 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 555 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 560 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 565 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 570 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 575 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 580 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 585 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 590 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 595 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 600 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 605 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 610 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 615 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 620 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 625 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 630 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 635 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 640 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 645 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 650 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 655 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 660 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 665 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 670 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 675 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 680 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 685 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 690 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 695 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 700 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 705 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 710 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 715 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 720 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 725 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 730 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 735 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 740 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 745 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 750 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 755 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 760 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 765 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 770 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 775 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 780 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 785 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 790 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 795 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 800 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 805 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 810 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 815 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 820 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 825 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 830 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 835 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 840 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 845 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 850 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 855 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 860 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 865 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 870 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 875 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 880 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 885 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 890 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 895 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 900 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 905 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 910 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 915 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 920 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 925 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 930 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 935 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 940 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 945 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 950 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 955 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 960 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 965 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 970 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 975 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 980 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 985 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# Time: 990 | CK: 0 | CK1: 1 | CK1_b: 0 | CK2: 0 | CK2_b: 1
+# Time: 995 | CK: 1 | CK1: 0 | CK1_b: 1 | CK2: 1 | CK2_b: 0
+# No errors -- passed testbench
+# ** Note: $finish    : novckgen_tb.sv(100)
+#    Time: 1 us  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at novckgen_tb.sv line 100
+# Stopped at novckgen_tb.sv line 100
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:28:20 on May 23,2026
+# vcover report novckgen.ucdb 
+# ** Note: (vcover-17388) No matching coverage data found in file 'novckgen.ucdb'.
+# End time: 17:28:20 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:28:20 on May 23,2026
+# vcover report novckgen.ucdb -cvg -details 
+# ** Note: (vcover-17388) No matching coverage data found in file 'novckgen.ucdb'.
+# End time: 17:28:20 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 17:28:20 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
