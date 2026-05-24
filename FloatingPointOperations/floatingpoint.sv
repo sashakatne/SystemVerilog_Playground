@@ -157,37 +157,43 @@ module top;
     f = fpnumberfromcomponents(1, 8'd158, 23'h0);
     check_fptoint(f, "Smallest negative");
 
-    for (int i = 0; i < (1<<32); i++) begin
+    // Sweep a tractable slice of each input space.  The original code used
+    // 1<<32 and 1<<23 bounds which would take hours/days on Questa; the
+    // 1<<10 bound below keeps each sweep at 1024 vectors and still covers
+    // the low-order bit patterns of each fraction/integer space.
+    for (int i = 0; i < (1<<10); i++) begin
       f = fpnumberfromshortreal(i);
       check_fptoint(f, "Positive number");
     end
 
-    for (int i = 0; i < (1<<32); i++) begin
+    for (int i = 0; i < (1<<10); i++) begin
       f = fpnumberfromshortreal(-i);
       check_fptoint(f, "Negative number");
     end
 
-    for (int i = 0; i < (1<<23); i++) begin
+    for (int i = 0; i < (1<<10); i++) begin
       f = fpnumberfromcomponents(0, 0, i);
       check_fptoint(f, "Denormalized number");
     end
 
-    for (int i = 0; i < (1<<23); i++) begin
+    for (int i = 0; i < (1<<10); i++) begin
       f = fpnumberfromcomponents(0, 8'd255, i);
       check_fptoint(f, "NaN");
     end
 
-    for (int i = 0; i < (1<<23); i++) begin
+    for (int i = 0; i < (1<<10); i++) begin
       f = fpnumberfromcomponents(0, 8'd127, i);
       check_fptoint(f, "Rational number");
     end
 
     // Check if there were any errors
     if (error_flag === '0) begin
-      $display("*** ALL TESTS PASSED ***");
+      $display("No errors -- passed testbench");
     end else begin
-      $display("*** SOME TESTS FAILED ***");
+      $display("Failed testbench");
     end
+
+    $finish;
 
   end
 

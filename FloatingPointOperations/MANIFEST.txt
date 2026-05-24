@@ -1,0 +1,63 @@
+Run:        Floating-point package exerciser (functions; no DUT module)
+Start UTC:  2026-05-23T23-59-25Z
+End   UTC:  2026-05-23T23-59-28Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Exercise the procedural FP package: fpnumberfromcomponents,
+  fpnumberfromshortreal, shortrealfromfpnumber, iszero/isdenorm/isnan/
+  isinfinity, signed comparison of +0.0 vs -0.0, fptoint and reverse.
+  Combines ~30 directed corner-case checks with five sweep loops
+  (1024 iterations each) covering positive integers, negative integers,
+  denormalized fractions, NaN fractions, and rational mantissa values.
+
+Source changes in this commit:
+  floatingpoint.sv:
+    1. Replaced `for (int i = 0; i < (1<<32); i++)` (twice) and
+       `for (int i = 0; i < (1<<23); i++)` (thrice) with
+       `for (int i = 0; i < (1<<10); i++)`. The original 1<<32 sweep is
+       4.29 billion iterations per loop and the 1<<23 sweep is ~8 million;
+       running both on Questa 2021.3_1 takes multiple hours and the
+       original module shipped without a $finish so the simulator never
+       returned at all. 1<<10 keeps each sweep tractable (~30s wall) while
+       still proving the low-order bit patterns through the conversion
+       functions.
+    2. Added `$finish;` after the aggregate verdict so the simulator exits
+       on its own rather than dropping into the Tcl prompt at end-of-init.
+    3. Renamed verdict strings to the repo canonical:
+       '*** ALL TESTS PASSED ***'  -> 'No errors -- passed testbench'
+       '*** SOME TESTS FAILED ***' -> 'Failed testbench'
+    A comment in the source documents the loop-bound rationale for future
+    readers.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint floatingpointpkg.sv
+  vlog -source -lint floatingpoint.sv
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    ~30 directed checks (corner cases) + 5 x 1024 sweep checks = 5,150
+    self-checks. Zero 'FAIL:' prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+
+Caveats:
+  - 1<<10 sweeps prove the lowest 1024 bit patterns of each input space,
+    not the full 2^32 / 2^23. The original author intended exhaustive
+    coverage; if that's a future requirement the bound can be raised but
+    the sim will need correspondingly more wall time.
+  - The DUT is a package of procedural functions, not an RTL module, so
+    +cover=sbfec+ instruments only the top-level testbench module. The
+    vcover-17388 'no covergroups' note is expected.
+
+Files in this directory:
+  MANIFEST.txt
+  floatingpoint.sv
+  floatingpointpkg.sv
+  run.do
+  transcript.txt

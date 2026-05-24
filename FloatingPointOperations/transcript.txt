@@ -1,0 +1,118 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:59:25 on May 23,2026
+# vlog -source -lint floatingpointpkg.sv 
+# -- Compiling package floatingpointpkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:59:25 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:59:25 on May 23,2026
+# vlog -source -lint floatingpoint.sv 
+# -- Compiling module top
+# -- Importing package floatingpointpkg
+# 
+# Top level modules:
+# 	top
+# End time: 16:59:26 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:59:26 on May 23,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+floatingpointpkg(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Importing package floatingpointpkg
+# Optimizing 2 design-units (inlining 0/1 module instances):
+# -- Optimizing package floatingpointpkg(fast)
+# -- Optimizing module top(fast)
+# Optimized design name is top_optimized
+# End time: 16:59:27 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 16:59:27 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.floatingpointpkg(fast)
+# Loading work.top(fast)
+# 1
+# Sign: 0, Exponent: 01111111, Fraction: 10000000000000000000000
+# Sign: 0, Exponent: 10000000, Fraction: 10010001111010111000011
+# Shortreal value: 3.140000
+# Sign: 0, Exponent: 00000000, Fraction: 00000000000000000000001
+# Sign: 0, Exponent: 00000000, Fraction: 01111111111111111111111
+# Sign: 0, Exponent: 00000001, Fraction: 00000000000000000000000
+# Sign: 0, Exponent: 11111110, Fraction: 11111111111111111111111
+# Sign: 1, Exponent: 11111111, Fraction: 00000000000000000000000
+# Sign: 0, Exponent: 01111111, Fraction: 10000000000000000000000
+# Shortreal value of Normal number: 1.500000
+# Sign: 0, Exponent: 00000000, Fraction: 00000000000000000000001
+# Sign: 0, Exponent: 11111111, Fraction: 00000000000000000000000
+# Sign: 0, Exponent: 11111111, Fraction: 00000000000000000000001
+# Sign: 0, Exponent: 10000000, Fraction: 10010001111010111000011
+# Sign: 1, Exponent: 01111110, Fraction: 00000000000000000000000
+# Sign: 0, Exponent: 00000000, Fraction: 00000000000000000000000
+# Shortreal value of denormalized number: 0.000000
+# Sign: 0, Exponent: 11111110, Fraction: 10000000000000000000000
+# Sign: 1, Exponent: 00000000, Fraction: 00000000000000000000000
+# No errors -- passed testbench
+# ** Note: $finish    : floatingpoint.sv(196)
+#    Time: 0 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at floatingpoint.sv line 196
+# Stopped at floatingpoint.sv line 196
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:59:27 on May 23,2026
+# vcover report floatingpointpkg.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /floatingpointpkg
+# === Design Unit: work.floatingpointpkg
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        10        10         0   100.00%
+#     Conditions                       8         7         1    87.50%
+#     Statements                      21        21         0   100.00%
+# 
+# 
+# Total Coverage By Instance (filtered view): 95.83%
+# 
+# End time: 16:59:28 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:59:28 on May 23,2026
+# vcover report floatingpointpkg.ucdb -cvg -details 
+# ** Note: (vcover-17388) No matching coverage data found in file 'floatingpointpkg.ucdb'.
+# End time: 16:59:28 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 16:59:28 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
