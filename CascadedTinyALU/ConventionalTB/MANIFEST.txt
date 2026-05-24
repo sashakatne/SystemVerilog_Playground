@@ -1,0 +1,72 @@
+Run:        Cascaded TinyALU, conventional self-checking testbench
+Start UTC:  2026-05-23T23-35-07Z
+End   UTC:  2026-05-23T23-35-12Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the four-pipeline cascaded ALU (mul/add/sub/addincr/or/and/xor/not)
+  end-to-end through a sequential, $finish-terminating testbench that
+  exercises four directed corner blocks (21/42, 0/0, all-ones, all-minus-32768)
+  plus 80,000 random ops per opcode and prints a single aggregate verdict.
+
+Source changes in this commit:
+  run.do:
+    - vlog -source -lint cascaded_alu_tb.sv                    (commented out)
+    + vlog -source -lint cascaded_alu_selfchecking_tb.sv       (newly active)
+    The previous active testbench (cascaded_alu_tb.sv) used $stop and emitted
+    no aggregate verdict, so it could not satisfy the repo's three-criteria
+    evidence gate. The selfchecking variant was already in the directory but
+    had been commented out; switching to it preserves the original author's
+    intent and provides a stronger comparison surface (check_result task
+    verifies result, cycle count, and end_op assertion on every operation).
+
+  cascaded_alu_selfchecking_tb.sv (lines 82, 84):
+    - $display("*** FAILED ***");       -> $display("Failed testbench");
+    - $display("*** PASSED ***");       -> $display("No errors -- passed testbench");
+    Verdict strings renamed to match the repo's canonical convention used by
+    Arbiter, BrailleDecoder, FindFirstOne_Combinational, etc.
+
+  cascaded_alu_tb.sv is retained in the directory as an alternate covergroup-
+  heavy variant. It can be reactivated by un-commenting it in run.do and
+  commenting the selfchecking line back out.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint cascaded_alu.sv                  (DUT)
+  vlog -source -lint cascaded_alu_selfchecking_tb.sv  (active TB)
+
+Results:
+  Compile and elaboration:
+    vlog cascaded_alu.sv ........................ Errors: 0, Warnings: 0
+    vlog cascaded_alu_selfchecking_tb.sv ........ Errors: 0, Warnings: 0
+    vopt top -> top_optimized ................... Errors: 0, Warnings: 0
+  Simulation:
+    8 opcodes x 4 directed corner blocks (21/42, 0/0, all-ones, -32768) +
+    8 opcodes x 10,000 random ops = 32 directed + 80,000 random = 80,032
+    self-checks via check_result task (verifies result, cycle count, end_op).
+    Zero "Test Failed" prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+  Coverage: UCDB written on farm; not committed.
+
+Caveats:
+  - $random in the selfchecking TB is unseeded, so the random sequence is the
+    Questa default-seeded deterministic stream. The exact 80k vectors are
+    reproducible on the same Questa build but not portable across seeds.
+  - The TB validates that mul takes 3 cycles and every other op takes 1 cycle
+    (cycle_count check on line 179). Any timing regression would surface as
+    a 'Test Failed: ... took N cycles, expected M cycles' print.
+  - cascaded_alu_tb.sv is retained but not compiled. It carries a richer
+    covergroup definition; if functional coverage closure is the goal in the
+    future, swap run.do back to it and address its $stop -> $finish gap.
+
+Files in this directory:
+  MANIFEST.txt
+  cascaded_alu.sv
+  cascaded_alu_selfchecking_tb.sv  (active per run.do)
+  cascaded_alu_tb.sv               (alternate, commented out)
+  run.do
+  transcript.txt

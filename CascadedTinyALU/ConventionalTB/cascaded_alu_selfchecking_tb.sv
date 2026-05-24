@@ -79,9 +79,9 @@ module top;
 
         // Check if any errors were detected
         if (error_flag) begin
-            $display("*** FAILED ***");
+            $display("Failed testbench");
         end else begin
-            $display("*** PASSED ***");
+            $display("No errors -- passed testbench");
         end
 
         // Finish the simulation

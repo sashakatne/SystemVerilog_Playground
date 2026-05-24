@@ -1,0 +1,180 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:35:07 on May 23,2026
+# vlog -source -lint cascaded_alu.sv 
+# -- Compiling module cascaded_alu
+# -- Compiling module alu1
+# -- Compiling module alu2
+# -- Compiling module zero_cycle
+# -- Compiling module single_cycle1
+# -- Compiling module single_cycle2
+# -- Compiling module three_cycle
+# 
+# Top level modules:
+# 	cascaded_alu
+# End time: 16:35:08 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:35:08 on May 23,2026
+# vlog -source -lint cascaded_alu_selfchecking_tb.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 16:35:08 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:35:08 on May 23,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+cascaded_alu(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module cascaded_alu
+# -- Loading module alu1
+# -- Loading module zero_cycle
+# -- Loading module single_cycle1
+# -- Loading module three_cycle
+# -- Loading module alu2
+# -- Loading module single_cycle2
+# Optimizing 8 design-units (inlining 0/9 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module alu1(fast)
+# -- Optimizing module alu2(fast)
+# -- Optimizing module three_cycle(fast)
+# ** Note: (vopt-143) Recognized 1 FSM in module "three_cycle(fast)".
+# -- Optimizing module cascaded_alu(fast)
+# -- Optimizing module single_cycle2(fast)
+# -- Optimizing module single_cycle1(fast)
+# -- Optimizing module zero_cycle(fast)
+# Optimized design name is top_optimized
+# End time: 16:35:09 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 16:35:09 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.cascaded_alu(fast)
+# Loading work.alu1(fast)
+# Loading work.zero_cycle(fast)
+# Loading work.single_cycle1(fast)
+# Loading work.three_cycle(fast)
+# Loading work.alu2(fast)
+# Loading work.single_cycle2(fast)
+# 1
+# ************ Starting ALU test ************
+# No errors -- passed testbench
+# ** Note: $finish    : cascaded_alu_selfchecking_tb.sv(89)
+#    Time: 3231995 ns  Iteration: 1  Instance: /top
+# 1
+# Break in Module top at cascaded_alu_selfchecking_tb.sv line 89
+# Stopped at cascaded_alu_selfchecking_tb.sv line 89
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:35:12 on May 23,2026
+# vcover report cascaded_alu.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/DUT/alu1/pass_through
+# === Design Unit: work.zero_cycle
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/alu1/single
+# === Design Unit: work.single_cycle1
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         8         8         0   100.00%
+#     Statements                       8         8         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/alu1/mult
+# === Design Unit: work.three_cycle
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         7         7         0   100.00%
+#     FSM States                       3         3         0   100.00%
+#     FSM Transitions                  4         3         1    75.00%
+#     Statements                      10        10         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/alu1
+# === Design Unit: work.alu1
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         8         8         0   100.00%
+#     Conditions                       1         1         0   100.00%
+#     Expressions                     12        12         0   100.00%
+#     Statements                       5         5         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/alu2/pass_through
+# === Design Unit: work.zero_cycle
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/alu2/single
+# === Design Unit: work.single_cycle2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         9         9         0   100.00%
+#     Statements                       9         9         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/alu2
+# === Design Unit: work.alu2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Expressions                      7         7         0   100.00%
+#     Statements                       4         4         0   100.00%
+# 
+# 
+# Total Coverage By Instance (filtered view): 95.83%
+# 
+# End time: 16:35:12 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:35:12 on May 23,2026
+# vcover report cascaded_alu.ucdb -cvg -details 
+# ** Note: (vcover-17388) No matching coverage data found in file 'cascaded_alu.ucdb'.
+# End time: 16:35:12 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 16:35:12 on May 23,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

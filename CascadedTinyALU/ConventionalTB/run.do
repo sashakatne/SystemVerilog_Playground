@@ -3,9 +3,9 @@ catch {vdel -all}
 vlib work
 
 vlog -source -lint cascaded_alu.sv
-vlog -source -lint cascaded_alu_tb.sv
+# vlog -source -lint cascaded_alu_tb.sv
 
-# vlog -source -lint cascaded_alu_selfchecking_tb.sv
+vlog -source -lint cascaded_alu_selfchecking_tb.sv
 
 vopt top -o top_optimized +acc +cover=sbfec+cascaded_alu(rtl).
 
