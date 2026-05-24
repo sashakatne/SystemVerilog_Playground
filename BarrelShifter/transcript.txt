@@ -1,30 +1,37 @@
+Reading pref.tcl
+
+# 2021.3_1
+
 # do run.do
-# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
-# No such file or directory. (errno = ENOENT)
-# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
-# 1
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 15:33:42 on May 23,2026
+# Start time: 17:59:53 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # vlog -source -lint barrelshifter.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # -- Compiling module Mux2to1
 # -- Compiling module BarrelShifter
 # 
 # Top level modules:
 # 	BarrelShifter
-# End time: 15:33:42 on May 23,2026, Elapsed time: 0:00:00
+# End time: 17:59:53 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 15:33:42 on May 23,2026
+# Start time: 17:59:53 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # vlog -source -lint testbench.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 15:33:42 on May 23,2026, Elapsed time: 0:00:00
+# End time: 17:59:53 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 15:33:42 on May 23,2026
+# Start time: 17:59:54 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # vopt top -o top_optimized "+acc" "+cover=sbfec+BarrelShifter(rtl)." 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # 
 # Top level modules:
 # 	top
@@ -34,14 +41,16 @@
 # -- Loading module BarrelShifter
 # -- Loading module Mux2to1
 # Optimizing 3 design-units (inlining 0/7 module instances):
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # -- Optimizing module top(fast)
 # -- Optimizing module BarrelShifter(fast)
 # -- Optimizing module Mux2to1(fast)
 # Optimized design name is top_optimized
-# End time: 15:33:43 on May 23,2026, Elapsed time: 0:00:01
+# End time: 17:59:55 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim top_optimized -coverage 
-# Start time: 15:33:43 on May 23,2026
+# Start time: 17:59:55 on May 23,2026
 # //  Questa Sim-64
 # //  Version 2021.3_1 linux_x86_64 Aug 15 2021
 # //
@@ -509,216 +518,216 @@
 # PASS [446]: In=80000000 ShiftAmount=30 ShiftIn=1 => Out=3fffffff
 # PASS [447]: In=80000000 ShiftAmount=31 ShiftIn=0 => Out=00000000
 # PASS [448]: In=80000000 ShiftAmount=31 ShiftIn=1 => Out=7fffffff
-# PASS [449]: In=17750c26 ShiftAmount=6 ShiftIn=0 => Out=dd430980
-# PASS [450]: In=83956e46 ShiftAmount=18 ShiftIn=0 => Out=b9180000
-# PASS [451]: In=3386553a ShiftAmount=10 ShiftIn=0 => Out=1954e800
-# PASS [452]: In=d29b1a56 ShiftAmount=21 ShiftIn=0 => Out=4ac00000
-# PASS [453]: In=38f1817d ShiftAmount=27 ShiftIn=1 => Out=efffffff
-# PASS [454]: In=26008320 ShiftAmount=5 ShiftIn=1 => Out=c010641f
-# PASS [455]: In=61c71ee9 ShiftAmount=29 ShiftIn=0 => Out=20000000
-# PASS [456]: In=9c02498b ShiftAmount=22 ShiftIn=1 => Out=62ffffff
-# PASS [457]: In=f115b140 ShiftAmount=0 ShiftIn=0 => Out=f115b140
-# PASS [458]: In=4a7ce98e ShiftAmount=0 ShiftIn=1 => Out=4a7ce98e
-# PASS [459]: In=c573dbc7 ShiftAmount=24 ShiftIn=1 => Out=c7ffffff
-# PASS [460]: In=ff20de23 ShiftAmount=20 ShiftIn=1 => Out=e23fffff
-# PASS [461]: In=63ae1ae6 ShiftAmount=22 ShiftIn=1 => Out=b9bfffff
-# PASS [462]: In=2f535b0f ShiftAmount=15 ShiftIn=0 => Out=ad878000
-# PASS [463]: In=88ef10cb ShiftAmount=7 ShiftIn=1 => Out=778865ff
-# PASS [464]: In=893a9be1 ShiftAmount=5 ShiftIn=0 => Out=27537c20
-# PASS [465]: In=ab4d491d ShiftAmount=18 ShiftIn=0 => Out=24740000
-# PASS [466]: In=ed421340 ShiftAmount=21 ShiftIn=1 => Out=681fffff
-# PASS [467]: In=ef1210a0 ShiftAmount=23 ShiftIn=1 => Out=507fffff
-# PASS [468]: In=40c71fdd ShiftAmount=26 ShiftIn=0 => Out=74000000
-# PASS [469]: In=5d1ebc89 ShiftAmount=10 ShiftIn=1 => Out=7af227ff
-# PASS [470]: In=1a163e4c ShiftAmount=30 ShiftIn=1 => Out=3fffffff
-# PASS [471]: In=90621dbc ShiftAmount=27 ShiftIn=1 => Out=e7ffffff
-# PASS [472]: In=0d7a45b7 ShiftAmount=11 ShiftIn=1 => Out=d22dbfff
-# PASS [473]: In=1d5d4909 ShiftAmount=10 ShiftIn=1 => Out=752427ff
-# PASS [474]: In=cfecaf60 ShiftAmount=15 ShiftIn=1 => Out=57b07fff
-# PASS [475]: In=ebffe7cd ShiftAmount=12 ShiftIn=0 => Out=fe7cd000
-# PASS [476]: In=f2a0cdfc ShiftAmount=5 ShiftIn=1 => Out=5419bf9f
-# PASS [477]: In=14b4d8be ShiftAmount=1 ShiftIn=1 => Out=2969b17d
-# PASS [478]: In=bda3dfa0 ShiftAmount=21 ShiftIn=0 => Out=f4000000
-# PASS [479]: In=1e4eb78b ShiftAmount=8 ShiftIn=1 => Out=4eb78bff
-# PASS [480]: In=0154eb7d ShiftAmount=11 ShiftIn=0 => Out=a75be800
-# PASS [481]: In=75491ab2 ShiftAmount=22 ShiftIn=0 => Out=ac800000
-# PASS [482]: In=75ab22e1 ShiftAmount=20 ShiftIn=1 => Out=2e1fffff
-# PASS [483]: In=c0315769 ShiftAmount=6 ShiftIn=0 => Out=0c55da40
-# PASS [484]: In=a0dd94ca ShiftAmount=8 ShiftIn=1 => Out=dd94caff
-# PASS [485]: In=5f58d3ec ShiftAmount=30 ShiftIn=0 => Out=00000000
-# PASS [486]: In=a9f266c5 ShiftAmount=30 ShiftIn=0 => Out=40000000
-# PASS [487]: In=2706f00d ShiftAmount=22 ShiftIn=1 => Out=037fffff
-# PASS [488]: In=44f1adf9 ShiftAmount=25 ShiftIn=1 => Out=f3ffffff
-# PASS [489]: In=2483eadd ShiftAmount=15 ShiftIn=1 => Out=f56effff
-# PASS [490]: In=b444a59a ShiftAmount=16 ShiftIn=0 => Out=a59a0000
-# PASS [491]: In=5fed23ee ShiftAmount=20 ShiftIn=0 => Out=3ee00000
-# PASS [492]: In=dec1e27c ShiftAmount=13 ShiftIn=1 => Out=3c4f9fff
-# PASS [493]: In=d8e20a46 ShiftAmount=16 ShiftIn=1 => Out=0a46ffff
-# PASS [494]: In=fa04273c ShiftAmount=22 ShiftIn=0 => Out=cf000000
-# PASS [495]: In=160f7526 ShiftAmount=25 ShiftIn=1 => Out=4dffffff
-# PASS [496]: In=004101b4 ShiftAmount=7 ShiftIn=0 => Out=2080da00
-# PASS [497]: In=062a3452 ShiftAmount=10 ShiftIn=0 => Out=a8d14800
-# PASS [498]: In=e9747ddf ShiftAmount=7 ShiftIn=1 => Out=ba3eefff
-# PASS [499]: In=3ff788ea ShiftAmount=15 ShiftIn=1 => Out=c4757fff
-# PASS [500]: In=1823a716 ShiftAmount=8 ShiftIn=0 => Out=23a71600
-# PASS [501]: In=96154251 ShiftAmount=28 ShiftIn=1 => Out=1fffffff
-# PASS [502]: In=beb2748c ShiftAmount=30 ShiftIn=0 => Out=00000000
-# PASS [503]: In=605101de ShiftAmount=1 ShiftIn=0 => Out=c0a203bc
-# PASS [504]: In=c44940c8 ShiftAmount=13 ShiftIn=0 => Out=28190000
-# PASS [505]: In=4e80d159 ShiftAmount=20 ShiftIn=0 => Out=15900000
-# PASS [506]: In=d77a0562 ShiftAmount=8 ShiftIn=1 => Out=7a0562ff
-# PASS [507]: In=a7980053 ShiftAmount=21 ShiftIn=1 => Out=0a7fffff
-# PASS [508]: In=291f5848 ShiftAmount=12 ShiftIn=1 => Out=f5848fff
-# PASS [509]: In=a953e916 ShiftAmount=22 ShiftIn=0 => Out=45800000
-# PASS [510]: In=47b74de0 ShiftAmount=6 ShiftIn=0 => Out=edd37800
-# PASS [511]: In=dc0a8411 ShiftAmount=14 ShiftIn=0 => Out=a1044000
-# PASS [512]: In=442bd110 ShiftAmount=6 ShiftIn=0 => Out=0af44400
-# PASS [513]: In=6605a213 ShiftAmount=18 ShiftIn=1 => Out=884fffff
-# PASS [514]: In=5f19e79b ShiftAmount=11 ShiftIn=0 => Out=cf3cd800
-# PASS [515]: In=4df081f7 ShiftAmount=9 ShiftIn=1 => Out=e103efff
-# PASS [516]: In=09b023cf ShiftAmount=2 ShiftIn=1 => Out=26c08f3f
-# PASS [517]: In=f5183634 ShiftAmount=28 ShiftIn=1 => Out=4fffffff
-# PASS [518]: In=aa1c72b2 ShiftAmount=23 ShiftIn=1 => Out=597fffff
-# PASS [519]: In=99238e53 ShiftAmount=1 ShiftIn=1 => Out=32471ca7
-# PASS [520]: In=fd272c9d ShiftAmount=21 ShiftIn=1 => Out=93bfffff
-# PASS [521]: In=800b5101 ShiftAmount=15 ShiftIn=0 => Out=a8808000
-# PASS [522]: In=386a2c8b ShiftAmount=21 ShiftIn=1 => Out=917fffff
-# PASS [523]: In=ef0286e0 ShiftAmount=15 ShiftIn=1 => Out=43707fff
-# PASS [524]: In=82969340 ShiftAmount=12 ShiftIn=1 => Out=69340fff
-# PASS [525]: In=ad014b97 ShiftAmount=13 ShiftIn=0 => Out=2972e000
-# PASS [526]: In=323aba54 ShiftAmount=13 ShiftIn=1 => Out=574a9fff
-# PASS [527]: In=d3a9e4f8 ShiftAmount=16 ShiftIn=1 => Out=e4f8ffff
-# PASS [528]: In=8d614eb8 ShiftAmount=1 ShiftIn=0 => Out=1ac29d70
-# PASS [529]: In=4f8236a2 ShiftAmount=8 ShiftIn=1 => Out=8236a2ff
-# PASS [530]: In=3a6ee6c6 ShiftAmount=22 ShiftIn=0 => Out=b1800000
-# PASS [531]: In=f68f5033 ShiftAmount=23 ShiftIn=0 => Out=19800000
-# PASS [532]: In=d52f3b9a ShiftAmount=9 ShiftIn=0 => Out=5e773400
-# PASS [533]: In=c6471218 ShiftAmount=24 ShiftIn=1 => Out=18ffffff
-# PASS [534]: In=7b032269 ShiftAmount=9 ShiftIn=1 => Out=0644d3ff
-# PASS [535]: In=dd598de1 ShiftAmount=2 ShiftIn=0 => Out=75663784
-# PASS [536]: In=a606236f ShiftAmount=24 ShiftIn=1 => Out=6fffffff
-# PASS [537]: In=b87c161b ShiftAmount=4 ShiftIn=0 => Out=87c161b0
-# PASS [538]: In=9b7bba27 ShiftAmount=10 ShiftIn=1 => Out=eee89fff
-# PASS [539]: In=18dd86ac ShiftAmount=5 ShiftIn=0 => Out=1bb0d580
-# PASS [540]: In=b6544cd1 ShiftAmount=5 ShiftIn=1 => Out=ca899a3f
-# PASS [541]: In=deaa5416 ShiftAmount=11 ShiftIn=0 => Out=52a0b000
-# PASS [542]: In=f7b3ba03 ShiftAmount=5 ShiftIn=0 => Out=f6774060
-# PASS [543]: In=edcc1f1c ShiftAmount=11 ShiftIn=0 => Out=60f8e000
-# PASS [544]: In=616623c5 ShiftAmount=1 ShiftIn=1 => Out=c2cc478b
-# PASS [545]: In=a2ce5d65 ShiftAmount=30 ShiftIn=1 => Out=7fffffff
-# PASS [546]: In=8c1fd4e1 ShiftAmount=10 ShiftIn=1 => Out=7f5387ff
-# PASS [547]: In=fd82f9dd ShiftAmount=23 ShiftIn=1 => Out=eeffffff
-# PASS [548]: In=c2b473d1 ShiftAmount=12 ShiftIn=0 => Out=473d1000
-# PASS [549]: In=a4e906db ShiftAmount=4 ShiftIn=0 => Out=4e906db0
-# PASS [550]: In=e74e241f ShiftAmount=24 ShiftIn=0 => Out=1f000000
-# PASS [551]: In=09243147 ShiftAmount=30 ShiftIn=1 => Out=ffffffff
-# PASS [552]: In=bde1a201 ShiftAmount=19 ShiftIn=1 => Out=100fffff
-# PASS [553]: In=4f45b5f3 ShiftAmount=6 ShiftIn=0 => Out=d16d7cc0
-# PASS [554]: In=88a82003 ShiftAmount=22 ShiftIn=0 => Out=00c00000
-# PASS [555]: In=e693613b ShiftAmount=2 ShiftIn=0 => Out=9a4d84ec
-# PASS [556]: In=47f91de6 ShiftAmount=3 ShiftIn=0 => Out=3fc8ef30
-# PASS [557]: In=cf825002 ShiftAmount=30 ShiftIn=0 => Out=80000000
-# PASS [558]: In=76f3a3d9 ShiftAmount=30 ShiftIn=0 => Out=40000000
-# PASS [559]: In=8acee299 ShiftAmount=9 ShiftIn=0 => Out=9dc53200
-# PASS [560]: In=780a5aea ShiftAmount=7 ShiftIn=1 => Out=052d757f
-# PASS [561]: In=a22ed937 ShiftAmount=13 ShiftIn=0 => Out=db26e000
-# PASS [562]: In=6bbf989b ShiftAmount=22 ShiftIn=1 => Out=26ffffff
-# PASS [563]: In=a6b06eae ShiftAmount=21 ShiftIn=0 => Out=d5c00000
-# PASS [564]: In=0d17305f ShiftAmount=5 ShiftIn=0 => Out=a2e60be0
-# PASS [565]: In=aba1acf0 ShiftAmount=19 ShiftIn=0 => Out=67800000
-# PASS [566]: In=496740a5 ShiftAmount=11 ShiftIn=0 => Out=3a052800
-# PASS [567]: In=03f22f04 ShiftAmount=10 ShiftIn=1 => Out=c8bc13ff
-# PASS [568]: In=e71fd490 ShiftAmount=21 ShiftIn=0 => Out=92000000
-# PASS [569]: In=25c537da ShiftAmount=24 ShiftIn=0 => Out=da000000
-# PASS [570]: In=d14c2cad ShiftAmount=8 ShiftIn=1 => Out=4c2cadff
-# PASS [571]: In=c02e8bb3 ShiftAmount=12 ShiftIn=0 => Out=e8bb3000
-# PASS [572]: In=835393d1 ShiftAmount=11 ShiftIn=0 => Out=9c9e8800
-# PASS [573]: In=16c19b89 ShiftAmount=17 ShiftIn=0 => Out=37120000
-# PASS [574]: In=c087aca9 ShiftAmount=6 ShiftIn=0 => Out=21eb2a40
-# PASS [575]: In=797f6681 ShiftAmount=22 ShiftIn=1 => Out=a07fffff
-# PASS [576]: In=886941ec ShiftAmount=1 ShiftIn=1 => Out=10d283d9
-# PASS [577]: In=712dc41f ShiftAmount=15 ShiftIn=0 => Out=e20f8000
-# PASS [578]: In=8225dc3f ShiftAmount=6 ShiftIn=0 => Out=89770fc0
-# PASS [579]: In=d465c6c4 ShiftAmount=3 ShiftIn=0 => Out=a32e3620
-# PASS [580]: In=b030a261 ShiftAmount=3 ShiftIn=0 => Out=81851308
-# PASS [581]: In=a8bdd2b5 ShiftAmount=5 ShiftIn=0 => Out=17ba56a0
-# PASS [582]: In=a2d10059 ShiftAmount=28 ShiftIn=0 => Out=90000000
-# PASS [583]: In=7d1edd6a ShiftAmount=19 ShiftIn=0 => Out=eb500000
-# PASS [584]: In=595aaf14 ShiftAmount=21 ShiftIn=1 => Out=e29fffff
-# PASS [585]: In=e6a96ed3 ShiftAmount=31 ShiftIn=0 => Out=80000000
-# PASS [586]: In=80b6ff3f ShiftAmount=7 ShiftIn=0 => Out=5b7f9f80
-# PASS [587]: In=35b18e62 ShiftAmount=0 ShiftIn=1 => Out=35b18e62
-# PASS [588]: In=8a361fa9 ShiftAmount=12 ShiftIn=1 => Out=61fa9fff
-# PASS [589]: In=410377b2 ShiftAmount=12 ShiftIn=1 => Out=377b2fff
-# PASS [590]: In=4c8e85fc ShiftAmount=14 ShiftIn=1 => Out=a17f3fff
-# PASS [591]: In=50e338ef ShiftAmount=26 ShiftIn=0 => Out=bc000000
-# PASS [592]: In=9404f892 ShiftAmount=6 ShiftIn=0 => Out=013e2480
-# PASS [593]: In=7429b546 ShiftAmount=26 ShiftIn=0 => Out=18000000
-# PASS [594]: In=08d363ae ShiftAmount=26 ShiftIn=0 => Out=b8000000
-# PASS [595]: In=ce084abc ShiftAmount=22 ShiftIn=0 => Out=af000000
-# PASS [596]: In=f24bfe64 ShiftAmount=31 ShiftIn=0 => Out=00000000
-# PASS [597]: In=d7117820 ShiftAmount=22 ShiftIn=1 => Out=083fffff
-# PASS [598]: In=42b81e64 ShiftAmount=24 ShiftIn=0 => Out=64000000
-# PASS [599]: In=fc36ed71 ShiftAmount=21 ShiftIn=0 => Out=ae200000
-# PASS [600]: In=5b685569 ShiftAmount=1 ShiftIn=0 => Out=b6d0aad2
-# PASS [601]: In=28ca2ffc ShiftAmount=0 ShiftIn=0 => Out=28ca2ffc
-# PASS [602]: In=fcdc8df5 ShiftAmount=7 ShiftIn=0 => Out=6e46fa80
-# PASS [603]: In=e3b722cf ShiftAmount=30 ShiftIn=1 => Out=ffffffff
-# PASS [604]: In=8bac98cc ShiftAmount=13 ShiftIn=0 => Out=93198000
-# PASS [605]: In=cb952790 ShiftAmount=26 ShiftIn=0 => Out=40000000
-# PASS [606]: In=4855a777 ShiftAmount=12 ShiftIn=1 => Out=5a777fff
-# PASS [607]: In=72bdd054 ShiftAmount=3 ShiftIn=0 => Out=95ee82a0
-# PASS [608]: In=0495c8d3 ShiftAmount=22 ShiftIn=1 => Out=34ffffff
-# PASS [609]: In=0366b6ad ShiftAmount=13 ShiftIn=1 => Out=d6d5bfff
-# PASS [610]: In=dd4ca60f ShiftAmount=22 ShiftIn=1 => Out=83ffffff
-# PASS [611]: In=32e8db04 ShiftAmount=17 ShiftIn=1 => Out=b609ffff
-# PASS [612]: In=4f7194b7 ShiftAmount=4 ShiftIn=1 => Out=f7194b7f
-# PASS [613]: In=accc927a ShiftAmount=18 ShiftIn=0 => Out=49e80000
-# PASS [614]: In=a86001c4 ShiftAmount=13 ShiftIn=1 => Out=00389fff
-# PASS [615]: In=5ee4659e ShiftAmount=20 ShiftIn=0 => Out=59e00000
-# PASS [616]: In=7b6a0f0d ShiftAmount=6 ShiftIn=1 => Out=da83c37f
-# PASS [617]: In=32162f8f ShiftAmount=28 ShiftIn=1 => Out=ffffffff
-# PASS [618]: In=fb42f4c0 ShiftAmount=10 ShiftIn=1 => Out=0bd303ff
-# PASS [619]: In=b891de8c ShiftAmount=23 ShiftIn=1 => Out=467fffff
-# PASS [620]: In=7c06b647 ShiftAmount=17 ShiftIn=1 => Out=6c8fffff
-# PASS [621]: In=d4bbf819 ShiftAmount=13 ShiftIn=1 => Out=7f033fff
-# PASS [622]: In=e849bb07 ShiftAmount=31 ShiftIn=0 => Out=80000000
-# PASS [623]: In=cc20a831 ShiftAmount=2 ShiftIn=1 => Out=3082a0c7
-# PASS [624]: In=3eded98b ShiftAmount=17 ShiftIn=1 => Out=b317ffff
-# PASS [625]: In=e2d8f0ae ShiftAmount=3 ShiftIn=0 => Out=16c78570
-# PASS [626]: In=c013157b ShiftAmount=30 ShiftIn=1 => Out=ffffffff
-# PASS [627]: In=0f2e185e ShiftAmount=6 ShiftIn=1 => Out=cb8617bf
-# PASS [628]: In=97139622 ShiftAmount=24 ShiftIn=1 => Out=22ffffff
-# PASS [629]: In=0d12f8ba ShiftAmount=18 ShiftIn=1 => Out=e2ebffff
-# PASS [630]: In=41361cdb ShiftAmount=17 ShiftIn=1 => Out=39b7ffff
-# PASS [631]: In=a38b11e6 ShiftAmount=30 ShiftIn=1 => Out=bfffffff
-# PASS [632]: In=2465e33f ShiftAmount=26 ShiftIn=0 => Out=fc000000
-# PASS [633]: In=55fa3f97 ShiftAmount=23 ShiftIn=1 => Out=cbffffff
-# PASS [634]: In=cf345dc8 ShiftAmount=22 ShiftIn=1 => Out=723fffff
-# PASS [635]: In=32008962 ShiftAmount=13 ShiftIn=0 => Out=112c4000
-# PASS [636]: In=73271891 ShiftAmount=0 ShiftIn=1 => Out=73271891
-# PASS [637]: In=a6d5d9ec ShiftAmount=4 ShiftIn=0 => Out=6d5d9ec0
-# PASS [638]: In=503857e8 ShiftAmount=26 ShiftIn=0 => Out=a0000000
-# PASS [639]: In=8c3fb5c5 ShiftAmount=15 ShiftIn=1 => Out=dae2ffff
-# PASS [640]: In=b3dde171 ShiftAmount=19 ShiftIn=0 => Out=0b880000
-# PASS [641]: In=2b594c17 ShiftAmount=26 ShiftIn=0 => Out=5c000000
-# PASS [642]: In=87120600 ShiftAmount=25 ShiftIn=0 => Out=00000000
-# PASS [643]: In=53354190 ShiftAmount=29 ShiftIn=0 => Out=00000000
-# PASS [644]: In=be925922 ShiftAmount=11 ShiftIn=1 => Out=92c917ff
-# PASS [645]: In=86fff3a3 ShiftAmount=23 ShiftIn=1 => Out=d1ffffff
-# PASS [646]: In=9813253e ShiftAmount=26 ShiftIn=0 => Out=f8000000
-# PASS [647]: In=79963ba3 ShiftAmount=1 ShiftIn=1 => Out=f32c7747
-# PASS [648]: In=ac045db2 ShiftAmount=5 ShiftIn=0 => Out=808bb640
+# PASS [449]: In=8eb74a7c ShiftAmount=28 ShiftIn=0 => Out=c0000000
+# PASS [450]: In=c73523a7 ShiftAmount=22 ShiftIn=0 => Out=e9c00000
+# PASS [451]: In=03d23d59 ShiftAmount=24 ShiftIn=1 => Out=59ffffff
+# PASS [452]: In=f9bd74a2 ShiftAmount=28 ShiftIn=1 => Out=2fffffff
+# PASS [453]: In=840d1196 ShiftAmount=16 ShiftIn=1 => Out=1196ffff
+# PASS [454]: In=24b5be83 ShiftAmount=6 ShiftIn=0 => Out=2d6fa0c0
+# PASS [455]: In=d8e7c65c ShiftAmount=15 ShiftIn=0 => Out=e32e0000
+# PASS [456]: In=37d356ff ShiftAmount=30 ShiftIn=0 => Out=c0000000
+# PASS [457]: In=ae3cd4e4 ShiftAmount=30 ShiftIn=1 => Out=3fffffff
+# PASS [458]: In=1c1d169b ShiftAmount=18 ShiftIn=1 => Out=5a6fffff
+# PASS [459]: In=9cac3918 ShiftAmount=25 ShiftIn=0 => Out=30000000
+# PASS [460]: In=72c1e68c ShiftAmount=1 ShiftIn=0 => Out=e583cd18
+# PASS [461]: In=d71ebb35 ShiftAmount=20 ShiftIn=1 => Out=b35fffff
+# PASS [462]: In=c219042d ShiftAmount=8 ShiftIn=1 => Out=19042dff
+# PASS [463]: In=582d66c1 ShiftAmount=21 ShiftIn=0 => Out=d8200000
+# PASS [464]: In=4b83ec82 ShiftAmount=17 ShiftIn=1 => Out=d905ffff
+# PASS [465]: In=ce5a0553 ShiftAmount=30 ShiftIn=1 => Out=ffffffff
+# PASS [466]: In=ef1d085e ShiftAmount=24 ShiftIn=1 => Out=5effffff
+# PASS [467]: In=3658f17a ShiftAmount=24 ShiftIn=1 => Out=7affffff
+# PASS [468]: In=dbd21581 ShiftAmount=1 ShiftIn=0 => Out=b7a42b02
+# PASS [469]: In=bfeb7f2f ShiftAmount=13 ShiftIn=1 => Out=6fe5ffff
+# PASS [470]: In=6de71f43 ShiftAmount=1 ShiftIn=1 => Out=dbce3e87
+# PASS [471]: In=35606c75 ShiftAmount=9 ShiftIn=0 => Out=c0d8ea00
+# PASS [472]: In=a2047b01 ShiftAmount=22 ShiftIn=1 => Out=c07fffff
+# PASS [473]: In=0c0240bf ShiftAmount=0 ShiftIn=1 => Out=0c0240bf
+# PASS [474]: In=3b05e2d4 ShiftAmount=31 ShiftIn=1 => Out=7fffffff
+# PASS [475]: In=e4a6ae59 ShiftAmount=29 ShiftIn=0 => Out=20000000
+# PASS [476]: In=d4778cba ShiftAmount=2 ShiftIn=1 => Out=51de32eb
+# PASS [477]: In=cf8ff713 ShiftAmount=28 ShiftIn=1 => Out=3fffffff
+# PASS [478]: In=4e449f82 ShiftAmount=9 ShiftIn=1 => Out=893f05ff
+# PASS [479]: In=60b6fd5e ShiftAmount=13 ShiftIn=1 => Out=dfabdfff
+# PASS [480]: In=db7d71a8 ShiftAmount=29 ShiftIn=0 => Out=00000000
+# PASS [481]: In=6787144a ShiftAmount=15 ShiftIn=1 => Out=8a257fff
+# PASS [482]: In=394491a1 ShiftAmount=30 ShiftIn=0 => Out=40000000
+# PASS [483]: In=572cc548 ShiftAmount=5 ShiftIn=0 => Out=e598a900
+# PASS [484]: In=ef3205ce ShiftAmount=0 ShiftIn=1 => Out=ef3205ce
+# PASS [485]: In=fb38f8fe ShiftAmount=30 ShiftIn=1 => Out=bfffffff
+# PASS [486]: In=bffc038a ShiftAmount=1 ShiftIn=1 => Out=7ff80715
+# PASS [487]: In=9e752e08 ShiftAmount=25 ShiftIn=1 => Out=11ffffff
+# PASS [488]: In=c41cd67e ShiftAmount=12 ShiftIn=1 => Out=cd67efff
+# PASS [489]: In=71f16088 ShiftAmount=15 ShiftIn=0 => Out=b0440000
+# PASS [490]: In=cd2cdad6 ShiftAmount=21 ShiftIn=1 => Out=5adfffff
+# PASS [491]: In=9fbeade9 ShiftAmount=16 ShiftIn=1 => Out=ade9ffff
+# PASS [492]: In=8099c7bd ShiftAmount=10 ShiftIn=0 => Out=671ef400
+# PASS [493]: In=cd761bd9 ShiftAmount=18 ShiftIn=1 => Out=6f67ffff
+# PASS [494]: In=1520ba4f ShiftAmount=24 ShiftIn=0 => Out=4f000000
+# PASS [495]: In=39496200 ShiftAmount=24 ShiftIn=0 => Out=00000000
+# PASS [496]: In=15b8b838 ShiftAmount=25 ShiftIn=0 => Out=70000000
+# PASS [497]: In=c5adae05 ShiftAmount=21 ShiftIn=0 => Out=c0a00000
+# PASS [498]: In=460a7afd ShiftAmount=15 ShiftIn=0 => Out=3d7e8000
+# PASS [499]: In=7c442d44 ShiftAmount=13 ShiftIn=1 => Out=85a89fff
+# PASS [500]: In=3b7fe7b2 ShiftAmount=3 ShiftIn=1 => Out=dbff3d97
+# PASS [501]: In=5ca5c772 ShiftAmount=0 ShiftIn=1 => Out=5ca5c772
+# PASS [502]: In=43d120da ShiftAmount=10 ShiftIn=1 => Out=44836bff
+# PASS [503]: In=cf54d220 ShiftAmount=21 ShiftIn=0 => Out=44000000
+# PASS [504]: In=2cc7eded ShiftAmount=21 ShiftIn=1 => Out=bdbfffff
+# PASS [505]: In=6b4de15f ShiftAmount=24 ShiftIn=0 => Out=5f000000
+# PASS [506]: In=1e550528 ShiftAmount=28 ShiftIn=0 => Out=80000000
+# PASS [507]: In=c71b985f ShiftAmount=26 ShiftIn=0 => Out=7c000000
+# PASS [508]: In=e74b35d2 ShiftAmount=25 ShiftIn=0 => Out=a4000000
+# PASS [509]: In=cff4289f ShiftAmount=26 ShiftIn=1 => Out=7fffffff
+# PASS [510]: In=13b0a759 ShiftAmount=4 ShiftIn=1 => Out=3b0a759f
+# PASS [511]: In=939fe273 ShiftAmount=27 ShiftIn=0 => Out=98000000
+# PASS [512]: In=97b5901c ShiftAmount=27 ShiftIn=0 => Out=e0000000
+# PASS [513]: In=7a615077 ShiftAmount=2 ShiftIn=0 => Out=e98541dc
+# PASS [514]: In=41e6903a ShiftAmount=7 ShiftIn=1 => Out=f3481d7f
+# PASS [515]: In=33d7f375 ShiftAmount=22 ShiftIn=1 => Out=dd7fffff
+# PASS [516]: In=a776ebef ShiftAmount=27 ShiftIn=1 => Out=7fffffff
+# PASS [517]: In=9b386cce ShiftAmount=9 ShiftIn=1 => Out=70d99dff
+# PASS [518]: In=e01455cf ShiftAmount=0 ShiftIn=1 => Out=e01455cf
+# PASS [519]: In=b64c553b ShiftAmount=9 ShiftIn=0 => Out=98aa7600
+# PASS [520]: In=4dc555a1 ShiftAmount=24 ShiftIn=1 => Out=a1ffffff
+# PASS [521]: In=ec0ce94d ShiftAmount=30 ShiftIn=0 => Out=40000000
+# PASS [522]: In=ba1c3cc8 ShiftAmount=3 ShiftIn=1 => Out=d0e1e647
+# PASS [523]: In=0ef075ca ShiftAmount=15 ShiftIn=0 => Out=3ae50000
+# PASS [524]: In=cdf5fcdb ShiftAmount=28 ShiftIn=0 => Out=b0000000
+# PASS [525]: In=bd72c140 ShiftAmount=6 ShiftIn=0 => Out=5cb05000
+# PASS [526]: In=89ee1a3d ShiftAmount=6 ShiftIn=1 => Out=7b868f7f
+# PASS [527]: In=4f378971 ShiftAmount=25 ShiftIn=0 => Out=e2000000
+# PASS [528]: In=c1017efe ShiftAmount=6 ShiftIn=0 => Out=405fbf80
+# PASS [529]: In=694626ae ShiftAmount=3 ShiftIn=0 => Out=4a313570
+# PASS [530]: In=f87b3164 ShiftAmount=3 ShiftIn=0 => Out=c3d98b20
+# PASS [531]: In=5195dad0 ShiftAmount=24 ShiftIn=1 => Out=d0ffffff
+# PASS [532]: In=e043d287 ShiftAmount=18 ShiftIn=0 => Out=4a1c0000
+# PASS [533]: In=6b9fbc5b ShiftAmount=24 ShiftIn=0 => Out=5b000000
+# PASS [534]: In=34c24d18 ShiftAmount=4 ShiftIn=1 => Out=4c24d18f
+# PASS [535]: In=4e7bc884 ShiftAmount=18 ShiftIn=0 => Out=22100000
+# PASS [536]: In=22c97dc2 ShiftAmount=25 ShiftIn=0 => Out=84000000
+# PASS [537]: In=0c2ca310 ShiftAmount=8 ShiftIn=0 => Out=2ca31000
+# PASS [538]: In=c5e0c654 ShiftAmount=20 ShiftIn=0 => Out=65400000
+# PASS [539]: In=4c155288 ShiftAmount=27 ShiftIn=0 => Out=40000000
+# PASS [540]: In=a040fdf1 ShiftAmount=6 ShiftIn=0 => Out=103f7c40
+# PASS [541]: In=aaf9dea8 ShiftAmount=5 ShiftIn=1 => Out=5f3bd51f
+# PASS [542]: In=fdb58cb5 ShiftAmount=23 ShiftIn=0 => Out=5a800000
+# PASS [543]: In=6422c9de ShiftAmount=4 ShiftIn=1 => Out=422c9def
+# PASS [544]: In=c603caee ShiftAmount=31 ShiftIn=0 => Out=00000000
+# PASS [545]: In=11c61e9a ShiftAmount=30 ShiftIn=0 => Out=80000000
+# PASS [546]: In=4174c428 ShiftAmount=22 ShiftIn=1 => Out=0a3fffff
+# PASS [547]: In=a132239f ShiftAmount=2 ShiftIn=1 => Out=84c88e7f
+# PASS [548]: In=2e9b274a ShiftAmount=20 ShiftIn=1 => Out=74afffff
+# PASS [549]: In=7ea8d90a ShiftAmount=19 ShiftIn=0 => Out=c8500000
+# PASS [550]: In=bc9c60b7 ShiftAmount=10 ShiftIn=0 => Out=7182dc00
+# PASS [551]: In=c22ef30d ShiftAmount=5 ShiftIn=0 => Out=45de61a0
+# PASS [552]: In=8a7ab3b3 ShiftAmount=13 ShiftIn=1 => Out=56767fff
+# PASS [553]: In=177293a8 ShiftAmount=5 ShiftIn=1 => Out=ee52751f
+# PASS [554]: In=43d508f1 ShiftAmount=17 ShiftIn=0 => Out=11e20000
+# PASS [555]: In=2e917cb7 ShiftAmount=23 ShiftIn=1 => Out=5bffffff
+# PASS [556]: In=d739ed8c ShiftAmount=8 ShiftIn=1 => Out=39ed8cff
+# PASS [557]: In=0bdc3d1f ShiftAmount=12 ShiftIn=0 => Out=c3d1f000
+# PASS [558]: In=58ec4957 ShiftAmount=30 ShiftIn=0 => Out=c0000000
+# PASS [559]: In=d4765bca ShiftAmount=28 ShiftIn=0 => Out=a0000000
+# PASS [560]: In=16746ec4 ShiftAmount=28 ShiftIn=0 => Out=40000000
+# PASS [561]: In=1af38ee3 ShiftAmount=12 ShiftIn=1 => Out=38ee3fff
+# PASS [562]: In=d949457f ShiftAmount=21 ShiftIn=0 => Out=afe00000
+# PASS [563]: In=ebc66087 ShiftAmount=3 ShiftIn=0 => Out=5e330438
+# PASS [564]: In=4524750c ShiftAmount=5 ShiftIn=1 => Out=a48ea19f
+# PASS [565]: In=de44c51d ShiftAmount=16 ShiftIn=1 => Out=c51dffff
+# PASS [566]: In=768a881f ShiftAmount=4 ShiftIn=0 => Out=68a881f0
+# PASS [567]: In=e5ae66bf ShiftAmount=5 ShiftIn=1 => Out=b5ccd7ff
+# PASS [568]: In=4af47860 ShiftAmount=31 ShiftIn=1 => Out=7fffffff
+# PASS [569]: In=03fe0cee ShiftAmount=18 ShiftIn=1 => Out=33bbffff
+# PASS [570]: In=fa2bf415 ShiftAmount=29 ShiftIn=0 => Out=a0000000
+# PASS [571]: In=0c06c664 ShiftAmount=31 ShiftIn=0 => Out=00000000
+# PASS [572]: In=4834c080 ShiftAmount=19 ShiftIn=0 => Out=04000000
+# PASS [573]: In=beea9932 ShiftAmount=19 ShiftIn=1 => Out=c997ffff
+# PASS [574]: In=c84a25ac ShiftAmount=8 ShiftIn=1 => Out=4a25acff
+# PASS [575]: In=21f1d319 ShiftAmount=10 ShiftIn=1 => Out=c74c67ff
+# PASS [576]: In=dcccbca5 ShiftAmount=30 ShiftIn=0 => Out=40000000
+# PASS [577]: In=15f0b697 ShiftAmount=4 ShiftIn=1 => Out=5f0b697f
+# PASS [578]: In=4acd6646 ShiftAmount=23 ShiftIn=1 => Out=237fffff
+# PASS [579]: In=f8261254 ShiftAmount=13 ShiftIn=1 => Out=c24a9fff
+# PASS [580]: In=b45626ad ShiftAmount=1 ShiftIn=0 => Out=68ac4d5a
+# PASS [581]: In=60646df8 ShiftAmount=2 ShiftIn=0 => Out=8191b7e0
+# PASS [582]: In=3b1c6472 ShiftAmount=30 ShiftIn=0 => Out=80000000
+# PASS [583]: In=29c3ea80 ShiftAmount=23 ShiftIn=0 => Out=40000000
+# PASS [584]: In=5ba0acec ShiftAmount=16 ShiftIn=0 => Out=acec0000
+# PASS [585]: In=7f1dc9e3 ShiftAmount=24 ShiftIn=1 => Out=e3ffffff
+# PASS [586]: In=eca02120 ShiftAmount=8 ShiftIn=1 => Out=a02120ff
+# PASS [587]: In=44a359e5 ShiftAmount=7 ShiftIn=1 => Out=51acf2ff
+# PASS [588]: In=d563d741 ShiftAmount=9 ShiftIn=0 => Out=c7ae8200
+# PASS [589]: In=f2189644 ShiftAmount=2 ShiftIn=1 => Out=c8625913
+# PASS [590]: In=caccf31e ShiftAmount=19 ShiftIn=1 => Out=98f7ffff
+# PASS [591]: In=052a67c9 ShiftAmount=6 ShiftIn=0 => Out=4a99f240
+# PASS [592]: In=22147a7b ShiftAmount=19 ShiftIn=1 => Out=d3dfffff
+# PASS [593]: In=e873823b ShiftAmount=10 ShiftIn=0 => Out=ce08ec00
+# PASS [594]: In=464269a6 ShiftAmount=2 ShiftIn=1 => Out=1909a69b
+# PASS [595]: In=6fdc681c ShiftAmount=11 ShiftIn=1 => Out=e340e7ff
+# PASS [596]: In=f1ee5895 ShiftAmount=23 ShiftIn=1 => Out=4affffff
+# PASS [597]: In=e9802657 ShiftAmount=1 ShiftIn=1 => Out=d3004caf
+# PASS [598]: In=b3f06e88 ShiftAmount=14 ShiftIn=0 => Out=1ba20000
+# PASS [599]: In=57f03001 ShiftAmount=0 ShiftIn=1 => Out=57f03001
+# PASS [600]: In=d4ffb9c4 ShiftAmount=5 ShiftIn=1 => Out=9ff7389f
+# PASS [601]: In=12f3895d ShiftAmount=22 ShiftIn=1 => Out=577fffff
+# PASS [602]: In=85c1997f ShiftAmount=19 ShiftIn=1 => Out=cbffffff
+# PASS [603]: In=2642d5ef ShiftAmount=8 ShiftIn=0 => Out=42d5ef00
+# PASS [604]: In=4191efae ShiftAmount=11 ShiftIn=0 => Out=8f7d7000
+# PASS [605]: In=25b1b715 ShiftAmount=29 ShiftIn=0 => Out=a0000000
+# PASS [606]: In=f04521c4 ShiftAmount=16 ShiftIn=1 => Out=21c4ffff
+# PASS [607]: In=2e0af9a9 ShiftAmount=15 ShiftIn=0 => Out=7cd48000
+# PASS [608]: In=692002fc ShiftAmount=14 ShiftIn=1 => Out=00bf3fff
+# PASS [609]: In=4881627f ShiftAmount=15 ShiftIn=0 => Out=b13f8000
+# PASS [610]: In=c6020637 ShiftAmount=2 ShiftIn=1 => Out=180818df
+# PASS [611]: In=f502cadb ShiftAmount=24 ShiftIn=0 => Out=db000000
+# PASS [612]: In=d5a022a6 ShiftAmount=6 ShiftIn=0 => Out=6808a980
+# PASS [613]: In=93be8baa ShiftAmount=23 ShiftIn=0 => Out=d5000000
+# PASS [614]: In=743d3761 ShiftAmount=8 ShiftIn=1 => Out=3d3761ff
+# PASS [615]: In=b7a0fde7 ShiftAmount=31 ShiftIn=0 => Out=80000000
+# PASS [616]: In=dc795e5b ShiftAmount=28 ShiftIn=0 => Out=b0000000
+# PASS [617]: In=3594f431 ShiftAmount=11 ShiftIn=0 => Out=a7a18800
+# PASS [618]: In=6f547170 ShiftAmount=18 ShiftIn=0 => Out=c5c00000
+# PASS [619]: In=2947ba2d ShiftAmount=20 ShiftIn=1 => Out=a2dfffff
+# PASS [620]: In=c0b8ebcd ShiftAmount=3 ShiftIn=1 => Out=05c75e6f
+# PASS [621]: In=a23c0d71 ShiftAmount=14 ShiftIn=1 => Out=035c7fff
+# PASS [622]: In=18e1a5c9 ShiftAmount=17 ShiftIn=0 => Out=4b920000
+# PASS [623]: In=ba60f137 ShiftAmount=24 ShiftIn=0 => Out=37000000
+# PASS [624]: In=bef6d606 ShiftAmount=22 ShiftIn=0 => Out=81800000
+# PASS [625]: In=9d65f875 ShiftAmount=28 ShiftIn=0 => Out=50000000
+# PASS [626]: In=76a82a50 ShiftAmount=12 ShiftIn=0 => Out=82a50000
+# PASS [627]: In=f43b2b54 ShiftAmount=21 ShiftIn=1 => Out=6a9fffff
+# PASS [628]: In=db652fc6 ShiftAmount=29 ShiftIn=0 => Out=c0000000
+# PASS [629]: In=48853509 ShiftAmount=4 ShiftIn=1 => Out=8853509f
+# PASS [630]: In=2362b89d ShiftAmount=20 ShiftIn=1 => Out=89dfffff
+# PASS [631]: In=d9c85182 ShiftAmount=15 ShiftIn=0 => Out=28c10000
+# PASS [632]: In=afe11749 ShiftAmount=24 ShiftIn=1 => Out=49ffffff
+# PASS [633]: In=12d96b45 ShiftAmount=10 ShiftIn=0 => Out=65ad1400
+# PASS [634]: In=dd12dd3d ShiftAmount=3 ShiftIn=0 => Out=e896e9e8
+# PASS [635]: In=9d024e2d ShiftAmount=23 ShiftIn=1 => Out=16ffffff
+# PASS [636]: In=cb0c56d2 ShiftAmount=28 ShiftIn=0 => Out=20000000
+# PASS [637]: In=1de9310c ShiftAmount=22 ShiftIn=1 => Out=433fffff
+# PASS [638]: In=9dd04b9b ShiftAmount=12 ShiftIn=1 => Out=04b9bfff
+# PASS [639]: In=629fe069 ShiftAmount=23 ShiftIn=0 => Out=34800000
+# PASS [640]: In=4eb31247 ShiftAmount=22 ShiftIn=1 => Out=91ffffff
+# PASS [641]: In=54d65949 ShiftAmount=0 ShiftIn=0 => Out=54d65949
+# PASS [642]: In=b1f3d030 ShiftAmount=3 ShiftIn=1 => Out=8f9e8187
+# PASS [643]: In=c53580f0 ShiftAmount=8 ShiftIn=1 => Out=3580f0ff
+# PASS [644]: In=171ebb9a ShiftAmount=30 ShiftIn=1 => Out=bfffffff
+# PASS [645]: In=c8259e8d ShiftAmount=1 ShiftIn=1 => Out=904b3d1b
+# PASS [646]: In=fe04cbcb ShiftAmount=15 ShiftIn=0 => Out=65e58000
+# PASS [647]: In=73446220 ShiftAmount=27 ShiftIn=1 => Out=07ffffff
+# PASS [648]: In=c5dfcc44 ShiftAmount=23 ShiftIn=1 => Out=227fffff
 # 
 # Ran 648 checks, 0 errors
 # No errors -- passed testbench
-# ** Note: $finish    : testbench.sv(100)
-#    Time: 648 ns  Iteration: 0  Instance: /top
+# ** Note: $finish    : testbench.sv(116)
+#    Time: 1296 ns  Iteration: 0  Instance: /top
 # 1
-# Break in Module top at testbench.sv line 100
-# Stopped at testbench.sv line 100
+# Break in Module top at testbench.sv line 116
+# Stopped at testbench.sv line 116
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 15:33:44 on May 23,2026
+# Start time: 17:59:56 on May 23,2026
 # vcover report BarrelShifter.ucdb 
 # Coverage Report Summary Data by instance
 # 
@@ -778,14 +787,18 @@
 # 
 # Total Coverage By Instance (filtered view): 100.00%
 # 
-# End time: 15:33:44 on May 23,2026, Elapsed time: 0:00:00
+# End time: 17:59:56 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 15:33:44 on May 23,2026
+# Start time: 17:59:56 on May 23,2026
 # vcover report BarrelShifter.ucdb -cvg -details 
 # ** Note: (vcover-17388) No matching coverage data found in file 'BarrelShifter.ucdb'.
-# End time: 15:33:44 on May 23,2026, Elapsed time: 0:00:00
+# End time: 17:59:56 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 #  quit -f
-# End time: 15:33:44 on May 23,2026, Elapsed time: 0:00:01
+# End time: 17:59:56 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0

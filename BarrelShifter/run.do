@@ -1,4 +1,6 @@
-catch {vdel -all}
+if {[file isdirectory work]} {
+    vdel -all
+}
 
 vlib work
 

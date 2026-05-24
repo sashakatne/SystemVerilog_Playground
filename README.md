@@ -53,9 +53,9 @@ A combinational controller that drives the two motors of a line-following robot 
 A parameterized N-bit left-shift barrel shifter built in behavioural dataflow style. Five stages of N-bit 2:1 muxes — controlled bit-by-bit from `ShiftAmount` — cascade shifts of N/2, N/4, ... 1, with `ShiftIn` replicated into the vacated LSB positions. The 2:1 mux is its own module, instantiated `$clog2(N)` times so a single `N` parameter resizes both the data path and the cascade depth.
 
 - **Folder**: BarrelShifter
-- **Files**: `barrelshifter.sv` (contains `Mux2to1` and `BarrelShifter`), `testbench.sv`
+- **Files**: `barrelshifter.sv` (contains `Mux2to1` and `BarrelShifter`), `testbench.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `stage_flow.png`, `waveforms.png`, `waveform_samples.csv`, `report.pdf`, `transcript.txt`
 - **Testbenches**: `testbench.sv` (module `top`, default `N=32`; sweeps 7 directed patterns × all 32 shift amounts × both `ShiftIn` values plus 200 random vectors against a behavioural reference, prints `No errors -- passed testbench` after 648 self-checks)
-- **Verification**: Run `do run.do`. Clean `Errors: 0, Warnings: 0` on every `vlog`/`vopt` stage; produces `BarrelShifter.ucdb` with 100.00% per-instance statement and branch coverage on all five mux instances.
+- **Verification**: Run `do run.do`. Clean `Errors: 0, Warnings: 0` on every `vlog`/`vopt` stage; produces `BarrelShifter.ucdb` with 100.00% per-instance statement and branch coverage on all five mux instances. `waveforms.png` is plotted from the checked-transaction VCD samples.
 
 ### 9. Adder/Subtractor and Complex Numbers
 A parameterized structural add/subtract unit built from full-adder instances, plus a SystemVerilog package for complex numbers backed by `shortreal` real and imaginary components.

@@ -17,6 +17,10 @@ module top;
     logic [SBITS-1:0]   ShiftAmount;
     logic               ShiftIn;
     logic [N-1:0]       Out;
+    logic [N-1:0]       Expected;
+    logic               Match;
+    logic               Sample;
+    int unsigned        CheckIndex;
 
     BarrelShifter #(.N(N)) DUT (
         .In          (In),
@@ -27,6 +31,11 @@ module top;
 
     int errors = 0;
     int checks = 0;
+
+    initial begin
+        $dumpfile("barrelshifter_waveforms.vcd");
+        $dumpvars(0);
+    end
 
     // Reference model: behavioural left shift with ShiftIn replicated into the
     // vacated LSBs. Truncated to N bits to match the DUT.
@@ -51,10 +60,17 @@ module top;
         In          = in_val;
         ShiftAmount = shamt;
         ShiftIn     = shift_in;
+        Sample      = 1'b0;
         #1;
         expected = ref_shift(in_val, shamt, shift_in);
+        Expected = expected;
+        Match = (Out === expected);
+        CheckIndex = checks + 1;
+        Sample = 1'b1;
+        #1;
+        Sample = 1'b0;
         checks++;
-        if (Out !== expected) begin
+        if (!Match) begin
             $display("FAIL [%0d]: In=%h ShiftAmount=%0d ShiftIn=%b => Out=%h expected=%h",
                      checks, in_val, shamt, shift_in, Out, expected);
             errors++;
