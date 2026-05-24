@@ -1,0 +1,94 @@
+Run:        Cascaded TinyALU, class-based (mailbox + scoreboard) testbench
+Start UTC:  2026-05-23T23-41-32Z
+End   UTC:  2026-05-23T23-41-41Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the cascaded ALU via a class-based testbench (transaction, generator,
+  driver, monitor, scoreboard, environment) communicating through mailboxes
+  over a virtual interface. Exercises 33,600 randomized transactions
+  (8 iterations x 4,200 ops) covering all 8 opcodes with two embedded
+  covergroups (operation patterns + A/B corner crosses).
+
+Source changes in this commit:
+  run.do (rewritten):
+    The original run.do invoked vsim three times in a row with no separate
+    vopt step and never reached the coverage-save tail. It is now the
+    canonical 6-step shape (catch{vdel-all} -> vlib work -> per-file
+    vlog -source -lint -> vopt top -o top_optimized +acc +cover=sbfec+
+    cascaded_alu(rtl). -> vsim -coverage -> run -all -> coverage save +
+    vcover report). Compiled file order matches the original run.do.
+
+  test.sv (lines 17-25):
+    The test program no longer calls $stop. After env.run() returns it reads
+    env.scb.no_trans and env.scb.errors, prints a one-line summary, then
+    prints the canonical 'No errors -- passed testbench' or 'Failed
+    testbench' verdict before calling $finish.
+
+  environment.sv (line 62):
+    The trailing $stop inside the run() task was removed so control returns
+    to the caller (test.sv) for the verdict + $finish.
+
+  scoreboard.sv:
+    Added 'int errors;' counter alongside no_trans. On a result mismatch the
+    scoreboard now increments errors. The per-transaction 'PASSED: ...'
+    $display was removed so the transcript only emits FAILED prints if a
+    mismatch occurs; the aggregate verdict in test.sv is the pass/fail
+    signal. (This shrinks an otherwise multi-million-line transcript to a
+    manageable size while preserving error visibility.)
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint cascaded_alu.sv      (DUT)
+  vlog -source -lint package.sv           (transaction class + typedefs)
+  vlog -source -lint interface.sv         (intf with clocking + modport)
+  vlog -source -lint cascaded_alu_tb.sv   (top: clock, intf, DUT, program inst)
+  vlog -source -lint test.sv              (program block, env wiring)
+
+Results:
+  Compile and elaboration:
+    vlog cascaded_alu.sv ....... Errors: 0, Warnings: 0
+    vlog package.sv ............ Errors: 0, Warnings: 0
+    vlog interface.sv .......... Errors: 0, Warnings: 0
+    vlog cascaded_alu_tb.sv .... Errors: 0, Warnings: 0
+    vlog test.sv ............... Errors: 0, Warnings: 0
+    vopt top -> top_optimized .. Errors: 0, Warnings: 0
+  Simulation:
+    Transactions checked: 33600, errors: 0
+    Final verdict: 'No errors -- passed testbench'
+  Coverage:
+    Statement / branch / FEC expression coverage on cascaded_alu(rtl) and
+    two covergroups (op_cov in cascaded_alu_tb.sv, zeros_or_ones_on_ops):
+    TOTAL COVERGROUP COVERAGE: 100.00%
+    Total coverage by instance (filtered view): 100.00%
+    UCDB written on farm; not committed.
+
+Caveats:
+  - Transcript is ~270k lines (8.5 MB) because the driver/monitor/environment
+    still emit per-transaction debug $display lines (DRIVER:, MONITOR:,
+    ********, etc.) inherited from the original author. Those are not pass/
+    fail prints and so were left in place; the aggregate verdict is the
+    correctness signal. (AdderSubtractorComplex/transcript_addsub.txt is
+    a similar-shape precedent at ~9 MB.)
+  - $random in the generator class is unseeded; vectors are deterministic
+    on this Questa build but not portable across seeds.
+
+Files in this directory:
+  MANIFEST.txt
+  cascaded_alu.sv
+  cascaded_alu_tb.sv
+  driver.sv
+  environment.sv
+  generator.sv
+  interface.sv
+  monitor.sv
+  package.sv
+  run.do
+  scoreboard.sv
+  test.sv
+  transaction.sv
+  transcript.txt

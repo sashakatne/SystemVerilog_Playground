@@ -58,8 +58,6 @@ class environment;
                     test();
                 end
         end
-
-        $stop;
     endtask
         
 endclass

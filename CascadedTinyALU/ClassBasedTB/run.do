@@ -8,15 +8,17 @@ vlog -source -lint interface.sv
 vlog -source -lint cascaded_alu_tb.sv
 vlog -source -lint test.sv
 
-vsim top
+vopt top -o top_optimized +acc +cover=sbfec+cascaded_alu(rtl).
 
-vsim -coverage top -voptargs="+cover=bcesfx"
-vlog -cover bcst cascaded_alu.sv
-vsim -coverage top -do "run -all; exit"
+vsim top_optimized -coverage
 
+set NoQuitOnFinish 1
+onbreak {resume}
+log /* -r
 run -all
 
-coverage report -code bcesft
-coverage report -assert -binrhs -details -cvg
-vcover report -html coverage_results
-coverage report -codeAll
+coverage save cascaded_alu.ucdb
+vcover report cascaded_alu.ucdb
+vcover report cascaded_alu.ucdb -cvg -details
+
+add wave -position insertpoint sim:/top/DUT/*

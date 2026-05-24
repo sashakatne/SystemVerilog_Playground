@@ -7,6 +7,7 @@ class scoreboard;
 	bit [RESULT_WIDTH-1:0] predicted_result;
 
 	int no_trans;
+	int errors;
 
 	mailbox mon2scb;
 
@@ -37,10 +38,7 @@ class scoreboard;
 		if (predicted_result !== trans_sb.result)
 		begin
 			$display("FAILED: A: %0h  B: %0h  op_sel: %0b got: %0h expected: %0h", trans_sb.A, trans_sb.B, trans_sb.op_sel, trans_sb.result, predicted_result);
-		end
-		else
-		begin
-			$display("PASSED: A: %0h  B: %0h  op_sel: %0b got: %0h expected: %0h", trans_sb.A, trans_sb.B, trans_sb.op_sel, trans_sb.result, predicted_result);
+			errors++;
 		end
 
 		no_trans++;

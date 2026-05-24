@@ -15,7 +15,14 @@ program test(intf in);
 
     env.run();
     $display("ALU TEST FINISH");
-    $stop;
+
+    $display("Transactions checked: %0d, errors: %0d", env.scb.no_trans, env.scb.errors);
+    if (env.scb.errors == 0)
+      $display("No errors -- passed testbench");
+    else
+      $display("Failed testbench");
+
+    $finish;
 
   end
 
