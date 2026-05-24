@@ -1,0 +1,66 @@
+Run:        N-bit structural priority arbiter (ArbiterN module) — canonical re-run
+Start UTC:  2026-05-23T23-22-54Z
+End   UTC:  2026-05-23T23-22-57Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the structural N-bit priority arbiter (ArbiterN built from a chain of
+  ArbiterCell instances) against a behavioral KGD reference. The default test
+  parameter n=8 sweeps all 256 request patterns exhaustively. This rerun
+  supersedes the historical Arbiter/transcript.remote captured at
+  2026-05-23T21-24-28Z (the repo's first-ever farm sim) so the directory now
+  matches the canonical transcript.txt + MANIFEST.txt convention used by every
+  other evidenced module.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint ArbiterCell.sv          (the active 4-bit/N-bit cells)
+  vlog -source -lint ArbiterNStructural.sv
+  vlog -source -lint ArbiterNTB.sv
+  (Arbiter4Behavioral.sv, Arbiter4Structural.sv, Arbiter4TB.sv, ArbiterCellTB.sv
+   are alternate variants commented out in run.do.)
+
+Results:
+  Compile and elaboration:
+    vlog ArbiterCell.sv ............ Errors: 0, Warnings: 0
+    vlog ArbiterNStructural.sv ..... Errors: 0, Warnings: 0
+    vlog ArbiterNTB.sv ............. Errors: 0, Warnings: 0
+    vopt top ....................... Errors: 0, Warnings: 0
+  Simulation:
+    All 256 request patterns (n=8, i=0..255) compared against the KGD model.
+    Zero "*** Error" prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+  Coverage:
+    UCDB written: ArbiterCell.ucdb (on farm only; not committed)
+    vcover report prints the benign vcover-17388 'No matching coverage data
+    found' note because ArbiterCell is a 2-gate primitive (not + and) and
+    +cover=sbfec+ArbiterCell(rtl). instruments only RTL assigns / always blocks.
+    Functional correctness is fully proven by the 256-vector exhaustive sweep.
+
+Caveats:
+  - The testbench prints only the aggregate verdict line, not per-vector PASS
+    lines. Per-vector evidence is implicit: any mismatch would have produced
+    a '*** Error: r = N, expecting g = ..., got ...' print. None appeared.
+  - ArbiterCell is built from gate primitives, so the coverage report is
+    empty by design. This is unchanged from the historical run.
+
+This file supersedes:
+  Arbiter/transcript.remote (captured 2026-05-23T21:24:28Z, 88 lines, identical
+  pass verdict). The historical file is removed in the same commit that adds
+  this evidence; it is preserved in the git history.
+
+Files in this directory:
+  MANIFEST.txt
+  Arbiter4Behavioral.sv
+  Arbiter4Structural.sv
+  Arbiter4TB.sv
+  ArbiterCell.sv
+  ArbiterCellTB.sv
+  ArbiterNStructural.sv
+  ArbiterNTB.sv
+  run.do
+  transcript.txt

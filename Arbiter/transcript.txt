@@ -1,34 +1,42 @@
+Reading pref.tcl
+
+# 2021.3_1
+
 # do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 14:24:28 on May 23,2026
+# Start time: 16:22:54 on May 23,2026
 # vlog -source -lint ArbiterCell.sv 
 # -- Compiling module ArbiterCell
 # 
 # Top level modules:
 # 	ArbiterCell
-# End time: 14:24:28 on May 23,2026, Elapsed time: 0:00:00
+# End time: 16:22:55 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 14:24:28 on May 23,2026
+# Start time: 16:22:55 on May 23,2026
 # vlog -source -lint ArbiterNStructural.sv 
 # -- Compiling module ArbiterN
 # 
 # Top level modules:
 # 	ArbiterN
-# End time: 14:24:28 on May 23,2026, Elapsed time: 0:00:00
+# End time: 16:22:55 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 14:24:28 on May 23,2026
+# Start time: 16:22:55 on May 23,2026
 # vlog -source -lint ArbiterNTB.sv 
 # -- Compiling module KGD
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 14:24:28 on May 23,2026, Elapsed time: 0:00:00
+# End time: 16:22:55 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 14:24:28 on May 23,2026
+# Start time: 16:22:55 on May 23,2026
 # vopt top -o top_optimized "+acc" "+cover=sbfec+ArbiterCell(rtl)." 
 # 
 # Top level modules:
@@ -45,10 +53,10 @@
 # -- Optimizing module KGD(fast)
 # -- Optimizing module ArbiterCell(fast)
 # Optimized design name is top_optimized
-# End time: 14:24:30 on May 23,2026, Elapsed time: 0:00:02
+# End time: 16:22:56 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim top_optimized -coverage 
-# Start time: 14:24:30 on May 23,2026
+# Start time: 16:22:56 on May 23,2026
 # //  Questa Sim-64
 # //  Version 2021.3_1 linux_x86_64 Aug 15 2021
 # //
@@ -71,17 +79,17 @@
 # 1
 # No errors -- passed testbench
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 14:24:30 on May 23,2026
+# Start time: 16:22:57 on May 23,2026
 # vcover report ArbiterCell.ucdb 
 # ** Note: (vcover-17388) No matching coverage data found in file 'ArbiterCell.ucdb'.
-# End time: 14:24:30 on May 23,2026, Elapsed time: 0:00:00
+# End time: 16:22:57 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 14:24:31 on May 23,2026
+# Start time: 16:22:57 on May 23,2026
 # vcover report ArbiterCell.ucdb -cvg -details 
 # ** Note: (vcover-17388) No matching coverage data found in file 'ArbiterCell.ucdb'.
-# End time: 14:24:31 on May 23,2026, Elapsed time: 0:00:00
+# End time: 16:22:57 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 #  quit -f
-# End time: 14:24:31 on May 23,2026, Elapsed time: 0:00:01
+# End time: 16:22:57 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
