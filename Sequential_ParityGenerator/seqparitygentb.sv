@@ -40,8 +40,12 @@ module top;
             check_parity(parity, expected_parity(b)); // Check the result
         end
 
-        // Finish the simulation
+        // Aggregate verdict, then finish
         @(negedge clock);
+        if (error_flag)
+            $display("Failed testbench");
+        else
+            $display("No errors -- passed testbench");
         $finish;
     end
 
@@ -63,18 +67,15 @@ module top;
             if (actual_parity !== expected_parity) begin
                 $display("Test failed: Expected parity = %b, Actual parity = %b", expected_parity, actual_parity);
                 error_flag = 1;
-            end else begin
-                // $display("Test passed: Expected parity = %b, Actual parity = %b", expected_parity, actual_parity);
-                error_flag = 0;
             end
+            // Note: do NOT clear error_flag on pass; a prior failure must
+            // remain visible in the aggregate verdict.
         end
     endtask
 
-    initial begin
-        if (error_flag)
-            $display("\n\n *** FAILED *** \n\n");
-        else
-            $display("\n\n *** PASSED *** \n\n"); 
-    end
+    // The verdict is printed from the test-stimulus initial block above,
+    // after the loop completes. The previous standalone initial block fired
+    // at time 0 with error_flag still 0, so it always printed PASSED before
+    // any test had run -- that has been removed.
 
 endmodule

@@ -1,0 +1,52 @@
+Run:        Sequential parity generator (32-bit)
+Start UTC:  2026-05-24T00-26-47Z
+End   UTC:  2026-05-24T00-26-49Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the 32-bit sequential parity generator against an expected-parity
+  reference. The TB drives 10 random 32-bit vectors with the start/ready
+  handshake; each result is compared against the XOR-reduction reference
+  inside the check_parity task.
+
+Source changes in this commit:
+  seqparitygentb.sv:
+    1. Removed the stand-alone verdict initial block at lines 73-78. That
+       block fired at simulation time 0 with error_flag still 0, so it
+       always printed '*** PASSED ***' before any test ran. Any subsequent
+       failure was never reflected anywhere.
+    2. Moved the aggregate verdict into the test-stimulus initial block,
+       AFTER the 10-vector loop completes, with the repo-canonical
+       'No errors -- passed testbench' / 'Failed testbench' strings.
+    3. In check_parity, removed the `else ... error_flag = 0;` branch so a
+       single failure can no longer be erased by a subsequent passing
+       vector. Comment added to explain the invariant.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint seqparitygen.sv
+  vlog -source -lint seqparitygentb.sv
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    10 random 32-bit vectors, each compared against XOR-reduction parity.
+    Zero 'Test failed' prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+
+Caveats:
+  - $random in the TB is unseeded; the 10-vector sequence is deterministic
+    on Questa 2021.3_1 but not portable across seeds.
+  - The DUT's expected_parity function computes ~(^vector); confirm this
+    matches the spec (even vs odd parity) if the test ever ships variants.
+
+Files in this directory:
+  MANIFEST.txt
+  run.do
+  seqparitygen.sv
+  seqparitygentb.sv
+  transcript.txt
