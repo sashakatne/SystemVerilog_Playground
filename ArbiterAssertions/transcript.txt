@@ -1,0 +1,466 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:31:37 on May 23,2026
+# vlog -source -lint arbiter.sv 
+# -- Compiling module Arbiter
+# -- Compiling module ArbiterN
+# -- Compiling module ArbiterCell
+# 
+# Top level modules:
+# 	Arbiter
+# End time: 17:31:37 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:31:37 on May 23,2026
+# vlog -source -lint assertions.sv 
+# -- Compiling module ArbiterAssertions
+# 
+# Top level modules:
+# 	ArbiterAssertions
+# End time: 17:31:38 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:31:38 on May 23,2026
+# vlog -source -lint top.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 17:31:38 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:31:38 on May 23,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+Arbiter(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module Arbiter
+# -- Loading module ArbiterN
+# -- Loading module ArbiterCell
+# -- Loading module ArbiterAssertions
+# Optimizing 5 design-units (inlining 0/12 module instances):
+# -- Optimizing module ArbiterAssertions(fast)
+# -- Optimizing module top(fast)
+# -- Optimizing module ArbiterN(fast)
+# -- Optimizing module Arbiter(fast)
+# -- Optimizing module ArbiterCell(fast)
+# Optimized design name is top_optimized
+# End time: 17:31:39 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 17:31:39 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.Arbiter(fast)
+# Loading work.ArbiterN(fast)
+# Loading work.ArbiterCell(fast)
+# Loading work.ArbiterAssertions(fast)
+# 1
+#  time reset request grant
+# 
+#    0ns 01 xxxxxxxx xxxxxxxx
+#    5ns 01 xxxxxxxx 00000000
+# ** Error: *** Invalid Request   15ns: r=xxxxxxxx, g=00000000
+#    Time: 15 ns Started: 15 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_request File: assertions.sv Line: 16
+#   15ns 00 xxxxxxxx 00000000
+# ** Error: *** Invalid Request   25ns: r=xxxxxxxx, g=xxxxxxxx
+#    Time: 25 ns Started: 25 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_request File: assertions.sv Line: 16
+#   25ns 00 xxxxxxxx xxxxxxxx
+# ** Error: *** Invalid Grant   35ns: r=zzzzzzzz, g=xxxxxxxx
+#    Time: 35 ns Started: 35 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_grant File: assertions.sv Line: 22
+# ** Error: *** Invalid Request   35ns: r=zzzzzzzz, g=xxxxxxxx
+#    Time: 35 ns Started: 35 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_request File: assertions.sv Line: 16
+#   35ns 00 zzzzzzzz xxxxxxxx
+# ** Error: *** Invalid Grant   45ns: r=xxxxxxxx, g=xxxxxxxx
+#    Time: 45 ns Started: 45 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_grant File: assertions.sv Line: 22
+# ** Error: *** Invalid Request   45ns: r=xxxxxxxx, g=xxxxxxxx
+#    Time: 45 ns Started: 45 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_request File: assertions.sv Line: 16
+#   45ns 00 xxxxxxxx xxxxxxxx
+# ** Error: *** Invalid Grant   55ns: r=00000000, g=xxxxxxxx
+#    Time: 55 ns Started: 55 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_grant File: assertions.sv Line: 22
+# ** Error: *** Invalid Request   55ns: r=00000000, g=xxxxxxxx
+#    Time: 55 ns Started: 55 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_request File: assertions.sv Line: 16
+#   55ns 00 00000000 xxxxxxxx
+# ** Error: *** Invalid Grant   65ns: r=00000001, g=00000000
+#    Time: 65 ns Started: 65 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_grant File: assertions.sv Line: 22
+#   65ns 00 00000001 00000000
+#   75ns 00 00000000 00000001
+#   85ns 00 00001000 00000000
+#   95ns 00 00000000 00001000
+#  105ns 00 11000000 00000000
+#  115ns 00 00000000 10000000
+#  125ns 00 00001001 00000000
+#  135ns 00 00000000 00001000
+#  145ns 00 00100000 00000000
+#  155ns 00 00000000 00100000
+#  165ns 00 10101010 00000000
+#  175ns 00 00000000 10000000
+#  185ns 00 00010000 00000000
+#  195ns 00 00000000 00010000
+#  205ns 00 00001000 00000000
+#  215ns 00 00001000 00001000
+#  235ns 00 00000000 00001000
+#  245ns 00 00000010 00000000
+#  255ns 00 00000010 00000010
+# ** Error: Agent 6 requested for more than 256 cycles
+#    Time: 2815 ns Started: 2815 ns  Scope: top.DUT.arbiter_assertions_inst.gen_request_limit[6].a_request_limit File: assertions.sv Line: 85
+# 2825ns 00 00000000 00000010
+# 2835ns 00 00000100 00000000
+# 2845ns 00 00000100 00000100
+# ** Error: Agent 5 requested for more than 256 cycles
+#    Time: 5405 ns Started: 5405 ns  Scope: top.DUT.arbiter_assertions_inst.gen_request_limit[5].a_request_limit File: assertions.sv Line: 85
+# 5415ns 00 00000000 00000100
+# 5425ns 00 01000000 00000000
+# 5435ns 00 01000000 01000000
+# 6715ns 00 00000000 01000000
+# 6725ns 00 01000000 00000000
+# 6735ns 00 01000000 01000000
+# 8455ns 00 00000000 01000000
+# 8465ns 00 11000000 00000000
+# 8475ns 00 11000000 10000000
+# 9755ns 01 00000000 10000000
+# 9765ns 01 00000000 00000000
+# 9775ns 00 00000000 00000000
+# 9795ns 00 xxxxxxxx 00000000
+# ** Error: *** Invalid Request 9805ns: r=xxxxxxxx, g=xxxxxxxx
+#    Time: 9805 ns Started: 9805 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_request File: assertions.sv Line: 16
+# 9805ns 00 xxxxxxxx xxxxxxxx
+# ** Error: *** Invalid Grant 9815ns: r=00000000, g=xxxxxxxx
+#    Time: 9815 ns Started: 9815 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_grant File: assertions.sv Line: 22
+# ** Error: *** Invalid Request 9815ns: r=00000000, g=xxxxxxxx
+#    Time: 9815 ns Started: 9815 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_request File: assertions.sv Line: 16
+# 9815ns 00 00000000 xxxxxxxx
+# ** Error: *** Invalid Grant 9825ns: r=00000001, g=00000000
+#    Time: 9825 ns Started: 9825 ns  Scope: top.DUT.arbiter_assertions_inst.a_valid_grant File: assertions.sv Line: 22
+# 9825ns 00 00000001 00000000
+# 9835ns 00 00000010 00000001
+# 9845ns 00 00000011 00000010
+# 9855ns 00 00000100 00000010
+# 9865ns 00 00000100 00000100
+# 9885ns 00 00000101 00000100
+# 9895ns 00 00000110 00000100
+# 9905ns 00 00000111 00000100
+# 9915ns 00 00001000 00000100
+# 9925ns 00 00001000 00001000
+# 9935ns 00 00001001 00001000
+# 9945ns 00 00001010 00001000
+# 9975ns 00 00001011 00001000
+# 9985ns 00 00001100 00001000
+# 10005ns 00 00001101 00001000
+# 10025ns 00 00001110 00001000
+# 10035ns 00 00001111 00001000
+# 10045ns 00 00010000 00001000
+# 10055ns 00 00010001 00010000
+# 10065ns 00 00010010 00010000
+# 10075ns 00 00010011 00010000
+# 10085ns 00 00010100 00010000
+# 10095ns 00 00010101 00010000
+# 10105ns 00 00010110 00010000
+# 10115ns 00 00010111 00010000
+# 10125ns 00 00011000 00010000
+# 10135ns 00 00011001 00010000
+# 10165ns 00 00011010 00010000
+# 10175ns 00 00011011 00010000
+# 10185ns 00 00011100 00010000
+# 10195ns 00 00011101 00010000
+# 10205ns 00 00011110 00010000
+# 10225ns 00 00011111 00010000
+# 10235ns 00 00100000 00010000
+# 10245ns 00 00100000 00100000
+# 10255ns 00 00100001 00100000
+# 10265ns 00 00100010 00100000
+# 10275ns 00 00100011 00100000
+# 10285ns 00 00100100 00100000
+# 10295ns 00 00100101 00100000
+# 10305ns 00 00100110 00100000
+# 10315ns 00 00100111 00100000
+# 10325ns 00 00101000 00100000
+# 10335ns 00 00101001 00100000
+# 10345ns 00 00101010 00100000
+# 10355ns 00 00101011 00100000
+# 10365ns 00 00101100 00100000
+# 10375ns 00 00101101 00100000
+# 10405ns 00 00101110 00100000
+# 10435ns 00 00101111 00100000
+# 10445ns 00 00110000 00100000
+# 10455ns 00 00110001 00100000
+# 10485ns 00 00110010 00100000
+# 10515ns 00 00110011 00100000
+# 10535ns 00 00110100 00100000
+# 10545ns 00 00110101 00100000
+# 10575ns 00 00110110 00100000
+# 10585ns 00 00110111 00100000
+# 10605ns 00 00111000 00100000
+# 10625ns 00 00111001 00100000
+# 10635ns 00 00111010 00100000
+# 10655ns 00 00111011 00100000
+# 10665ns 00 00111100 00100000
+# 10695ns 00 00111101 00100000
+# 10705ns 00 00111110 00100000
+# 10715ns 00 00111111 00100000
+# 10745ns 00 01000000 00100000
+# 10755ns 00 01000000 01000000
+# 10765ns 00 01000001 01000000
+# 10775ns 00 01000010 01000000
+# 10785ns 00 01000011 01000000
+# 10795ns 00 01000100 01000000
+# 10805ns 00 01000101 01000000
+# 10825ns 00 01000110 01000000
+# 10845ns 00 01000111 01000000
+# 10855ns 00 01001000 01000000
+# 10875ns 00 01001001 01000000
+# 10895ns 00 01001010 01000000
+# 10925ns 00 01001011 01000000
+# 10955ns 00 01001100 01000000
+# 10965ns 00 01001101 01000000
+# 10975ns 00 01001110 01000000
+# 10985ns 00 01001111 01000000
+# 10995ns 00 01010000 01000000
+# 11025ns 00 01010001 01000000
+# 11035ns 00 01010010 01000000
+# 11045ns 00 01010011 01000000
+# 11055ns 00 01010100 01000000
+# 11065ns 00 01010101 01000000
+# 11095ns 00 01010110 01000000
+# 11105ns 00 01010111 01000000
+# 11115ns 00 01011000 01000000
+# 11125ns 00 01011001 01000000
+# 11135ns 00 01011010 01000000
+# 11145ns 00 01011011 01000000
+# 11155ns 00 01011100 01000000
+# 11165ns 00 01011101 01000000
+# 11195ns 00 01011110 01000000
+# 11225ns 00 01011111 01000000
+# 11235ns 00 01100000 01000000
+# 11245ns 00 01100001 01000000
+# 11265ns 00 01100010 01000000
+# 11275ns 00 01100011 01000000
+# 11305ns 00 01100100 01000000
+# 11335ns 00 01100101 01000000
+# 11345ns 00 01100110 01000000
+# 11365ns 00 01100111 01000000
+# 11375ns 00 01101000 01000000
+# 11385ns 00 01101001 01000000
+# 11395ns 00 01101010 01000000
+# 11405ns 00 01101011 01000000
+# 11435ns 00 01101100 01000000
+# 11445ns 00 01101101 01000000
+# 11455ns 00 01101110 01000000
+# 11465ns 00 01101111 01000000
+# 11475ns 00 01110000 01000000
+# 11485ns 00 01110001 01000000
+# 11495ns 00 01110010 01000000
+# 11505ns 00 01110011 01000000
+# 11525ns 00 01110100 01000000
+# 11535ns 00 01110101 01000000
+# 11545ns 00 01110110 01000000
+# 11565ns 00 01110111 01000000
+# 11595ns 00 01111000 01000000
+# 11605ns 00 01111001 01000000
+# 11615ns 00 01111010 01000000
+# 11625ns 00 01111011 01000000
+# 11635ns 00 01111100 01000000
+# 11645ns 00 01111101 01000000
+# 11655ns 00 01111110 01000000
+# 11675ns 00 01111111 01000000
+# 11685ns 00 10000000 01000000
+# 11695ns 00 10000000 10000000
+# 11715ns 00 10000001 10000000
+# 11725ns 00 10000010 10000000
+# 11735ns 00 10000011 10000000
+# 11765ns 00 10000100 10000000
+# 11775ns 00 10000101 10000000
+# 11785ns 00 10000110 10000000
+# 11795ns 00 10000111 10000000
+# 11825ns 00 10001000 10000000
+# 11835ns 00 10001001 10000000
+# 11845ns 00 10001010 10000000
+# 11855ns 00 10001011 10000000
+# 11885ns 00 10001100 10000000
+# 11895ns 00 10001101 10000000
+# 11905ns 00 10001110 10000000
+# 11915ns 00 10001111 10000000
+# 11935ns 00 10010000 10000000
+# 11955ns 00 10010001 10000000
+# 11965ns 00 10010010 10000000
+# 11975ns 00 10010011 10000000
+# 11985ns 00 10010100 10000000
+# 11995ns 00 10010101 10000000
+# 12005ns 00 10010110 10000000
+# 12015ns 00 10010111 10000000
+# 12025ns 00 10011000 10000000
+# 12035ns 00 10011001 10000000
+# 12065ns 00 10011010 10000000
+# 12075ns 00 10011011 10000000
+# 12085ns 00 10011100 10000000
+# 12105ns 00 10011101 10000000
+# 12135ns 00 10011110 10000000
+# 12155ns 00 10011111 10000000
+# 12165ns 00 10100000 10000000
+# 12185ns 00 10100001 10000000
+# 12215ns 00 10100010 10000000
+# 12225ns 00 10100011 10000000
+# 12235ns 00 10100100 10000000
+# 12245ns 00 10100101 10000000
+# 12255ns 00 10100110 10000000
+# 12285ns 00 10100111 10000000
+# 12295ns 00 10101000 10000000
+# 12315ns 00 10101001 10000000
+# 12325ns 00 10101010 10000000
+# 12335ns 00 10101011 10000000
+# 12345ns 00 10101100 10000000
+# 12355ns 00 10101101 10000000
+# 12385ns 00 10101110 10000000
+# 12395ns 00 10101111 10000000
+# 12405ns 00 10110000 10000000
+# 12435ns 00 10110001 10000000
+# 12445ns 00 10110010 10000000
+# 12455ns 00 10110011 10000000
+# 12475ns 00 10110100 10000000
+# 12485ns 00 10110101 10000000
+# 12495ns 00 10110110 10000000
+# 12525ns 00 10110111 10000000
+# 12545ns 00 10111000 10000000
+# 12555ns 00 10111001 10000000
+# 12575ns 00 10111010 10000000
+# 12585ns 00 10111011 10000000
+# 12595ns 00 10111100 10000000
+# 12625ns 00 10111101 10000000
+# 12645ns 00 10111110 10000000
+# 12655ns 00 10111111 10000000
+# 12685ns 00 11000000 10000000
+# 12695ns 00 11000001 10000000
+# 12705ns 00 11000010 10000000
+# 12735ns 00 11000011 10000000
+# 12745ns 00 11000100 10000000
+# 12755ns 00 11000101 10000000
+# 12785ns 00 11000110 10000000
+# 12795ns 00 11000111 10000000
+# 12805ns 00 11001000 10000000
+# 12815ns 00 11001001 10000000
+# 12845ns 00 11001010 10000000
+# 12855ns 00 11001011 10000000
+# 12865ns 00 11001100 10000000
+# 12885ns 00 11001101 10000000
+# 12895ns 00 11001110 10000000
+# 12905ns 00 11001111 10000000
+# 12935ns 00 11010000 10000000
+# 12945ns 00 11010001 10000000
+# 12955ns 00 11010010 10000000
+# 12965ns 00 11010011 10000000
+# 12975ns 00 11010100 10000000
+# 12985ns 00 11010101 10000000
+# 13005ns 00 11010110 10000000
+# 13015ns 00 11010111 10000000
+# 13035ns 00 11011000 10000000
+# 13045ns 00 11011001 10000000
+# 13055ns 00 11011010 10000000
+# 13065ns 00 11011011 10000000
+# 13095ns 00 11011100 10000000
+# 13105ns 00 11011101 10000000
+# 13115ns 00 11011110 10000000
+# 13125ns 00 11011111 10000000
+# 13135ns 00 11100000 10000000
+# 13145ns 00 11100001 10000000
+# 13175ns 00 11100010 10000000
+# 13185ns 00 11100011 10000000
+# 13215ns 00 11100100 10000000
+# 13225ns 00 11100101 10000000
+# 13245ns 00 11100110 10000000
+# 13255ns 00 11100111 10000000
+# 13275ns 00 11101000 10000000
+# 13295ns 00 11101001 10000000
+# 13305ns 00 11101010 10000000
+# 13315ns 00 11101011 10000000
+# 13335ns 00 11101100 10000000
+# 13345ns 00 11101101 10000000
+# 13355ns 00 11101110 10000000
+# 13365ns 00 11101111 10000000
+# 13375ns 00 11110000 10000000
+# 13385ns 00 11110001 10000000
+# 13415ns 00 11110010 10000000
+# 13425ns 00 11110011 10000000
+# 13445ns 00 11110100 10000000
+# 13475ns 00 11110101 10000000
+# 13485ns 00 11110110 10000000
+# 13495ns 00 11110111 10000000
+# 13505ns 00 11111000 10000000
+# 13515ns 00 11111001 10000000
+# 13525ns 00 11111010 10000000
+# 13545ns 00 11111011 10000000
+# 13565ns 00 11111100 10000000
+# 13575ns 00 11111101 10000000
+# 13585ns 00 11111110 10000000
+# 13605ns 00 11111111 10000000
+# No errors -- passed testbench (15 expected assertion fires)
+# ** Note: $finish    : top.sv(126)
+#    Time: 13715 ns  Iteration: 1  Instance: /top
+# 1
+# Break in Module top at top.sv line 126
+# Stopped at top.sv line 126
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:31:40 on May 23,2026
+# vcover report Arbiter.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/DUT/arbiter_assertions_inst
+# === Design Unit: work.ArbiterAssertions
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Assertions                      15        11         4    73.33%
+#     Branches                         8         7         1    87.50%
+#     Conditions                       5         3         2    60.00%
+#     Statements                      13        12         1    92.30%
+# 
+# =================================================================================
+# === Instance: /top/DUT
+# === Design Unit: work.Arbiter
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         2         2         0   100.00%
+#     Statements                       3         3         0   100.00%
+# 
+# 
+# TOTAL ASSERTION COVERAGE: 73.33%  ASSERTIONS: 15
+# 
+# Total Coverage By Instance (filtered view): 79.27%
+# 
+# End time: 17:31:40 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:31:40 on May 23,2026
+# vcover report Arbiter.ucdb -cvg -details 
+# ** Note: (vcover-17388) No matching coverage data found in file 'Arbiter.ucdb'.
+# End time: 17:31:40 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 17:31:40 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 15, Warnings: 0

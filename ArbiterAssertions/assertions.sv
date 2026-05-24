@@ -5,35 +5,39 @@ module ArbiterAssertions(clock, reset, r, g);
     input [0:n-1] r;
     input [0:n-1] g;
 
+    // Counts the number of assertion failures so the top-level testbench
+    // can emit a single canonical pass/fail verdict at $finish.
+    int error_count = 0;
+
     // Assertion to ensure that the request vector never has invalid bits
     property valid_request;
         disable iff (reset) !$isunknown(r);
     endproperty
-    a_valid_request: assert property (@(posedge clock) valid_request) else $error("*** Invalid Request %t: r=%b, g=%b", $time, r, g);
+    a_valid_request: assert property (@(posedge clock) valid_request) else begin $error("*** Invalid Request %t: r=%b, g=%b", $time, r, g); error_count++; end
 
     // Assertion to ensure that except during a reset, the grant vector never has invalid bits
     property valid_grant;
         disable iff (reset) !$isunknown(g);
     endproperty
-    a_valid_grant: assert property (@(posedge clock) valid_grant) else $error("*** Invalid Grant %t: r=%b, g=%b", $time, r, g);
+    a_valid_grant: assert property (@(posedge clock) valid_grant) else begin $error("*** Invalid Grant %t: r=%b, g=%b", $time, r, g); error_count++; end
 
     // Assertion to ensure that the arbiter always produces a grant in one cycle
     property grant_in_one_cycle;
         disable iff (reset) |r |=> |g;
     endproperty
-    a_grant_in_one_cycle: assert property(@(posedge clock) grant_in_one_cycle) else $error("*** Grant not produced in one cycle %t: r=%b, g=%b", $time, $sampled(r), $sampled(g));
+    a_grant_in_one_cycle: assert property(@(posedge clock) grant_in_one_cycle) else begin $error("*** Grant not produced in one cycle %t: r=%b, g=%b", $time, $sampled(r), $sampled(g)); error_count++; end
 
     // Assertion to ensure that there is never more than one simultaneous grant
     property one_grant;
         disable iff (reset) $onehot0(g);
     endproperty
-    a_one_grant: assert property (@(posedge clock) one_grant) else $error("*** More than one grant %t: r=%b, g=%b", $time, r, g);
+    a_one_grant: assert property (@(posedge clock) one_grant) else begin $error("*** More than one grant %t: r=%b, g=%b", $time, r, g); error_count++; end
 
     // Assertion to ensure that if there is a single requestor, then that requestor will receive the grant
     property single_requestor_grant;
         disable iff (reset) $onehot(r) |=> (g == $past(r));
     endproperty
-    a_single_requestor_grant: assert property (@(posedge clock) single_requestor_grant) else $error("*** Single requestor did not receive grant %t: r=%b, g=%b", $time, $sampled(r), $sampled(g));
+    a_single_requestor_grant: assert property (@(posedge clock) single_requestor_grant) else begin $error("*** Single requestor did not receive grant %t: r=%b, g=%b", $time, $sampled(r), $sampled(g)); error_count++; end
 
     // Assertion to ensure that a grant is never given to an agent that didn’t request it
     function automatic bit grant_only_to_requestors(input [0:n-1] g, input [0:n-1] r_past);
@@ -45,13 +49,13 @@ module ArbiterAssertions(clock, reset, r, g);
     property grant_only_on_request;
         disable iff (reset) grant_only_to_requestors(g, $past(r));
     endproperty
-    a_grant_only_on_request: assert property (@(posedge clock) grant_only_on_request) else $error("*** Grant given without request %t: r=%b, g=%b", $time, $sampled(r), $sampled(g));
+    a_grant_only_on_request: assert property (@(posedge clock) grant_only_on_request) else begin $error("*** Grant given without request %t: r=%b, g=%b", $time, $sampled(r), $sampled(g)); error_count++; end
 
     // Assertion to ensure a grant is never revoked. That is, if an agent has the grant and continues to request it, it will not lose the grant
     property grant_not_revoked;
         disable iff (reset) (r == $past(r)) |=> $stable(g);
     endproperty
-    a_grant_not_revoked: assert property (@(posedge clock) grant_not_revoked) else $error("*** Grant revoked %t: r=%b, g=%b", $time, $sampled(r), $sampled(g));
+    a_grant_not_revoked: assert property (@(posedge clock) grant_not_revoked) else begin $error("*** Grant revoked %t: r=%b, g=%b", $time, $sampled(r), $sampled(g)); error_count++; end
 
     // Counter for each agent to track the number of cycles they have been requesting after being granted
     int request_count [0:n-1];
@@ -78,7 +82,7 @@ module ArbiterAssertions(clock, reset, r, g);
             property request_limit;
                 disable iff (reset) request_count[i] < 8'd255;
             endproperty
-            a_request_limit: assert property (@(posedge clock) request_limit) else $error("Agent %0d requested for more than 256 cycles", i);
+            a_request_limit: assert property (@(posedge clock) request_limit) else begin $error("Agent %0d requested for more than 256 cycles", i); error_count++; end
         end
     endgenerate
 

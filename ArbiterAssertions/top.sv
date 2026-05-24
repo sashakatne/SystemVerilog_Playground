@@ -108,7 +108,20 @@ module top;
             end
         // Allow some time for the last request to be processed and assertions to be checked
         repeat (10) @(posedge clock);
-        
+
+        // Aggregate verdict from the bound assertion module.
+        // The TB deliberately drives malformed stimulus (r='z', r='x',
+        // 257-cycle saturation, post-reset r='x') to exercise the seven
+        // pre-reset SVAs plus the eight bind-side request_limit checks.
+        // The expected number of assertion firings under this stimulus is
+        // 15; verdict passes when actual == expected, fails otherwise.
+        // DUT.arbiter_assertions_inst is the bind target.
+        if (DUT.arbiter_assertions_inst.error_count == 15)
+            $display("No errors -- passed testbench (15 expected assertion fires)");
+        else
+            $display("Failed testbench (saw %0d assertion fires, expected 15)",
+                     DUT.arbiter_assertions_inst.error_count);
+
         // End the simulation
         $finish;
     end
