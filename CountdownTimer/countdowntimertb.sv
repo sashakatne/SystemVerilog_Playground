@@ -86,9 +86,9 @@ module top;
 
         // Check for test results
         if (errors == 0) begin
-            $display("All tests passed successfully.");
+            $display("No errors -- passed testbench");
         end else begin
-            $display("%d test(s) failed.", errors);
+            $display("Failed testbench (%0d errors)", errors);
         end
 
         // Finish the simulation

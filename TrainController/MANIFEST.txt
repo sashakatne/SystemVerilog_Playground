@@ -1,0 +1,45 @@
+Run:        Train-controller FSM (Verilog-2001)
+Start UTC:  2026-05-24T00-02-18Z
+End   UTC:  2026-05-24T00-02-21Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the train-controller FSM (traincontrol_fsm.v) by walking through
+  seven directed state transitions (IDLE -> APPROACH -> CROSS -> CLEAR etc.)
+  and asserting the expected next-state via a check_state task on each
+  transition.
+
+Source change in this commit:
+  traincontrol_fsmTB.v lines 88-90:
+    'All state transitions passed successfully.' -> 'No errors -- passed testbench'
+    '%d state transitions failed.'               -> 'Failed testbench (%0d state transitions failed)'
+  Behaviour unchanged.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint traincontrol_fsm.v
+  vlog -source -lint traincontrol_fsmTB.v
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    7 directed state-transition checks via the check_state task. Zero
+    error prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+
+Caveats:
+  - Coverage is targeted at the seven directed transitions, not exhaustive
+    over all (input, current-state) pairs. Adequate for an FSM unit test
+    but does not enumerate every (start, sensor) combination.
+  - Both .v files are deliberately Verilog-2001; do not upgrade to SV.
+
+Files in this directory:
+  MANIFEST.txt
+  run.do
+  traincontrol_fsm.v
+  traincontrol_fsmTB.v
+  transcript.txt

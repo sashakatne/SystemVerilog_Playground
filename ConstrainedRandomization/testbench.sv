@@ -135,9 +135,9 @@ module top;
 
     // Display test results
     if(error_flag == '0)
-      $display(" *** PASSED *** ");
+      $display("No errors -- passed testbench");
     else
-      $display(" *** FAILED *** ");
+      $display("Failed testbench");
     $display("Percentage of tests passed out of a total %0d tests= %0.2f%%", num_tests, (num_tests - num_errors) * 100.0 / num_tests);
 
     $finish;

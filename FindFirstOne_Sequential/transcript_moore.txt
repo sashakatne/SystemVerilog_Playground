@@ -1,0 +1,154 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run_moore.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:56:00 on May 23,2026
+# vlog -source -lint FFO32.sv 
+# -- Compiling module FFO32
+# -- Compiling module LZD2
+# -- Compiling module LZDn
+# 
+# Top level modules:
+# 	FFO32
+# End time: 16:56:00 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:56:00 on May 23,2026
+# vlog -source -lint FFO32s.sv 
+# -- Compiling module FFO32s
+# -- Compiling module ShiftRegister32
+# -- Compiling module Counter5
+# 
+# Top level modules:
+# 	FFO32s
+# End time: 16:56:00 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:56:00 on May 23,2026
+# vlog -source -lint FFO32stb.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 16:56:00 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:56:00 on May 23,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+FFO32s(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module FFO32s
+# -- Loading module ShiftRegister32
+# -- Loading module Counter5
+# -- Loading module FFO32
+# -- Loading module LZDn
+# -- Loading module LZD2
+# Optimizing 10 design-units (inlining 0/36 module instances):
+# -- Optimizing module FFO32(fast)
+# -- Optimizing module top(fast)
+# -- Optimizing module FFO32s(fast)
+# ** Note: (vopt-143) Recognized 1 FSM in module "FFO32s(fast)".
+# -- Optimizing module ShiftRegister32(fast)
+# -- Optimizing module LZDn(fast)
+# -- Optimizing module LZDn(fast__1)
+# -- Optimizing module LZDn(fast__2)
+# -- Optimizing module LZDn(fast__3)
+# -- Optimizing module Counter5(fast)
+# -- Optimizing module LZD2(fast)
+# Optimized design name is top_optimized
+# End time: 16:56:01 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 16:56:01 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.FFO32s(fast)
+# Loading work.ShiftRegister32(fast)
+# Loading work.Counter5(fast)
+# Loading work.FFO32(fast)
+# Loading work.LZD2(fast)
+# Loading work.LZDn(fast)
+# Loading work.LZDn(fast__1)
+# Loading work.LZDn(fast__2)
+# Loading work.LZDn(fast__3)
+# 1
+# No errors -- passed testbench
+# ** Note: $finish    : FFO32stb.sv(76)
+#    Time: 47600 ns  Iteration: 2  Instance: /top
+# 1
+# Break in Module top at FFO32stb.sv line 76
+# Stopped at FFO32stb.sv line 76
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:56:02 on May 23,2026
+# vcover report FFO32s.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/DUT/shift_reg_inst
+# === Design Unit: work.ShiftRegister32
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         5         5         0   100.00%
+#     Statements                       5         5         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/counter_inst
+# === Design Unit: work.Counter5
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         3         3         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       3         3         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT
+# === Design Unit: work.FFO32s
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        18        16         2    88.88%
+#     Conditions                       2         2         0   100.00%
+#     FSM States                       4         4         0   100.00%
+#     FSM Transitions                  7         5         2    71.42%
+#     Statements                      23        22         1    95.65%
+# 
+# 
+# Total Coverage By Instance (filtered view): 92.10%
+# 
+# End time: 16:56:02 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:56:02 on May 23,2026
+# vcover report FFO32s.ucdb -cvg -details 
+# ** Note: (vcover-17388) No matching coverage data found in file 'FFO32s.ucdb'.
+# End time: 16:56:02 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 16:56:02 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

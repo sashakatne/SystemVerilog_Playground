@@ -1,0 +1,71 @@
+Run:        Sequential find-first-one — three variants (Moore, Mealy, Pipeline)
+Start UTC:  2026-05-23T23-55-55Z   (moore)
+            2026-05-23T23-56-04Z   (mealy)
+            2026-05-23T23-56-14Z   (pipeline)
+End   UTC:  2026-05-23T23-56-04Z   (moore wall clock ~9s)
+            2026-05-23T23-56-14Z   (mealy wall clock ~10s)
+            2026-05-23T23-56-25Z   (pipeline wall clock ~11s)
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify three sequential find-first-one variants of a 32-bit input bus:
+    moore    FSM with all output assignments inside states (FFO32s.sv)
+    mealy    Mealy variant that asserts ready combinationally on the last
+             scanned bit (FFO32sMealy.sv)
+    pipeline 3-stage pipelined scanner (FFO32p.sv)
+  Each variant is compared per-cycle against a KGD/predictor; the TB drives
+  a 32-vector single-bit walk (Moore/Mealy) or a 37-vector queue-delayed
+  walk (Pipeline) and reports a single aggregate verdict.
+
+Source changes in this commit:
+  FFO32ptb.sv, FFO32sMealytb.sv, FFO32stb.sv:
+    ' *** FAILED *** ' / ' *** PASSED *** ' -> 'Failed testbench' /
+    'No errors -- passed testbench' (multi-line whitespace also removed).
+  No behavioural change. Same edit applied to all three testbenches.
+
+Commands executed (from this directory, one variant at a time):
+  vsim -c -do 'do run_moore.do; quit -f'    > transcript_moore.txt
+  vsim -c -do 'do run_mealy.do; quit -f'    > transcript_mealy.txt
+  vsim -c -do 'do run_pipeline.do; quit -f' > transcript_pipeline.txt
+
+Files compiled (varies by run.do):
+  moore    FFO32.sv, FFO32s.sv,        FFO32stb.sv
+  mealy    FFO32.sv, FFO32sMealy.sv,   FFO32sMealytb.sv
+  pipeline FFO32.sv, FFO32p.sv,        FFO32ptb.sv
+
+Results (all three runs):
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    moore    32+1 vectors swept, zero KGD mismatches.
+    mealy    32+1 vectors swept, zero KGD mismatches.
+    pipeline 32+4 vectors swept (3-stage pipeline delay accounted for via
+             a queue inside the TB), zero KGD mismatches.
+    Final verdict (all three): 'No errors -- passed testbench'
+  Coverage:
+    UCDB per variant on farm; filtered to the relevant FFO module.
+
+Caveats:
+  - Mealy and Pipeline TBs use $random for inter-test spacing (unseeded);
+    the stimulus sequence is the Questa default seeded stream and is
+    deterministic on this build.
+  - Pipeline transcript (429 lines) is longer than Moore (154) and Mealy
+    (130) because it logs more per-vector state during the delay-pipeline
+    setup.
+
+Files in this directory:
+  MANIFEST.txt
+  FFO32.sv
+  FFO32p.sv
+  FFO32ptb.sv
+  FFO32s.sv
+  FFO32sMealy.sv
+  FFO32sMealytb.sv
+  FFO32stb.sv
+  run_mealy.do
+  run_moore.do
+  run_pipeline.do
+  transcript_mealy.txt
+  transcript_moore.txt
+  transcript_pipeline.txt

@@ -1,0 +1,52 @@
+Run:        Floating-point constrained-randomization exerciser
+Start UTC:  2026-05-23T23-52-24Z
+End   UTC:  2026-05-23T23-52-29Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the `float` class in floatingpointpkg.sv exercises all seven
+  randomization constraints (nodenorm_c, alldenorm_c, nonan_c, noinf_c,
+  exprange_c, plus the two fptoint sweeps) with 200,000 vectors per mode.
+  The check is mode-specific: each enabled constraint is paired with a
+  predicate that flags any vector violating the constraint's intent.
+
+Source change in this commit:
+  testbench.sv lines 138, 140: ' *** PASSED *** ' / ' *** FAILED *** ' ->
+  'No errors -- passed testbench' / 'Failed testbench' to match the repo's
+  canonical verdict convention. No behavioural change.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint floatingpointpkg.sv
+  vlog -source -lint testbench.sv
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    7 constraint-mode sweeps x 200,000 randomized + checked vectors per mode
+    = 1,400,000 self-checks. Zero per-mode error prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+    Final stat line: 'Percentage of tests passed out of a total 1400000
+                       tests= 100.00%'
+  Coverage:
+    UCDB written on farm; covergroups not used (the TB is constraint-mode
+    coverage by construction). vcover-17388 'No matching coverage data
+    found' note appears as expected.
+
+Caveats:
+  - randomize() uses Questa's default seed; the 1.4M vector sequence is
+    deterministic on this build but not portable across seeds.
+  - The DUT under test is a class (rand-constrained float) rather than RTL,
+    so +cover=sbfec+ instruments nothing meaningful; correctness rests on
+    the seven mode-specific self-checks.
+
+Files in this directory:
+  MANIFEST.txt
+  floatingpointpkg.sv
+  run.do
+  testbench.sv
+  transcript.txt

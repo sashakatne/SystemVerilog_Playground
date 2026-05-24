@@ -69,9 +69,9 @@ module top;
         // Wait for all stimulus to be processed
         wait (i > N);
         if (error_flag)
-            $display("\n\n *** FAILED *** \n\n");
+            $display("Failed testbench");
         else
-            $display("\n\n *** PASSED *** \n\n");
+            $display("No errors -- passed testbench");
         
         $finish;
     end

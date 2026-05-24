@@ -1,0 +1,46 @@
+Run:        Parameterized countdown timer with load/decrement/timeup
+Start UTC:  2026-05-23T23-53-43Z
+End   UTC:  2026-05-23T23-53-46Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Exercise the N-bit countdown timer (default N=8): reset, load, decrement,
+  hold-at-zero, reload-clears-timeup, and decrement-gated behaviour. The TB
+  emits one error print per failed check and a single aggregate verdict.
+
+Source change in this commit:
+  countdowntimertb.sv lines 89, 91:
+    'All tests passed successfully.' -> 'No errors -- passed testbench'
+    '%d test(s) failed.'             -> 'Failed testbench (%0d errors)'
+  Verdict strings only; behaviour unchanged.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint countdowntimer.sv
+  vlog -source -lint countdowntimertb.sv
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    5 directed scenarios cover counter zero-hit, hold-at-zero, reload
+    de-asserting timeup, and decr-gating behaviour. Zero error prints.
+    Final verdict: 'No errors -- passed testbench'
+
+Caveats:
+  - The TB is intentionally sparse (5 scenarios) rather than exhaustive
+    sweep; it covers the FSM transitions but not every (load, value, decr)
+    triple. Future expansion could parameterize the value sweep.
+  - vcover-17388 'No matching coverage data found' is expected (no
+    covergroups; +cover=sbfec+ produces statement/branch/expression
+    instrumentation only).
+
+Files in this directory:
+  MANIFEST.txt
+  countdowntimer.sv
+  countdowntimertb.sv
+  run.do
+  transcript.txt

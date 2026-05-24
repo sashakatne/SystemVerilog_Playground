@@ -91,9 +91,9 @@ module top;
             end
             
         if (Error)
-            $display("\n\n *** FAILED *** \n\n");
+            $display("Failed testbench");
         else
-            $display("\n\n *** PASSED *** \n\n");
+            $display("No errors -- passed testbench");
 
         $finish();
     end

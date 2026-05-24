@@ -1,0 +1,43 @@
+Run:        Sequential N-bit shift-and-add multiplier
+Start UTC:  2026-05-24T00-00-25Z
+End   UTC:  2026-05-24T00-00-28Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the sequential shift-and-add multiplier (multiplier.sv) against a
+  reference `A * B` predictor over 256 randomized (A, B) operand pairs.
+  Each iteration applies start, waits for done, and self-checks via a
+  CheckResults task.
+
+Source change in this commit:
+  multtb.sv lines 106-108: '*** FAILED ***' / '*** PASSED ***' (with their
+  surrounding newlines) -> 'Failed testbench' / 'No errors -- passed testbench'.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint multiplier.sv
+  vlog -source -lint multtb.sv
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    256 randomized (A, B) operand pairs, each self-checked against `A * B`.
+    Zero error prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+
+Caveats:
+  - $random in the TB is unseeded; the 256-vector sequence is deterministic
+    on Questa 2021.3_1 but not portable across seeds.
+  - $random() % 5 inter-test idle cycles deliberately keep the FSM in its
+    initial state between tests; this is part of the FSM-quiescence check.
+
+Files in this directory:
+  MANIFEST.txt
+  multiplier.sv
+  multtb.sv
+  run.do
+  transcript.txt

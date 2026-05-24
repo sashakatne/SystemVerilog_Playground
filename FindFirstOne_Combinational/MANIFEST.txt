@@ -1,0 +1,51 @@
+Run:        Combinational find-first-one (FFO32 + leading-zero detector chain)
+Start UTC:  2026-05-23T23-54-26Z
+End   UTC:  2026-05-23T23-54-29Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify three combinational 32-bit find-first-one implementations (FFO32
+  baseline, FFOp parameterized, and the leading-zero-detector chain LZD2 +
+  LZDn) against a behavioural KGD reference. The TB sweeps all-zeros, an
+  all-Xs vector, then a single-bit-walk across all 32 bit positions.
+
+Source changes: none. This module was gate-ready as-found
+(canonical 'No errors -- passed testbench' verdict, $finish, KGD compare).
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint FFO32.sv
+  vlog -source -lint FFO32TB.sv
+  vlog -source -lint FFOp.sv
+  vlog -source -lint LZD2.sv
+  vlog -source -lint LZDn.sv
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    34 vectors compared against the KGD (all-zeros, all-Xs, 32 single-bit
+    walks). Zero '*** Error' prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+  Coverage:
+    UCDB written on farm; instrumentation filtered to the FFO modules.
+    100% coverage for the three FFO variants reachable by single-bit walks.
+
+Caveats:
+  - The vector set is targeted (single-bit walks + corner X-input) rather
+    than exhaustive (2^32 = 4G inputs). For combinational decoders this
+    targeted set is the canonical proof; exhaustive coverage would be
+    prohibitive without trimming.
+
+Files in this directory:
+  MANIFEST.txt
+  FFO32.sv
+  FFO32TB.sv
+  FFOp.sv
+  LZD2.sv
+  LZDn.sv
+  run.do
+  transcript.txt

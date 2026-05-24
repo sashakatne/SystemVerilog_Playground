@@ -1,0 +1,409 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:54:26 on May 23,2026
+# vlog -source -lint FFO32.sv 
+# -- Compiling module FFO32
+# 
+# Top level modules:
+# 	FFO32
+# End time: 16:54:26 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:54:26 on May 23,2026
+# vlog -source -lint FFO32TB.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 16:54:26 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:54:26 on May 23,2026
+# vlog -source -lint FFOp.sv 
+# -- Compiling module FFOp
+# 
+# Top level modules:
+# 	FFOp
+# End time: 16:54:26 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:54:26 on May 23,2026
+# vlog -source -lint LZD2.sv 
+# -- Compiling module LZD2
+# 
+# Top level modules:
+# 	LZD2
+# End time: 16:54:27 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:54:27 on May 23,2026
+# vlog -source -lint LZDn.sv 
+# -- Compiling module LZDn
+# 
+# Top level modules:
+# 	LZDn
+# End time: 16:54:27 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:54:27 on May 23,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+FFO32(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module FFO32
+# -- Loading module LZDn
+# -- Loading module FFOp
+# -- Loading module LZD2
+# Optimizing 8 design-units (inlining 0/34 module instances):
+# -- Optimizing module FFO32(fast)
+# -- Optimizing module top(fast)
+# -- Optimizing module LZDn(fast__3)
+# -- Optimizing module LZDn(fast__2)
+# -- Optimizing module LZDn(fast__1)
+# -- Optimizing module LZDn(fast)
+# -- Optimizing module FFOp(fast)
+# -- Optimizing module LZD2(fast)
+# Optimized design name is top_optimized
+# End time: 16:54:28 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 16:54:28 on May 23,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.FFO32(fast)
+# Loading work.LZD2(fast)
+# Loading work.LZDn(fast)
+# Loading work.LZDn(fast__1)
+# Loading work.LZDn(fast__2)
+# Loading work.LZDn(fast__3)
+# Loading work.FFOp(fast)
+# 1
+# No errors -- passed testbench
+# ** Note: $finish    : FFO32TB.sv(63)
+#    Time: 34 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at FFO32TB.sv line 63
+# Stopped at FFO32TB.sv line 63
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:54:29 on May 23,2026
+# vcover report FFO32.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd16_gen[1]/lzd16_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                     11        10         1    90.90%
+#     Statements                       4         4         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd16_gen[0]/lzd16_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                     11        10         1    90.90%
+#     Statements                       4         4         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd8_gen[3]/lzd8_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      8         7         1    87.50%
+#     Statements                       3         3         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd8_gen[2]/lzd8_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      8         7         1    87.50%
+#     Statements                       3         3         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd8_gen[1]/lzd8_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      8         7         1    87.50%
+#     Statements                       3         3         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd8_gen[0]/lzd8_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      8         7         1    87.50%
+#     Statements                       3         3         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd4_gen[7]/lzd4_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      5         4         1    80.00%
+#     Statements                       2         2         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd4_gen[6]/lzd4_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      5         4         1    80.00%
+#     Statements                       2         2         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd4_gen[5]/lzd4_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      5         4         1    80.00%
+#     Statements                       2         2         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd4_gen[4]/lzd4_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      5         4         1    80.00%
+#     Statements                       2         2         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd4_gen[3]/lzd4_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      5         4         1    80.00%
+#     Statements                       2         2         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd4_gen[2]/lzd4_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      5         4         1    80.00%
+#     Statements                       2         2         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd4_gen[1]/lzd4_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      5         4         1    80.00%
+#     Statements                       2         2         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd4_gen[0]/lzd4_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      5         4         1    80.00%
+#     Statements                       2         2         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[15]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[14]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[13]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[12]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[11]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[10]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[9]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[8]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[7]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[6]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[5]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[4]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[3]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[2]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[1]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd2_gen[0]/lzd2_inst
+# === Design Unit: work.LZD2
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                      2         1         1    50.00%
+#     Statements                       1         1         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/lzd32_inst
+# === Design Unit: work.LZDn
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Expressions                     14        13         1    92.85%
+#     Statements                       5         5         0   100.00%
+# 
+# 
+# Total Coverage By Instance (filtered view): 88.92%
+# 
+# End time: 16:54:29 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:54:29 on May 23,2026
+# vcover report FFO32.ucdb -cvg -details 
+# ** Note: (vcover-17388) No matching coverage data found in file 'FFO32.ucdb'.
+# End time: 16:54:29 on May 23,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 16:54:29 on May 23,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

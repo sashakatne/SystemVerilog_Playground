@@ -85,9 +85,9 @@ module top;
 
         // Complete all the checks
         if (errors == 0) begin
-            $display("All state transitions passed successfully.");
+            $display("No errors -- passed testbench");
         end else begin
-            $display("%d state transitions failed.", errors);
+            $display("Failed testbench (%0d state transitions failed)", errors);
         end
 
         $finish;
