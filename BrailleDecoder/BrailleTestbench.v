@@ -27,7 +27,7 @@ endmodule
 
 
 
-module top();
+module top;
 localparam DELAY = 1000;
 reg [3:0] BCD;
 wire w0, x0, y0, z0;	// known good outputs

@@ -1,0 +1,57 @@
+Run:        BCD-to-Braille decoder (BrailleDigits module, dataflow variant)
+Start UTC:  2026-05-23T23-31-34Z
+End   UTC:  2026-05-23T23-31-36Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Verify the dataflow BCD-to-Braille mapping (digits 0..9) against a behavioral
+  KGD reference encoded as a case statement. The KGD is built directly into the
+  testbench, so the comparison is a pure decoder truth-table check across the
+  10 valid BCD inputs. The structural variant (BrailleStructural.v) is shipped
+  alongside but its vlog line is commented out in run.do.
+
+Source change in this commit:
+  BrailleTestbench.v line 30: 'module top();' -> 'module top;'.
+  The empty-parens form triggered vlog-2605 'empty port name in port list'
+  (Verilog-2001 idiom is no parens for a no-port module). The fix is purely
+  syntactic; the testbench body is unchanged.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint BrailleDataflow.v        (BrailleDigits, dataflow assigns)
+  vlog -source -lint BrailleTestbench.v       (KGD + top with 10-BCD sweep)
+  (BrailleStructural.v is an alternate gate-level variant, commented out.)
+
+Results:
+  Compile and elaboration:
+    vlog BrailleDataflow.v ........ Errors: 0, Warnings: 0
+    vlog BrailleTestbench.v ....... Errors: 0, Warnings: 0
+    vopt top ...................... Errors: 0, Warnings: 0
+  Simulation:
+    10 BCD values swept (i = 0..9), each compared against KGD outputs.
+    Zero error prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+  Coverage (filtered to BrailleDigits(rtl), per-instance):
+    /top/DUT  BrailleDigits  expressions 16/16  statements 4/4  100.00%
+    Total coverage by instance (filtered view): 100.00%
+    UCDB written: BrailleDigits.ucdb (farm only, not committed)
+
+Caveats:
+  - 10 BCD inputs are the design's full valid input space; the unused 6 codes
+    (1010..1111) are explicitly skipped by the testbench loop (i < 10).
+  - The '-cvg -details' report prints a benign vcover-17388 'No matching
+    coverage data found' note because the design has no covergroups.
+  - The testbench emits only the aggregate verdict line; per-vector evidence
+    is implicit (the loop prints only on KGD mismatch, and none occurred).
+
+Files in this directory:
+  MANIFEST.txt
+  BrailleDataflow.v
+  BrailleStructural.v
+  BrailleTestbench.v
+  run.do
+  transcript.txt
