@@ -117,10 +117,12 @@ module top;
             #DELAY;
             // Final pass/fail statement
             if (pass) begin
-                $display("All tests PASSED.");
+                $display("No errors -- passed testbench");
             end else begin
-                $display("Some tests FAILED.");
+                $display("Failed testbench");
             end
+
+            $finish;
 
         end
 
@@ -192,10 +194,12 @@ module top;
             #DELAY;
             // Final pass/fail statement
             if (pass) begin
-                $display("All tests PASSED.");
+                $display("No errors -- passed testbench");
             end else begin
-                $display("Some tests FAILED.");
+                $display("Failed testbench");
             end
+
+            $finish;
 
         end
 

@@ -1,0 +1,51 @@
+Run:        SystemVerilog streaming-operator exerciser (unpacked branch)
+Start UTC:  2026-05-24T00-01-20Z
+End   UTC:  2026-05-24T00-01-22Z
+Host:       mo.ece.pdx.edu
+Questa:     2021.3_1   (/pkgs/mentor/questa/2021.3_1/questasim/bin)
+License:    1717@mentor-lic.cecs.pdx.edu
+
+Purpose:
+  Exercise the SystemVerilog `>>` and `<<` streaming concatenation operators
+  on byte arrays and a packed-union SIMD register. Default compile path is
+  the unpacked-memory branch (no PACKED_MEMORY define); the packed branch
+  remains in the source under `else` for the alternate exercise.
+
+Source changes in this commit:
+  streamingops.sv:
+    - Both branches' verdict prints: 'All tests PASSED.' / 'Some tests
+      FAILED.' -> 'No errors -- passed testbench' / 'Failed testbench'.
+    - Added `$finish;` at the end of each branch's initial block. Without
+      this the simulator never returned on its own (no $finish / $stop
+      anywhere in the original file), which is why the module shipped
+      without committed evidence.
+
+Commands executed (from this directory):
+  vsim -c -do 'do run.do; quit -f' > transcript.txt
+
+Files compiled (per run.do):
+  vlog -source -lint streamingops.sv
+
+Results:
+  Compile and elaboration: every vlog/vopt stage Errors: 0, Warnings: 0.
+  Simulation:
+    Unpacked branch executes problems 3-8: big-endian and little-endian byte
+    streaming into R, two SIMD-register pack/unpack operations using `<<`
+    and `>>` on word slices, memory-load and memory-store via packed
+    address indices. Assert-based and if-based self-checks across ~80
+    comparisons. Zero error prints emitted.
+    Final verdict: 'No errors -- passed testbench'
+
+Caveats:
+  - $urandom_range in the operand-init loop is unseeded; the 32-operand
+    sequence is deterministic on Questa 2021.3_1 but not portable across
+    seeds.
+  - The PACKED_MEMORY branch (problems 9-12) is wrapped in `ifdef. To
+    activate it, add `+define+PACKED_MEMORY` to the vlog line in run.do.
+    This run uses the default (unpacked) branch.
+
+Files in this directory:
+  MANIFEST.txt
+  run.do
+  streamingops.sv
+  transcript.txt
