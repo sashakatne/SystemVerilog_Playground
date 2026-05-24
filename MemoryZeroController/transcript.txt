@@ -3,13 +3,11 @@ Reading pref.tcl
 # 2021.3_1
 
 # do run.do
-# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
-# No such file or directory. (errno = ENOENT)
-# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
-# 1
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 17:25:27 on May 23,2026
+# Start time: 21:27:58 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # vlog -source -lint memoryzero.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # -- Compiling module Memory64x8
 # -- Compiling module Register
 # -- Compiling module UpCounter
@@ -22,20 +20,25 @@ Reading pref.tcl
 # 
 # Top level modules:
 # 	mz
-# End time: 17:25:28 on May 23,2026, Elapsed time: 0:00:01
+# End time: 21:27:58 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 17:25:28 on May 23,2026
+# Start time: 21:27:58 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # vlog -source -lint fsmtb.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 17:25:28 on May 23,2026, Elapsed time: 0:00:00
+# End time: 21:27:59 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
-# Start time: 17:25:28 on May 23,2026
+# Start time: 21:27:59 on May 23,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # vopt top -o top_optimized "+acc" "+cover=sbfec+mz(rtl)." 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # 
 # Top level modules:
 # 	top
@@ -52,6 +55,8 @@ Reading pref.tcl
 # -- Loading module Memory64x8
 # -- Loading module MemoryZeroController
 # Optimizing 10 design-units (inlining 0/12 module instances):
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # -- Optimizing module top(fast)
 # -- Optimizing module DataPath(fast)
 # -- Optimizing module MemoryZeroController(fast)
@@ -64,10 +69,10 @@ Reading pref.tcl
 # -- Optimizing module Mux2x1(fast)
 # -- Optimizing module Comparator(fast)
 # Optimized design name is top_optimized
-# End time: 17:25:29 on May 23,2026, Elapsed time: 0:00:01
+# End time: 21:27:59 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim top_optimized -coverage 
-# Start time: 17:25:29 on May 23,2026
+# Start time: 21:28:00 on May 23,2026
 # //  Questa Sim-64
 # //  Version 2021.3_1 linux_x86_64 Aug 15 2021
 # //
@@ -95,21 +100,20 @@ Reading pref.tcl
 # Loading work.MemoryZeroController(fast)
 # 1
 # Test Case 1 Passed
-# Test Case 2 Passed
-# Test Case 3 Failed: Memory zero error at address 55
-# Test Case 4 Failed: Write operation should not occur during zeroing
+# Test Case 2 Failed: Memory zero error at address 00
+# Test Case 3 Passed
+# Test Case 4 Passed
 # Test Case 5 Passed
-# Test Case 6 Failed: Busy flag not set during zeroing
 # Test Case 6 Passed
-# Test Case 7 Passed
-# Failed testbench (3 test case error(s))
+# Test Case 7 Failed: Normal mode write error after zero mode
+# Failed testbench (2 test case error(s))
 # ** Note: $finish    : fsmtb.sv(234)
-#    Time: 955 ns  Iteration: 1  Instance: /top
+#    Time: 7375 ns  Iteration: 1  Instance: /top
 # 1
 # Break in Module top at fsmtb.sv line 234
 # Stopped at fsmtb.sv line 234
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 17:25:30 on May 23,2026
+# Start time: 21:28:01 on May 23,2026
 # vcover report mz.ucdb 
 # Coverage Report Summary Data by instance
 # 
@@ -146,9 +150,9 @@ Reading pref.tcl
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Branches                         4         3         1    75.00%
-#     Conditions                       6         2         4    33.33%
-#     Statements                       5         4         1    80.00%
+#     Branches                         4         2         2    50.00%
+#     Conditions                       6         0         6     0.00%
+#     Statements                       5         3         2    60.00%
 # 
 # =================================================================================
 # === Instance: /top/DUT/DP/AddrMux
@@ -192,7 +196,8 @@ Reading pref.tcl
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Expressions                      2         2         0   100.00%
+#     Expressions                      5         5         0   100.00%
+#     Statements                       2         2         0   100.00%
 # 
 # =================================================================================
 # === Instance: /top/DUT/FSM
@@ -200,22 +205,26 @@ Reading pref.tcl
 # =================================================================================
 #     Enabled Coverage              Bins      Hits    Misses  Coverage
 #     ----------------              ----      ----    ------  --------
-#     Branches                        14        14         0   100.00%
+#     Branches                        18        18         0   100.00%
 #     FSM States                       3         3         0   100.00%
 #     FSM Transitions                  4         3         1    75.00%
-#     Statements                      17        17         0   100.00%
+#     Statements                      19        19         0   100.00%
 # 
 # 
-# Total Coverage By Instance (filtered view): 83.72%
+# Total Coverage By Instance (filtered view): 77.38%
 # 
-# End time: 17:25:30 on May 23,2026, Elapsed time: 0:00:00
+# End time: 21:28:01 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 # QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
-# Start time: 17:25:30 on May 23,2026
+# Start time: 21:28:01 on May 23,2026
 # vcover report mz.ucdb -cvg -details 
 # ** Note: (vcover-17388) No matching coverage data found in file 'mz.ucdb'.
-# End time: 17:25:30 on May 23,2026, Elapsed time: 0:00:00
+# End time: 21:28:01 on May 23,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
 #  quit -f
-# End time: 17:25:30 on May 23,2026, Elapsed time: 0:00:01
+# End time: 21:28:01 on May 23,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
