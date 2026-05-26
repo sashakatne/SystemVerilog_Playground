@@ -156,7 +156,7 @@ def render_waveforms(rows: list[dict[str, str]], path: Path) -> None:
         raise SystemExit("no visible waveform rows")
 
     width = 1480
-    height = 790
+    height = 910
     left = 230
     right = 48
     top = 96
@@ -175,6 +175,8 @@ def render_waveforms(rows: list[dict[str, str]], path: Path) -> None:
         ("max_slow_setup_violation_pulse", "setup violation", "#b42318"),
         ("max_ok_capture_d", "max clean D (700 ps)", "#15803d"),
     ]
+    axis_y = top + len(lanes) * lane_h + 58
+    legend_top = axis_y + 26
 
     def x_at(time_ps: int) -> float:
         return left + ((time_ps - start_ps) * plot_w / (end_ps - start_ps))
@@ -189,9 +191,9 @@ def render_waveforms(rows: list[dict[str, str]], path: Path) -> None:
     for tick in range(start_ps, end_ps + 1, 250):
         x = x_at(tick)
         stroke = "#d7dce2" if tick % 1000 == 500 else "#eceff3"
-        parts.append(f'<line x1="{x:.1f}" y1="{top - 18}" x2="{x:.1f}" y2="{height - 58}" stroke="{stroke}" stroke-width="1"/>')
+        parts.append(f'<line x1="{x:.1f}" y1="{top - 18}" x2="{x:.1f}" y2="{axis_y - 32}" stroke="{stroke}" stroke-width="1"/>')
         if tick % 500 == 0:
-            parts.append(f'<text x="{x:.1f}" y="{height - 32}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#555">{tick}</text>')
+            parts.append(f'<text x="{x:.1f}" y="{axis_y}" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#555">{tick}</text>')
 
     for lane_index, (key, label, color) in enumerate(lanes):
         y_mid = top + lane_index * lane_h + 20
@@ -227,10 +229,15 @@ def render_waveforms(rows: list[dict[str, str]], path: Path) -> None:
     for times, color, label in marker_rows.values():
         for time_ps in times:
             x = x_at(time_ps)
-            parts.append(f'<line x1="{x:.1f}" y1="{top - 8}" x2="{x:.1f}" y2="{height - 78}" stroke="{color}" stroke-width="1.6" stroke-dasharray="5 4"/>')
+            parts.append(f'<line x1="{x:.1f}" y1="{top - 8}" x2="{x:.1f}" y2="{axis_y - 52}" stroke="{color}" stroke-width="1.6" stroke-dasharray="5 4"/>')
             parts.append(f'<text x="{x + 5:.1f}" y="{top - 12}" font-family="Arial, sans-serif" font-size="12" fill="{color}">{label} @{time_ps}ps</text>')
 
-    parts.append(f'<text x="{left}" y="{height - 8}" font-family="Arial, sans-serif" font-size="13" fill="#555">Fast min path changes D at 1520 ps, inside the 1500-1580 ps hold window. Slow max path changes D at 2420 ps, inside the 2350-2500 ps setup window.</text>')
+    parts.append(f'<rect x="{left}" y="{legend_top}" width="{plot_w}" height="112" rx="5" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>')
+    parts.append(f'<text x="{left + 16}" y="{legend_top + 24}" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111">Legend</text>')
+    parts.append(f'<text x="{left + 16}" y="{legend_top + 48}" font-family="Arial, sans-serif" font-size="13" fill="#334155">clk = shared 1 ns clock; launch_d = stimulus loaded into the launch flop on a rising edge.</text>')
+    parts.append(f'<text x="{left + 16}" y="{legend_top + 70}" font-family="Arial, sans-serif" font-size="13" fill="#334155">D rows = delayed data arriving at the capture flop D pin; the number in parentheses is the modeled path delay.</text>')
+    parts.append(f'<text x="{left + 16}" y="{legend_top + 92}" font-family="Arial, sans-serif" font-size="13" fill="#334155">hold/setup window = interval where D must not change; violation = 1 ps pulse when D changes inside that window.</text>')
+    parts.append(f'<text x="{left}" y="{height - 10}" font-family="Arial, sans-serif" font-size="13" fill="#555">Fast min path changes D at 1520 ps, inside the 1500-1580 ps hold window. Slow max path changes D at 2420 ps, inside the 2350-2500 ps setup window.</text>')
     parts.append("</svg>")
     path.write_text("\n".join(parts))
 
