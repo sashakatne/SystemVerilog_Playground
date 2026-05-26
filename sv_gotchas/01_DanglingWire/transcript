@@ -1,0 +1,99 @@
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:06:18 on May 25,2026
+# vlog -source -lint DanglingWire_buggy.sv 
+# -- Compiling module DanglingWire_buggy
+###### DanglingWire_buggy.sv(21):   or  o1 (Y, ab, BC, ac);  // ... but BC (uppercase) is a different, dangling net
+# ** Warning: DanglingWire_buggy.sv(21): (vlog-2623) Undefined variable: BC.
+# 
+# Top level modules:
+# 	DanglingWire_buggy
+# End time: 16:06:18 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:06:18 on May 25,2026
+# vlog -source -lint DanglingWire_fixed.sv 
+# -- Compiling module DanglingWire_fixed
+# 
+# Top level modules:
+# 	DanglingWire_fixed
+# End time: 16:06:18 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:06:18 on May 25,2026
+# vlog -source -lint DanglingWire_tb.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 16:06:18 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:06:19 on May 25,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+DanglingWire_buggy(rtl).+DanglingWire_fixed(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module DanglingWire_buggy
+# -- Loading module DanglingWire_fixed
+# Optimizing 3 design-units (inlining 0/3 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module DanglingWire_buggy(fast)
+###### DanglingWire_buggy.sv(21):   or  o1 (Y, ab, BC, ac);  // ... but BC (uppercase) is a different, dangling net
+# ** Warning: DanglingWire_buggy.sv(21): (vopt-2623) Undefined variable: BC.
+# -- Optimizing module DanglingWire_fixed(fast)
+# Optimized design name is top_optimized
+# End time: 16:06:20 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+# vsim top_optimized -coverage 
+# Start time: 16:06:20 on May 25,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.DanglingWire_buggy(fast)
+# Loading work.DanglingWire_fixed(fast)
+# 1
+# vec  ABC   expected  buggy  fixed   verdict
+#  0   000      0        x      0    GOTCHA OBSERVED
+#  1   001      0        x      0    GOTCHA OBSERVED
+#  2   010      0        x      0    GOTCHA OBSERVED
+#  3   011      1        x      1    GOTCHA OBSERVED
+#  4   100      0        x      0    GOTCHA OBSERVED
+#  5   101      1        1      1    (buggy matches)
+#  6   110      1        1      1    (buggy matches)
+#  7   111      1        1      1    (buggy matches)
+# No errors -- passed testbench  (gotcha caught 5 times, fix clean 8/8)
+# ** Note: $finish    : DanglingWire_tb.sv(52)
+#    Time: 8 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at DanglingWire_tb.sv line 52
+# Stopped at DanglingWire_tb.sv line 52
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:06:20 on May 25,2026
+# vcover report DanglingWire.ucdb -details -cvg 
+# ** Note: (vcover-17388) No matching coverage data found in file 'DanglingWire.ucdb'.
+# End time: 16:06:21 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 16:06:21 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

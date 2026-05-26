@@ -1,0 +1,105 @@
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:09:43 on May 25,2026
+# vlog -source -lint DisplayVsMonitor_dut.sv 
+# -- Compiling module DisplayVsMonitor_dut
+# 
+# Top level modules:
+# 	DisplayVsMonitor_dut
+# End time: 16:09:43 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:09:43 on May 25,2026
+# vlog -source -lint DisplayVsMonitor_buggy.sv 
+# -- Compiling module DisplayVsMonitor_buggy
+# 
+# Top level modules:
+# 	DisplayVsMonitor_buggy
+# End time: 16:09:43 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:09:43 on May 25,2026
+# vlog -source -lint DisplayVsMonitor_fixed.sv 
+# -- Compiling module DisplayVsMonitor_fixed
+# 
+# Top level modules:
+# 	DisplayVsMonitor_fixed
+# End time: 16:09:43 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:09:43 on May 25,2026
+# vlog -source -lint DisplayVsMonitor_tb.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 16:09:43 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:09:44 on May 25,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+DisplayVsMonitor_dut(rtl).+DisplayVsMonitor_buggy(rtl).+DisplayVsMonitor_fixed(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module DisplayVsMonitor_dut
+# -- Loading module DisplayVsMonitor_buggy
+# -- Loading module DisplayVsMonitor_fixed
+# Optimizing 4 design-units (inlining 0/4 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module DisplayVsMonitor_fixed(fast)
+# -- Optimizing module DisplayVsMonitor_dut(fast)
+# -- Optimizing module DisplayVsMonitor_buggy(fast)
+# Optimized design name is top_optimized
+# End time: 16:09:45 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 16:09:45 on May 25,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.DisplayVsMonitor_dut(fast)
+# Loading work.DisplayVsMonitor_buggy(fast)
+# Loading work.DisplayVsMonitor_fixed(fast)
+# 1
+# cycle  d_now  q_after_posedge  buggy_capture  fixed_capture  verdict
+#   0     10     10               00             10            GOTCHA OBSERVED (buggy saw pre-NBA q)
+#   1     11     11               10             11            GOTCHA OBSERVED (buggy saw pre-NBA q)
+#   2     12     12               11             12            GOTCHA OBSERVED (buggy saw pre-NBA q)
+#   3     13     13               12             13            GOTCHA OBSERVED (buggy saw pre-NBA q)
+#   4     14     14               13             14            GOTCHA OBSERVED (buggy saw pre-NBA q)
+#   5     15     15               14             15            GOTCHA OBSERVED (buggy saw pre-NBA q)
+# No errors -- passed testbench  (gotcha caught 6 times, fix clean 6/6)
+# ** Note: $finish    : DisplayVsMonitor_tb.sv(70)
+#    Time: 67 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at DisplayVsMonitor_tb.sv line 70
+# Stopped at DisplayVsMonitor_tb.sv line 70
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:09:45 on May 25,2026
+# vcover report DisplayVsMonitor.ucdb -details -cvg 
+# ** Note: (vcover-17388) No matching coverage data found in file 'DisplayVsMonitor.ucdb'.
+# End time: 16:09:45 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 16:09:45 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
