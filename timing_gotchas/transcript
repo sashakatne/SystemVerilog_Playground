@@ -1,0 +1,95 @@
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 21:38:18 on May 25,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint timing_gotchas.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling module MinDelayHoldDemo
+# -- Compiling module MaxDelaySetupDemo
+# 
+# Top level modules:
+# 	MinDelayHoldDemo
+# 	MaxDelaySetupDemo
+# End time: 21:38:19 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 21:38:19 on May 25,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint timing_gotchas_tb.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 21:38:19 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 21:38:19 on May 25,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vopt top -o top_optimized "+acc" 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module MinDelayHoldDemo
+# -- Loading module MaxDelaySetupDemo
+# Optimizing 5 design-units (inlining 0/5 module instances):
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Optimizing module top(fast)
+# -- Optimizing module MaxDelaySetupDemo(fast)
+# -- Optimizing module MaxDelaySetupDemo(fast__1)
+# -- Optimizing module MinDelayHoldDemo(fast)
+# -- Optimizing module MinDelayHoldDemo(fast__1)
+# Optimized design name is top_optimized
+# End time: 21:38:20 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized 
+# Start time: 21:38:20 on May 25,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.MinDelayHoldDemo(fast)
+# Loading work.MinDelayHoldDemo(fast__1)
+# Loading work.MaxDelaySetupDemo(fast)
+# Loading work.MaxDelaySetupDemo(fast__1)
+# 1
+# time(ps)  launch_d  min_fast_d  min_padded_d  max_slow_d  max_ok_d
+# GOTCHA OBSERVED min-delay/hold: t=1520 ps path=20 ps hold=80 ps
+# GOTCHA OBSERVED max-delay/setup: t=2420 ps path=920 ps setup=150 ps
+# GOTCHA OBSERVED min-delay/hold: t=2520 ps path=20 ps hold=80 ps
+# GOTCHA OBSERVED max-delay/setup: t=3420 ps path=920 ps setup=150 ps
+# GOTCHA OBSERVED min-delay/hold: t=3520 ps path=20 ps hold=80 ps
+# GOTCHA OBSERVED max-delay/setup: t=4420 ps path=920 ps setup=150 ps
+# GOTCHA OBSERVED min-delay/hold: t=4520 ps path=20 ps hold=80 ps
+# GOTCHA OBSERVED max-delay/setup: t=5420 ps path=920 ps setup=150 ps
+# No errors -- passed testbench  (gotcha caught min=4 max=4, clean paths 2/2)
+# ** Note: $finish    : timing_gotchas_tb.sv(196)
+#    Time: 6100 ps  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at timing_gotchas_tb.sv line 196
+# Stopped at timing_gotchas_tb.sv line 196
+#  quit -f
+# End time: 21:38:21 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

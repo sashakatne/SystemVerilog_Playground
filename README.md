@@ -108,6 +108,18 @@ A curriculum of 17 self-contained demos under `sv_gotchas/`, each a minimal DUT 
 - **Testbenches**: one `NN_Slug_tb.sv` per demo, `module top`; drives buggy and fixed in parallel and counts both `GOTCHA OBSERVED` events and `*** FIX FAILED` events
 - **Verification**: per-demo `transcript` + `MANIFEST.txt`; sims run on the PSU ECE farm via `~/claude-runs/<UTC>_<slug>/`. Two demos intentionally carry expected compile-time warnings called out in their `run.do` per the CLAUDE.md exception: `01_DanglingWire` triggers the `vlog -lint` implicit-net warning (which IS the lesson — the linter catches the typo), and `09_OutOfRangeBitSelect` triggers the `vlog/vopt -lint` out-of-bounds-bit-select warning.
 
+### 15. Timing Gotchas
+Two timing-window demos model min-delay and max-delay failures with picosecond
+delays: `MinDelayHoldDemo` shows a 20 ps contamination path violating an 80 ps
+hold window, while `MaxDelaySetupDemo` shows a 920 ps propagation path violating
+a 150 ps setup window on a 1000 ps clock. Clean 120 ps and 700 ps instances run
+beside them in the same testbench.
+
+- **Folder**: timing_gotchas
+- **Files**: `timing_gotchas.sv`, `timing_gotchas_tb.sv`, `run.do`, `README.md`, `MANIFEST.txt`, `make_artifacts.py`, `transcript`, `timing_gotchas_waveforms.vcd`, `waveform_samples.csv`, `waveforms.png`
+- **Testbench**: `top` in `timing_gotchas_tb.sv` checks that both gotchas trigger and both clean paths stay quiet.
+- **Verification**: Run `do run.do`. The checked-in transcript and VCD are from a PSU farm Questa 2021.3_1 run; `waveforms.png` is rendered from that VCD.
+
 ## Verification
 
 ### Assertions

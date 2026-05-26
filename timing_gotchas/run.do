@@ -2,6 +2,7 @@ catch {vdel -all}
 
 vlib work
 
+vlog -source -lint timing_gotchas.sv
 vlog -source -lint timing_gotchas_tb.sv
 
 vopt top -o top_optimized +acc
