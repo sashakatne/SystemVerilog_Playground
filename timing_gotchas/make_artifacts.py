@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate timing gotcha waveform artifacts from the farm VCD."""
+"""Generate timing gotcha diagram and waveform artifacts."""
 
 from __future__ import annotations
 
@@ -16,6 +16,8 @@ VCD = ROOT / "timing_gotchas_waveforms.vcd"
 CSV_OUT = ROOT / "waveform_samples.csv"
 WAVEFORM_SVG = ROOT / "waveforms.svg"
 WAVEFORM_PNG = ROOT / "waveforms.png"
+CIRCUIT_SVG = ROOT / "circuit_diagram.svg"
+CIRCUIT_PNG = ROOT / "circuit_diagram.png"
 
 WATCH_SIGNALS = (
     "clk",
@@ -233,6 +235,152 @@ def render_waveforms(rows: list[dict[str, str]], path: Path) -> None:
     path.write_text("\n".join(parts))
 
 
+def render_circuit_diagram(path: Path) -> None:
+    width = 1720
+    height = 960
+    left = 56
+    row_h = 180
+    top = 170
+
+    def text(x: int, y: int, content: str, size: int = 14, fill: str = "#111", weight: str = "400", anchor: str = "start") -> str:
+        return (
+            f'<text x="{x}" y="{y}" font-family="Arial, sans-serif" font-size="{size}" '
+            f'font-weight="{weight}" fill="{fill}" text-anchor="{anchor}">{html.escape(content)}</text>'
+        )
+
+    def rect(x: int, y: int, w: int, h: int, fill: str, stroke: str, rx: int = 4, sw: float = 1.6) -> str:
+        return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>'
+
+    def line(x1: int, y1: int, x2: int, y2: int, stroke: str = "#111", sw: float = 2.0, marker: bool = False, dash: str | None = None) -> str:
+        marker_attr = ' marker-end="url(#arrow)"' if marker else ""
+        dash_attr = f' stroke-dasharray="{dash}"' if dash else ""
+        return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{stroke}" stroke-width="{sw}"{marker_attr}{dash_attr}/>'
+
+    def flop(x: int, y: int, label: str) -> list[str]:
+        return [
+            rect(x, y, 94, 86, "#ffffff", "#111827"),
+            text(x + 47, y + 31, label, 15, "#111827", "700", "middle"),
+            text(x + 47, y + 56, "D  Q", 13, "#374151", "400", "middle"),
+            f'<path d="M{x},{y + 56} L{x + 14},{y + 64} L{x},{y + 72}" fill="none" stroke="#111827" stroke-width="1.4"/>',
+        ]
+
+    def delay_box(x: int, y: int, label: str, delay: str, fill: str, stroke: str) -> list[str]:
+        return [
+            rect(x, y, 170, 72, fill, stroke),
+            text(x + 85, y + 29, label, 14, stroke, "700", "middle"),
+            text(x + 85, y + 53, delay, 18, stroke, "700", "middle"),
+        ]
+
+    def checker_box(x: int, y: int, title: str, window: str, verdict: str, color: str, fill: str) -> list[str]:
+        return [
+            rect(x, y, 196, 82, fill, color),
+            text(x + 98, y + 27, title, 14, color, "700", "middle"),
+            text(x + 98, y + 49, window, 13, "#374151", "400", "middle"),
+            text(x + 98, y + 69, verdict, 13, color, "700", "middle"),
+        ]
+
+    lanes = [
+        {
+            "name": "Min-delay failing instance",
+            "module": "MinDelayHoldDemo min_fast",
+            "delay_label": "contamination",
+            "delay": "#20 ps",
+            "checker": "hold checker",
+            "window": "0-80 ps after edge",
+            "verdict": "violation pulse",
+            "stroke": "#b42318",
+            "fill": "#fff1f1",
+            "checker_fill": "#fff1f1",
+            "note": "1520 ps is inside the 1500-1580 ps hold window",
+        },
+        {
+            "name": "Min-delay padded instance",
+            "module": "MinDelayHoldDemo min_padded",
+            "delay_label": "contamination",
+            "delay": "#120 ps",
+            "checker": "hold checker",
+            "window": "0-80 ps after edge",
+            "verdict": "clean",
+            "stroke": "#15803d",
+            "fill": "#effaf2",
+            "checker_fill": "#effaf2",
+            "note": "120 ps padding moves the earliest change past hold",
+        },
+        {
+            "name": "Max-delay failing instance",
+            "module": "MaxDelaySetupDemo max_slow",
+            "delay_label": "propagation",
+            "delay": "#920 ps",
+            "checker": "setup checker",
+            "window": "150 ps before next edge",
+            "verdict": "violation pulse",
+            "stroke": "#1d4ed8",
+            "fill": "#eff6ff",
+            "checker_fill": "#fff1f1",
+            "note": "2420 ps is inside the 2350-2500 ps setup window",
+        },
+        {
+            "name": "Max-delay clean instance",
+            "module": "MaxDelaySetupDemo max_ok",
+            "delay_label": "propagation",
+            "delay": "#700 ps",
+            "checker": "setup checker",
+            "window": "150 ps before next edge",
+            "verdict": "clean",
+            "stroke": "#15803d",
+            "fill": "#effaf2",
+            "checker_fill": "#effaf2",
+            "note": "700 ps path settles before setup window opens",
+        },
+    ]
+
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        "<defs>",
+        '<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">',
+        '<path d="M0,0 L0,6 L9,3 z" fill="#111"/>',
+        "</marker>",
+        "</defs>",
+        f'<rect x="0" y="0" width="{width}" height="{height}" fill="#ffffff"/>',
+        text(40, 42, "Circuit used for timing gotcha waveforms", 25, "#111", "700"),
+        text(40, 68, "Four parameterized instances share clk, rst_n, and launch_d in timing_gotchas_tb.sv; each lane dumps the signals plotted in waveforms.png.", 14, "#555"),
+        rect(40, 92, 308, 64, "#f8fafc", "#94a3b8"),
+        text(58, 117, "shared testbench stimulus", 14, "#334155", "700"),
+        text(58, 141, "clk = 1000 ps period, launch_d toggles once per cycle", 13, "#475569"),
+    ]
+
+    for index, lane in enumerate(lanes):
+        y = top + index * row_h
+        mid = y + 76
+        stroke = lane["stroke"]
+        parts.append(rect(left, y, width - (2 * left), row_h - 18, "#ffffff", "#e2e8f0", 8, 1.2))
+        parts.append(text(left + 20, y + 31, lane["name"], 18, "#111827", "700"))
+        parts.append(text(left + 20, y + 55, lane["module"], 13, "#475569"))
+
+        parts.extend(flop(386, y + 52, "launch FF"))
+        parts.extend(delay_box(562, y + 59, lane["delay_label"], lane["delay"], lane["fill"], stroke))
+        parts.extend(flop(820, y + 52, "capture FF"))
+        parts.extend(checker_box(1056, y + 54, lane["checker"], lane["window"], lane["verdict"], "#b42318" if "violation" in lane["verdict"] else "#15803d", lane["checker_fill"]))
+
+        parts.append(line(160, mid, 386, mid, "#475569", 1.8, True))
+        parts.append(text(166, mid - 12, "launch_d", 13, "#475569"))
+        parts.append(line(480, mid, 562, mid, "#111", 2.0, True))
+        parts.append(line(732, mid, 820, mid, "#111", 2.0, True))
+        parts.append(line(914, mid, 1056, mid, stroke, 2.0, True))
+        parts.append(text(1010, mid - 12, "capture_d", 13, stroke))
+
+        parts.append(line(292, y + 130, 386, y + 116, "#64748b", 1.5, False, "5 4"))
+        parts.append(line(292, y + 130, 820, y + 116, "#64748b", 1.5, False, "5 4"))
+        parts.append(text(196, y + 135, "clk", 13, "#64748b", "700"))
+        parts.append(text(1268, y + 91, lane["note"], 13, "#374151"))
+
+    legend_y = height - 70
+    parts.append(rect(40, legend_y - 24, width - 80, 48, "#f8fafc", "#cbd5e1"))
+    parts.append(text(58, legend_y + 5, "Red lanes pulse a violation flag in simulation. Green lanes use the same circuit shape with safer delay values and stay quiet.", 14, "#334155"))
+    parts.append("</svg>")
+    path.write_text("\n".join(parts))
+
+
 def convert_with_sips(source: Path, dest: Path, fmt: str) -> None:
     if shutil.which("sips") is None:
         raise SystemExit("sips is required to render PNG artifacts")
@@ -251,6 +399,9 @@ def main() -> None:
     render_waveforms(rows, WAVEFORM_SVG)
     convert_with_sips(WAVEFORM_SVG, WAVEFORM_PNG, "png")
     WAVEFORM_SVG.unlink(missing_ok=True)
+    render_circuit_diagram(CIRCUIT_SVG)
+    convert_with_sips(CIRCUIT_SVG, CIRCUIT_PNG, "png")
+    CIRCUIT_SVG.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":

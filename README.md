@@ -116,9 +116,9 @@ a 150 ps setup window on a 1000 ps clock. Clean 120 ps and 700 ps instances run
 beside them in the same testbench.
 
 - **Folder**: timing_gotchas
-- **Files**: `timing_gotchas.sv`, `timing_gotchas_tb.sv`, `run.do`, `README.md`, `MANIFEST.txt`, `make_artifacts.py`, `transcript`, `timing_gotchas_waveforms.vcd`, `waveform_samples.csv`, `waveforms.png`
+- **Files**: `timing_gotchas.sv`, `timing_gotchas_tb.sv`, `run.do`, `README.md`, `MANIFEST.txt`, `make_artifacts.py`, `transcript`, `timing_gotchas_waveforms.vcd`, `waveform_samples.csv`, `waveforms.png`, `circuit_diagram.png`
 - **Testbench**: `top` in `timing_gotchas_tb.sv` checks that both gotchas trigger and both clean paths stay quiet.
-- **Verification**: Run `do run.do`. The checked-in transcript and VCD are from a PSU farm Questa 2021.3_1 run; `waveforms.png` is rendered from that VCD.
+- **Verification**: Run `do run.do`. The checked-in transcript and VCD are from a PSU farm Questa 2021.3_1 run; `waveforms.png` is rendered from that VCD, and `circuit_diagram.png` shows the four parameterized lanes that generated it.
 
 ## Verification
 

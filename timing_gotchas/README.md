@@ -15,6 +15,13 @@ minimum-delay and maximum-delay problems.
 Both modules expose their data path, active timing window, latched violation
 flag, and one-picosecond violation pulse for waveform inspection.
 
+## Circuit Diagram
+
+`circuit_diagram.png` shows the exact four parameterized instances used to
+produce the waveform: the failing and clean min-delay lanes, plus the failing
+and clean max-delay lanes. The red lanes are the two gotchas that pulse a
+violation flag; the green lanes use safer delay values and stay quiet.
+
 ## Verification
 
 Run on the PSU ECE farm with:
@@ -31,4 +38,5 @@ No errors -- passed testbench  (gotcha caught min=4 max=4, clean paths 2/2)
 ```
 
 `timing_gotchas_waveforms.vcd` is the farm VCD. `make_artifacts.py` parses that
-VCD into `waveform_samples.csv` and renders `waveforms.png`.
+VCD into `waveform_samples.csv`, renders `waveforms.png`, and regenerates
+`circuit_diagram.png`.
