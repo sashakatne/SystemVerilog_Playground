@@ -100,6 +100,14 @@ A class-based IEEE-754 single-precision bit-pattern generator with randomizable 
 - **Testbench**: `top` in `testbench.sv` checks direct component-to-float construction, directed classification probes, each randomization constraint by mode, and one combined finite ranged-normal mode.
 - **Verification**: Run `do run.do`. The default run completes 6005 self-checks with 0 errors and prints `No errors -- passed testbench`.
 
+### 14. SystemVerilog Gotcha Gallery
+A curriculum of 17 self-contained demos under `sv_gotchas/`, each a minimal DUT + testbench + `run.do` that makes a single language trap from Mark Faust's ECE 571 review (PSU, `sv_gotchas/sv_review.pdf`) observable on a Questa transcript. Every demo runs in isolation (`cd sv_gotchas/NN_Slug && do run.do`), instantiates a gotcha-prone module side-by-side with its corrected counterpart, and only prints `No errors -- passed testbench` if the trap actually fires on the buggy version while the fixed version stays clean. All 17 demos (`01_DanglingWire` through `17_NetDelayStack`) pass; per-demo transcripts and MANIFEST.txt files are checked in.
+
+- **Folder**: sv_gotchas
+- **Files**: `sv_gotchas/README.md` (catalogue and verification gate), `sv_gotchas/sv_review.pdf` (source slides), `sv_gotchas/_run_all_on_farm.sh` (driver that runs each demo on the PSU ECE farm), one subdirectory per demo
+- **Testbenches**: one `NN_Slug_tb.sv` per demo, `module top`; drives buggy and fixed in parallel and counts both `GOTCHA OBSERVED` events and `*** FIX FAILED` events
+- **Verification**: per-demo `transcript` + `MANIFEST.txt`; sims run on the PSU ECE farm via `~/claude-runs/<UTC>_<slug>/`. Two demos intentionally carry expected compile-time warnings called out in their `run.do` per the CLAUDE.md exception: `01_DanglingWire` triggers the `vlog -lint` implicit-net warning (which IS the lesson — the linter catches the typo), and `09_OutOfRangeBitSelect` triggers the `vlog/vopt -lint` out-of-bounds-bit-select warning.
+
 ## Verification
 
 ### Assertions
