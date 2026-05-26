@@ -1,0 +1,92 @@
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:56:44 on May 25,2026
+# vlog -source -lint ArithmeticIntDiv_buggy.sv 
+# -- Compiling module ArithmeticIntDiv_buggy
+# 
+# Top level modules:
+# 	ArithmeticIntDiv_buggy
+# End time: 16:56:45 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:56:45 on May 25,2026
+# vlog -source -lint ArithmeticIntDiv_fixed.sv 
+# -- Compiling module ArithmeticIntDiv_fixed
+# 
+# Top level modules:
+# 	ArithmeticIntDiv_fixed
+# End time: 16:56:45 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:56:45 on May 25,2026
+# vlog -source -lint ArithmeticIntDiv_tb.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 16:56:45 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:56:45 on May 25,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+ArithmeticIntDiv_buggy(rtl).+ArithmeticIntDiv_fixed(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module ArithmeticIntDiv_buggy
+# -- Loading module ArithmeticIntDiv_fixed
+# Optimizing 3 design-units (inlining 0/3 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module ArithmeticIntDiv_buggy(fast)
+# -- Optimizing module ArithmeticIntDiv_fixed(fast)
+# Optimized design name is top_optimized
+# End time: 16:56:46 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 16:56:46 on May 25,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.ArithmeticIntDiv_buggy(fast)
+# Loading work.ArithmeticIntDiv_fixed(fast)
+# 1
+# vec  base  expected(=base/4)  buggy  fixed  verdict
+#  0   0    0                 0     0     (buggy matches -- both zero)
+#  1   4    1                 0     1     GOTCHA OBSERVED ((1/4) folded to 0)
+#  2   16    4                 0     4     GOTCHA OBSERVED ((1/4) folded to 0)
+#  3   100    25                 0     25     GOTCHA OBSERVED ((1/4) folded to 0)
+#  4   200    50                 0     50     GOTCHA OBSERVED ((1/4) folded to 0)
+# No errors -- passed testbench  (gotcha caught 4 times, fix clean 5/5)
+# ** Note: $finish    : ArithmeticIntDiv_tb.sv(55)
+#    Time: 5 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at ArithmeticIntDiv_tb.sv line 55
+# Stopped at ArithmeticIntDiv_tb.sv line 55
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:56:47 on May 25,2026
+# vcover report ArithmeticIntDiv.ucdb -details -cvg 
+# ** Note: (vcover-17388) No matching coverage data found in file 'ArithmeticIntDiv.ucdb'.
+# End time: 16:56:47 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 16:56:47 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
