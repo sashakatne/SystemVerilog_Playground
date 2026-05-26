@@ -1,0 +1,103 @@
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:22:00 on May 25,2026
+# vlog -source -lint SameEdgeRace_dut.sv 
+# -- Compiling module SameEdgeRace_dut
+# 
+# Top level modules:
+# 	SameEdgeRace_dut
+# End time: 17:22:00 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:22:00 on May 25,2026
+# vlog -source -lint SameEdgeRace_buggy.sv 
+# -- Compiling module SameEdgeRace_buggy
+# 
+# Top level modules:
+# 	SameEdgeRace_buggy
+# End time: 17:22:00 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:22:00 on May 25,2026
+# vlog -source -lint SameEdgeRace_fixed.sv 
+# -- Compiling module SameEdgeRace_fixed
+# 
+# Top level modules:
+# 	SameEdgeRace_fixed
+# End time: 17:22:00 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:22:00 on May 25,2026
+# vlog -source -lint SameEdgeRace_tb.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 17:22:01 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:22:01 on May 25,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+SameEdgeRace_dut(rtl).+SameEdgeRace_buggy(rtl).+SameEdgeRace_fixed(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module SameEdgeRace_buggy
+# -- Loading module SameEdgeRace_dut
+# -- Loading module SameEdgeRace_fixed
+# Optimizing 4 design-units (inlining 0/5 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module SameEdgeRace_buggy(fast)
+# -- Optimizing module SameEdgeRace_fixed(fast)
+# -- Optimizing module SameEdgeRace_dut(fast)
+# Optimized design name is top_optimized
+# End time: 17:22:02 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 17:22:02 on May 25,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.SameEdgeRace_buggy(fast)
+# Loading work.SameEdgeRace_dut(fast)
+# Loading work.SameEdgeRace_fixed(fast)
+# 1
+# cycle  stim  expected_q  q_buggy  q_fixed  verdict
+#   0    1     1           1        1       (buggy matches)
+#   1    0     0           1        0       GOTCHA OBSERVED (one-cycle lag)
+#   2    1     1           0        1       GOTCHA OBSERVED (one-cycle lag)
+#   3    0     0           1        0       GOTCHA OBSERVED (one-cycle lag)
+# No errors -- passed testbench  (gotcha caught 3 times, fix clean 4/4)
+# ** Note: $finish    : SameEdgeRace_tb.sv(79)
+#    Time: 46 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at SameEdgeRace_tb.sv line 79
+# Stopped at SameEdgeRace_tb.sv line 79
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:22:02 on May 25,2026
+# vcover report SameEdgeRace.ucdb -details -cvg 
+# ** Note: (vcover-17388) No matching coverage data found in file 'SameEdgeRace.ucdb'.
+# End time: 17:22:03 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 17:22:03 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

@@ -1,0 +1,92 @@
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:12:00 on May 25,2026
+# vlog -source -lint CombinationalNba_buggy.sv 
+# -- Compiling module CombinationalNba_buggy
+# 
+# Top level modules:
+# 	CombinationalNba_buggy
+# End time: 17:12:00 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:12:00 on May 25,2026
+# vlog -source -lint CombinationalNba_fixed.sv 
+# -- Compiling module CombinationalNba_fixed
+# 
+# Top level modules:
+# 	CombinationalNba_fixed
+# End time: 17:12:00 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:12:00 on May 25,2026
+# vlog -source -lint CombinationalNba_tb.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 17:12:01 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:12:01 on May 25,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+CombinationalNba_buggy(rtl).+CombinationalNba_fixed(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Loading module CombinationalNba_buggy
+# -- Loading module CombinationalNba_fixed
+# Optimizing 3 design-units (inlining 0/3 module instances):
+# -- Optimizing module top(fast)
+# -- Optimizing module CombinationalNba_fixed(fast)
+# -- Optimizing module CombinationalNba_buggy(fast)
+# Optimized design name is top_optimized
+# End time: 17:12:02 on May 25,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 17:12:02 on May 25,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# Loading work.CombinationalNba_buggy(fast)
+# Loading work.CombinationalNba_fixed(fast)
+# 1
+# vec  x  expected  buggy  fixed  verdict
+#  0   1   3         2      3     GOTCHA OBSERVED (NBA + stale t)
+#  1   5   7         3      7     GOTCHA OBSERVED (NBA + stale t)
+#  2   9   11         7      11     GOTCHA OBSERVED (NBA + stale t)
+#  3   3   5         11      5     GOTCHA OBSERVED (NBA + stale t)
+#  4   14   0         5      0     GOTCHA OBSERVED (NBA + stale t)
+# No errors -- passed testbench  (gotcha caught 5 times, fix clean 5/5)
+# ** Note: $finish    : CombinationalNba_tb.sv(61)
+#    Time: 6 ns  Iteration: 0  Instance: /top
+# 1
+# Break in Module top at CombinationalNba_tb.sv line 61
+# Stopped at CombinationalNba_tb.sv line 61
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:12:02 on May 25,2026
+# vcover report CombinationalNba.ucdb -details -cvg 
+# ** Note: (vcover-17388) No matching coverage data found in file 'CombinationalNba.ucdb'.
+# End time: 17:12:02 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+#  quit -f
+# End time: 17:12:02 on May 25,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
